@@ -10,8 +10,8 @@ function App() {
       <div className="desktop">
         <div className="content">
           <Header />
-          <CountryTab />
-          <Map />
+          <CountryTab /> 
+          <Map /> 
         </div>
       </div>
     </div>

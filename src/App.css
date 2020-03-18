@@ -31,11 +31,7 @@ div {
     z-index: 201;
     background-color: white;
 }
-.map {
-    height: 100%; 
-    width: 100%; 
-    overflow: hidden;
-}
+
 .pageName {
     font-size: 20px;
     font-weight: 600;
@@ -52,6 +48,31 @@ div {
     margin-bottom: 5px;
     font-size: 13px;
     text-transform: uppercase;
+}
+.confirmedContainer {
+    display: flex;
+    justify-content: center;
+}
+.confirmedContainer .changeContainer {
+    display: flex;
+    flex-direction: row;
+    margin: auto 0 0 0;
+    font-weight: 600;
+    font-size: 16px;
+}
+.changeContainer .green {
+    color: #38a169;
+}
+.changeContainer .red {
+    color: #DE3700;
+}
+.svg-filter-green{
+    height: 23px;
+    filter: invert(52%) sepia(55%) saturate(445%) hue-rotate(95deg) brightness(91%) contrast(92%);
+}
+.svg-filter-red{
+    height: 23px;
+    filter: invert(92%) sepia(76%) saturate(9000%) hue-rotate(15deg) brightness(139%) contrast(115%)
 }
 .infoTile .confirmed {
     font-size: 38px;
@@ -83,7 +104,7 @@ div {
 .areas {
     padding-top: 24px;
     width: 100%;
-    height: calc(100% - 260px);
+    height: calc(100% - 500px);
     overflow: hidden;
 }
 .area {

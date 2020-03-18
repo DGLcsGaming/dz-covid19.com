@@ -26,7 +26,7 @@ const chartData = {
   labels: ['12-03', '13-03', '14-03', '15-03', '16-03', '17-03'],
   datasets: [
     {
-      label: 'My First dataset',
+      label: 'New Cases Today',
       fill: false,
       lineTension: 0.1,
       backgroundColor: 'rgba(75,192,192,0.4)',
@@ -59,7 +59,7 @@ function Graph() {
     },
     title: {
       display: false,
-      text: 'Chart.js Doughnut Chart'
+      text: ''
     },
     animation: {
       animateScale: true,
@@ -75,9 +75,9 @@ function Graph() {
             var currentValue = dataset.data[tooltipItem.index];
             var percentage = Math.floor(((currentValue/total) * 100)+0.5);   
             switch (tooltipItem.index)   {
-              case 0: return currentValue + " Active (" +  percentage + "%)";break;
-              case 1: return currentValue + " Recovered (" +  percentage + "%)";break;
-              case 2: return currentValue + " Deaths (" +  percentage + "%)";break;
+              case 0: return currentValue + " Active (" +  percentage + "%)";
+              case 1: return currentValue + " Recovered (" +  percentage + "%)";
+              case 2: return currentValue + " Deaths (" +  percentage + "%)";
               default: return currentValue + " (" +  percentage + "%)";
             }  
           }
@@ -85,7 +85,7 @@ function Graph() {
       }
     }}  data={infoTileData} height={100} legend={{display: false}}/>
       <div className="title text-center">Daily New Cases</div>
-      <Line id="dailynewcases" data={chartData} legend={{display: false}}/>
+        <Line id="dailynewcases" data={chartData} legend={{display: false}}/>
     </div>
   );
 }

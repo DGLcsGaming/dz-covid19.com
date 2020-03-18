@@ -1,10 +1,19 @@
 import React from "react";
 
+var today = 72;
+var yesterday = 60;
 function infoTile() {
   return (
     <div className="infoTile">
         <div className="title text-center" title="Total Confirmed Cases">Total Confirmed Cases</div>
-        <div className="confirmed text-center">72</div>
+        <div className="confirmedContainer">
+            <div className="confirmed text-center">72</div>
+            <div className="changeContainer text-center">
+                <img className="svg-filter-red" src="./img/high.svg" alt="high temperature" />
+                <div className="change text-center red">{((today-yesterday)/yesterday) * 100}%</div>
+            </div> 
+
+        </div>
         
         <div className="legend flex flex-row justify-center flex justify-center w-full md:justify-end md:mt-0">
             <div className="w-1/3 flex flex-col rounded overflow-hidden shadow text-center text-yellow-600">
