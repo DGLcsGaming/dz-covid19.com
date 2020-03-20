@@ -6,7 +6,12 @@ import Graph from "./Graph";
 function CountryTab() {
   return (
     <div className="country tab">
-      <div className="pageName text-center">Algeria COVID-19 Tracker</div>
+      <div className="pageName text-center">
+        <a href="#">
+          <img src="./img/corona.svg" height="40px"/>
+        </a>
+        <span>Algeria COVID-19 Tracker</span>
+      </div>
        <InfoTile />
        <Graph /> 
       <div className="areas">

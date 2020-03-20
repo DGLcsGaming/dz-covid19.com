@@ -2,17 +2,17 @@ import React from "react";
 import "./App.css";
 import Header from "./components/Header.js";
 import CountryTab from "./components/CountryTab";
-import Map from "./components/Map";
+import MyMap from "./components/MyMap";
 
 function App() {
   return (
     <div className="App">
       <div className="desktop">
         <div className="content">
-          <Header />
           <CountryTab /> 
-          <Map /> 
+          <MyMap /> 
         </div>
+        <Header />
       </div>
     </div>
   );
