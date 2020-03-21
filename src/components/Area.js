@@ -1,10 +1,10 @@
 import React from "react";
 
-function Area() {
+function Area(props) {
   return (
-    <div id="blida" className="area">
-        <div className="areaName">Blida</div>
-        <div className="areaTotal">42</div>
+    <div id={props.data.name} className="area">
+        <div className="areaName">{props.data.name}</div>
+        <div className="areaTotal">{props.data.confirmed}</div>
     </div>
   );
 }

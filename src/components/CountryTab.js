@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import InfoTile from "./InfoTile";
 import Area from "./Area";
 import Graph from "./Graph";
+import { wilayasContext } from "../contexts/wilayasContext";
+
 
 function CountryTab() {
+  const [wilayas, setWilayas] = useContext(wilayasContext);
   return (
     <div className="country tab">
       <div className="pageName text-center">
@@ -15,18 +18,9 @@ function CountryTab() {
        <InfoTile />
        <Graph /> 
       <div className="areas">
-            <Area />
-            <Area />
-            <Area />
-            <Area />
-            <Area />
-            <Area />
-            <Area />
-            <Area />
-            <Area />
-            <Area />
-            <Area />
-            <Area />
+          {wilayas.map(wilaya => (
+            <Area key={wilaya.id} data={wilaya}/>
+          ))}
        </div>
        
     </div>

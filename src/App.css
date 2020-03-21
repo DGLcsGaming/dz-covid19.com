@@ -18,6 +18,8 @@ div {
   flex-direction: column;
 }
 .desktop .tab {
+  display: flex;
+  flex-direction: column;
   width: 316px;
   padding: 24px;
   box-sizing: border-box;
@@ -263,7 +265,7 @@ div {
   align-items: center;
 }
 .graph {
-  padding-bottom: 12px;
+  padding-bottom: 36px;
   border-bottom: #ddd 1px solid;
 }
 .graph .title {

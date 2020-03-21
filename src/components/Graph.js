@@ -1,55 +1,64 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Doughnut, Line} from 'react-chartjs-2';
-
-const infoTileData = {
-	labels: [
-		'Active',
-		'Recovered',
-		'Deaths'
-	],
-	datasets: [{
-		data: [54, 12, 6],
-		backgroundColor: [
-		'#eeb34e',
-		'#38a169',
-		'#718096'
-		],
-		hoverBackgroundColor: [
-    '#eeb34e',
-		'#38a169',
-		'#718096'
-		]
-	}]
-};
-
-const chartData = {
-  labels: ['12-03', '13-03', '14-03', '15-03', '16-03', '17-03'],
-  datasets: [
-    {
-      label: 'New Cases Today',
-      fill: false,
-      lineTension: 0.1,
-      backgroundColor: 'rgba(75,192,192,0.4)',
-      borderColor: 'rgba(75,192,192,1)',
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: 'rgba(75,192,192,1)',
-      pointBackgroundColor: '#fff',
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-      pointHoverBorderColor: 'rgba(220,220,220,1)',
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: [27, 28, 38, 54, 60, 72]
-    }
-  ]
-};
+import { mainDataContext } from "../contexts/mainDataContext";
+import Flickity from "react-flickity-component";
 
 function Graph() {
+  const [mainData, setMainData] = useContext(mainDataContext);
+  const infoTileData = {
+    labels: [
+      'Active',
+      'Recovered',
+      'Deaths'
+    ],
+    datasets: [{
+      data: [mainData.currentStats.active, mainData.currentStats.recovered, mainData.currentStats.deaths],
+      backgroundColor: [
+      '#eeb34e',
+      '#38a169',
+      '#718096'
+      ],
+      hoverBackgroundColor: [
+      '#eeb34e',
+      '#38a169',
+      '#718096'
+      ]
+    }]
+  };
+  // Preparing data
+  const labels = [];
+  const data= [];
+  mainData.dailyStats.forEach(day => {
+    labels.push(day.date);
+    data.push(day.confirmed);
+  });
+
+  const chartData = {
+    labels,
+    datasets: [
+      {
+        label: 'New Cases Today',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgba(75,192,192,0.4)',
+        borderColor: 'rgba(75,192,192,1)',
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: 'rgba(75,192,192,1)',
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+        pointHoverBorderColor: 'rgba(220,220,220,1)',
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data
+      }
+    ]
+  };
   return (
     <div className="graph">
       <Doughnut id="doughnut" options= {{
@@ -84,8 +93,16 @@ function Graph() {
         }
       }
     }}  data={infoTileData} height={100} legend={{display: false}}/>
-      <div className="title text-center">Daily New Cases</div>
-        <Line id="dailynewcases" data={chartData} legend={{display: false}}/>
+        <Flickity options={{adaptiveHeight: false, wrapAround: true, autoPlay: 3000, pauseAutoPlayOnHover: true, selectedAttraction: 0.2, friction: 0.8}}>
+          <div className="slider-item">
+            <div className="title text-center">Daily New Cases</div>
+            <Line id="dailynewcases" data={chartData} legend={{display: false}}/>
+          </div>
+          <div className="slider-item">
+            <div className="title text-center">Daily New Cases</div>
+            <Line id="dailynewcases" data={chartData} legend={{display: false}}/>
+          </div>
+        </Flickity>
     </div>
   );
 }

@@ -6,13 +6,18 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
     "chart.js": "^2.9.3",
+    "flickity": "^2.2.1",
     "leaflet": "^1.6.0",
     "react": "^16.13.0",
     "react-chartjs-2": "^2.9.0",
     "react-dom": "^16.13.0",
+    "react-flickity-component": "^3.5.0",
     "react-leaflet": "^2.6.3",
-    "react-scripts": "3.4.0"
+    "react-odometerjs": "^2.1.1",
+    "react-scripts": "3.4.0",
+    "socket.io-client": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
