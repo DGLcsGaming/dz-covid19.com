@@ -13,7 +13,7 @@ div {
   width: 100%;
   position: absolute;
 }
-.desktop{
+.desktop {
   display: flex;
   flex-direction: column;
 }
@@ -63,7 +63,7 @@ div {
   flex-direction: row;
   margin: auto 0 0 0;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 12px;
 }
 .changeContainer .green {
   color: #38a169;
@@ -77,7 +77,7 @@ div {
     brightness(91%) contrast(92%);
 }
 .svg-filter-red {
-  height: 23px;
+  height: 30px;
   filter: invert(92%) sepia(76%) saturate(9000%) hue-rotate(15deg)
     brightness(139%) contrast(115%);
 }
@@ -111,9 +111,12 @@ div {
 .areas {
   padding-top: 24px;
   width: 100%;
-  height: calc(100% - 500px);
   overflow: hidden;
 }
+.areas:hover {
+  overflow-y: scroll;
+}
+
 .area {
   display: grid;
   background: #fff;
@@ -297,13 +300,12 @@ div {
   height: 100vh;
 }
 
-
 /* Circle Live Dot CSS Start */
 .ring-container {
   position: relative;
-    align-self: flex-start;
-    right: 3px;
-    bottom: 2px;
+  align-self: flex-start;
+  left: -2px;
+  bottom: -1px;
 }
 
 .circle {
@@ -323,13 +325,21 @@ div {
   width: 20px;
   position: absolute;
   animation: pulsate 1s ease-out;
-  animation-iteration-count: infinite; 
-  opacity: 0.0
+  animation-iteration-count: infinite;
+  opacity: 0;
 }
 @keyframes pulsate {
-  0% {transform: scale(0.1, 0.1); opacity: 0.0;}
-  50% {opacity: 1.0;}
-  100% {transform: scale(1.2, 1.2); opacity: 0.0;}
+  0% {
+    transform: scale(0.1, 0.1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2, 1.2);
+    opacity: 0;
+  }
 }
 /* Circle Live Dot CSS End */
 
@@ -338,14 +348,14 @@ div {
   flex-direction: column;
   align-items: center;
 }
-.ring-container .live{
+.ring-container .live {
   position: absolute;
   left: 20px;
   top: 2px;
   color: #de3700;
   font-size: 11px;
 }
-.footerItems{
+.footerItems {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -361,18 +371,24 @@ div {
   bottom: 0;
   max-height: 50px;
   margin-left: 316px;
-  color: #FFF;
+  color: #fff;
   opacity: 0.9;
 }
 .mapCircle {
   animation: mapCirclePulse 1s ease-out;
-  animation-iteration-count: infinite; 
-  opacity: 0.4
+  animation-iteration-count: infinite;
+  opacity: 0.4;
 }
 @keyframes mapCirclePulse {
-  0% {opacity: 0.6;}
-  50% {opacity: 1.0;}
-  100% {opacity: 0.6;}
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
 }
 
 .circlePopup .tooltip .topToolTip {
@@ -385,15 +401,15 @@ div {
   transform: translate(-50%, -100%);
   padding: 10px 10px;
   color: #000000;
-  background-color: rgba(255,255,255,1);
+  background-color: rgba(255, 255, 255, 1);
   font-weight: normal;
   font-size: 13px;
   border-radius: 8px;
   position: absolute;
   z-index: 99999999;
   box-sizing: border-box;
-  border: 2px solid #DDDDDD;
-  box-shadow: 0 1px 8px rgba(0,0,0,0.1);
+  border: 2px solid #dddddd;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
   display: none;
 }
 .circlePopup .titleInfoBox {
@@ -417,7 +433,7 @@ div {
   margin: 5px 0 4px 0;
 }
 .circlePopup .stat.confirmed {
-  color: #DE3700;
+  color: #de3700;
 }
 .circlePopup .stat {
   flex: 1;
@@ -427,7 +443,7 @@ div {
   line-height: 20px;
 }
 .circlePopup .statCount.confirmed {
-  color: #DE3700;
+  color: #de3700;
 }
 
 .circlePopup .statCount {
@@ -443,12 +459,20 @@ div {
   margin-right: 10px;
 }
 .circlePopup .recovered {
-  background-color: #60BB69;
+  background-color: #60bb69;
 }
 .circlePopup .deaths {
   background-color: #767676;
 }
 .circlePopup .active {
-  background-color: #F4C363;
+  background-color: #f4c363;
 }
-
+.difference {
+  color: #de3700;
+  font-weight: 600;
+  font-size: 20px;
+}
+.change {
+  position: relative;
+  left: -3px;
+}
