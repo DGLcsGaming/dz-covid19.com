@@ -183,6 +183,9 @@ div {
 .text-gray-600 {
   color: #718096;
 }
+.text-red-600 {
+  color: #de3700;
+}
 .text-center {
   text-align: center;
 }
@@ -219,6 +222,9 @@ div {
 }
 .h-16 {
   height: 4rem;
+}
+.h-8 {
+  height: 2rem;
 }
 .font-bold {
   font-weight: 700;
@@ -369,4 +375,80 @@ div {
   100% {opacity: 0.6;}
 }
 
+.circlePopup .tooltip .topToolTip {
+  display: block;
+}
+
+.circlePopup .tooltip .topToolTip {
+  top: -20px;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  padding: 10px 10px;
+  color: #000000;
+  background-color: rgba(255,255,255,1);
+  font-weight: normal;
+  font-size: 13px;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 99999999;
+  box-sizing: border-box;
+  border: 2px solid #DDDDDD;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.1);
+  display: none;
+}
+.circlePopup .titleInfoBox {
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 7px;
+}
+.circlePopup .statLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+}
+.circlePopup .statLine.divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.2);
+  margin: 5px 0 4px 0;
+}
+.circlePopup .stat.confirmed {
+  color: #DE3700;
+}
+.circlePopup .stat {
+  flex: 1;
+  margin-right: 24px;
+  height: 20px;
+  font-size: 13px;
+  line-height: 20px;
+}
+.circlePopup .statCount.confirmed {
+  color: #DE3700;
+}
+
+.circlePopup .statCount {
+  height: 20px;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: right;
+}
+.circlePopup .legendColor {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+.circlePopup .recovered {
+  background-color: #60BB69;
+}
+.circlePopup .deaths {
+  background-color: #767676;
+}
+.circlePopup .active {
+  background-color: #F4C363;
+}
 

@@ -1,10 +1,12 @@
 import React, {useContext} from "react";
 import {Doughnut, Line} from 'react-chartjs-2';
-import { mainDataContext } from "../contexts/mainDataContext";
+import { currentStatsContext } from "../contexts/currentStatsContext";
+import { dailyStatsContext } from "../contexts/dailyStatsContext";
 import Flickity from "react-flickity-component";
 
 function Graph() {
-  const [mainData, setMainData] = useContext(mainDataContext);
+  const [currentStats, setCurrentStats] = useContext(currentStatsContext);
+  const [dailyStats, setDailyStats] = useContext(dailyStatsContext);
   const infoTileData = {
     labels: [
       'Active',
@@ -12,7 +14,7 @@ function Graph() {
       'Deaths'
     ],
     datasets: [{
-      data: [mainData.currentStats.active, mainData.currentStats.recovered, mainData.currentStats.deaths],
+      data: [currentStats.active, currentStats.recovered, currentStats.deaths],
       backgroundColor: [
       '#eeb34e',
       '#38a169',
@@ -28,7 +30,7 @@ function Graph() {
   // Preparing data
   const labels = [];
   const data= [];
-  mainData.dailyStats.forEach(day => {
+  dailyStats.forEach(day => {
     labels.push(day.date);
     data.push(day.confirmed);
   });
