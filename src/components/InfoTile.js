@@ -1,22 +1,33 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext, useMemo, useEffect } from "react";
 import { currentStatsContext } from "../contexts/currentStatsContext";
 import { dailyStatsContext } from "../contexts/dailyStatsContext";
 import Odometer from "react-odometerjs";
 
-const calcPercentage = (today, yesterday) => {
-  return Math.floor(Math.round(((today - yesterday) / yesterday) * 100));
+const calcPercentage = (currentStats, dailyStats) => {
+  var today, yesterday;
+  today = parseInt(currentStats.confirmed);
+  var yesDate = new Date();
+  yesDate.setUTCHours(0, 0, 0, 0);
+  yesDate.setDate(yesDate.getDate() - 1);
+  yesterday = dailyStats.find(day => {
+    return day.date === yesDate.toISOString();
+  });
+  console.log(yesterday);
+  return [
+    Math.floor(Math.round(((today - yesterday) / yesterday) * 100)),
+    today,
+    yesterday
+  ];
 };
 
 function InfoTile() {
   const [currentStats, setCurrentStats] = useContext(currentStatsContext);
   const [dailyStats, setDailyStats] = useContext(dailyStatsContext);
 
-  var today = parseInt(currentStats.confirmed);
-  var yesterday = parseInt(dailyStats[dailyStats.length - 1].confirmed);
-  const growthPercentage = useMemo(() => calcPercentage(today, yesterday), [
-    currentStats,
-    dailyStats
-  ]);
+  const [growthPercentage, today, yesterday] = useMemo(
+    () => calcPercentage(currentStats, dailyStats),
+    [currentStats, dailyStats]
+  );
 
   return (
     <div className="infoTile">
