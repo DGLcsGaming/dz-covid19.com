@@ -21,7 +21,7 @@ function Header() {
           </li>
         </ul>
       </div>
-      <small>Made with &#10084;&#65039; by <strong><a href="http://linkedin.com/in/faycaldgl">Ghoul Faical</a></strong> in Algeria</small> 
+      <small>Made with &#10084;&#65039; by <strong><a href="https://facebook.com/DGLCS">Ghoul Faical</a></strong> in Algeria</small> 
     </nav>
 
   );

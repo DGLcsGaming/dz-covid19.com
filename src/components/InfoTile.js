@@ -12,11 +12,10 @@ const calcPercentage = (currentStats, dailyStats) => {
   yesterday = dailyStats.find(day => {
     return day.date === yesDate.toISOString();
   });
-  console.log(yesterday);
   return [
-    Math.floor(Math.round(((today - yesterday) / yesterday) * 100)),
+    Math.floor(Math.round(((today - yesterday.confirmed) / yesterday.confirmed) * 100)),
     today,
-    yesterday
+    yesterday.confirmed
   ];
 };
 
@@ -69,8 +68,8 @@ function InfoTile() {
             <span className="mx-2 active">Active</span>
           </div>
         </div>
-        <div className="w-1/3 mx-2 flex flex-col rounded overflow-hidden statshadow text-center text-green-600">
-          <div className="h-16 pt-2 flex flex-auto items-center justify-center bg-green-100 text-xl lg:text-3xl font-bold font-sans">
+        <div className="w-1/2 mx-2 flex flex-col rounded overflow-hidden statshadow text-center text-green-600">
+          <div className="h-16 pt-2 flex flex-auto items-center justify-center bg-green-100 text-xxl font-bold font-sans">
             <span className="mx-2">
               <Odometer value={currentStats.recovered} format="(,ddd)" />
             </span>

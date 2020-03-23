@@ -18,8 +18,8 @@ function CountryTab() {
        <InfoTile />
        <Graph /> 
       <div className="areas">
-          {wilayas.map(wilaya => (
-            <Area key={wilaya.id} data={wilaya}/>
+          {wilayas.sort((a, b) => b.confirmed - a.confirmed).map(wilaya => (
+            <Area key={wilaya.code} data={wilaya}/>
           ))}
        </div>
        
