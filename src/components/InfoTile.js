@@ -12,11 +12,16 @@ const calcPercentage = (currentStats, dailyStats) => {
   yesterday = dailyStats.find(day => {
     return day.date === yesDate.toISOString();
   });
-  return [
-    Math.floor(Math.round(((today - yesterday.confirmed) / yesterday.confirmed) * 100)),
-    today,
-    yesterday.confirmed
-  ];
+  if(yesterday) {
+    return [
+      Math.floor(Math.round(((today - yesterday.confirmed) / yesterday.confirmed) * 100)),
+      today,
+      yesterday.confirmed
+    ];
+  }else{
+    return [null, null, null];
+  }
+
 };
 
 function InfoTile() {

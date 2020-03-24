@@ -8,11 +8,13 @@ import MyMap from "./components/MyMap";
 import { wilayasContext } from "./contexts/wilayasContext";
 import { currentStatsContext } from "./contexts/currentStatsContext";
 import { dailyStatsContext } from "./contexts/dailyStatsContext";
+import useWindowDimensions from "./hooks/useWindowDimensions";
 import openSocket from "socket.io-client";
 
 const socket = openSocket("http://localhost:4000");
 
 function App() {
+  const [width, height] = useWindowDimensions();
   const [currentStats, setCurrentStats] = useState(null);
   const [dailyStats, setDailyStats] = useState(null);
   const [wilayas, setWilayas] = useState(null);
@@ -32,17 +34,6 @@ function App() {
     });
   }, []);
 
-  /*
-  return (
-    <div className="App">
-      {
-        (currentStatsIsLoading || dailyStatsIsLoading || wilayasIsLoading) || currentStats == null || dailyStats == null || wilayas == null ? <h1> Loading .. </h1>
-        :
-        console.log(currentStats, dailyStats, wilayas)
-      }
-    </div>
-  );
-  */
   var content = <h1> Loading .. </h1>;
   if(currentStats != null && dailyStats != null && wilayas != null){
     content = 
@@ -50,12 +41,15 @@ function App() {
       <currentStatsContext.Provider value={[currentStats, setCurrentStats]}>
         <dailyStatsContext.Provider value={[dailyStats, setDailyStats]}>
           <wilayasContext.Provider value={[wilayas, setWilayas]}>
-            <div className="desktop">
+            <div className={width >= 800 ? "desktop" : "mobile"}>
               <div className="content">
                 <CountryTab />
                 <MyMap />
               </div>
               <Header />
+              <button className="navbar-toggler" type="button">
+                <span className="navbar-toggler-icon"></span>
+              </button>
             </div>
           </wilayasContext.Provider>
         </dailyStatsContext.Provider>
