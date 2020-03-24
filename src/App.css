@@ -502,10 +502,6 @@ div {
 .mobile > .navbar {
   display: none;
 }
-
-.mobile .bg-dark {
- /* background-color: #343a4000!important; */
-}
 .mobile .map {
   position: fixed;
   width: 100%;
