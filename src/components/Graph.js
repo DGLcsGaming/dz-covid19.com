@@ -58,56 +58,9 @@ function Graph() {
   };
   return (
     <div className="graph">
-      <Doughnut
-        id="doughnut"
-        options={{
-          responsive: true,
-          legend: {
-            position: "bottom"
-          },
-          title: {
-            display: false,
-            text: ""
-          },
-          animation: {
-            animateScale: true,
-            animateRotate: true
-          },
-          tooltips: {
-            callbacks: {
-              label: function(tooltipItem, data) {
-                var dataset = data.datasets[tooltipItem.datasetIndex];
-                var total = dataset.data.reduce(function(
-                  previousValue,
-                  currentValue,
-                  currentIndex,
-                  array
-                ) {
-                  return previousValue + currentValue;
-                });
-                var currentValue = dataset.data[tooltipItem.index];
-                var percentage = Math.floor((currentValue / total) * 100 + 0.5);
-                switch (tooltipItem.index) {
-                  case 0:
-                    return currentValue + " Active (" + percentage + "%)";
-                  case 1:
-                    return currentValue + " Recovered (" + percentage + "%)";
-                  case 2:
-                    return currentValue + " Deaths (" + percentage + "%)";
-                  default:
-                    return currentValue + " (" + percentage + "%)";
-                }
-              }
-            }
-          }
-        }}
-        data={infoTileData}
-        height={100}
-        legend={{ display: false }}
-      />
       <Flickity
         options={{
-          adaptiveHeight: false,
+          adaptiveHeight: true,
           wrapAround: true,
           autoPlay: 3000,
           pauseAutoPlayOnHover: true,
@@ -136,23 +89,56 @@ function Graph() {
           />
         </div>
         <div className="slider-item">
-          <div className="title text-center">Daily New Cases</div>
-          <Line
-            id="dailynewcases"
-            data={chartData}
+          <div className="title text-center">Distribution of Cases</div>
+          <Doughnut
+            id="doughnut"
             options={{
-              scales: {
-                xAxes: [
-                  {
-                    ticks: {
-                      autoSkip: true,
-                      maxRotation: 90,
-                      minRotation: 0
+              responsive: true,
+              legend: {
+                position: "bottom"
+              },
+              title: {
+                display: false,
+                text: ""
+              },
+              animation: {
+                animateScale: true,
+                animateRotate: true
+              },
+              tooltips: {
+                callbacks: {
+                  label: function(tooltipItem, data) {
+                    var dataset = data.datasets[tooltipItem.datasetIndex];
+                    var total = dataset.data.reduce(function(
+                      previousValue,
+                      currentValue,
+                      currentIndex,
+                      array
+                    ) {
+                      return previousValue + currentValue;
+                    });
+                    var currentValue = dataset.data[tooltipItem.index];
+                    var percentage = Math.floor(
+                      (currentValue / total) * 100 + 0.5
+                    );
+                    switch (tooltipItem.index) {
+                      case 0:
+                        return currentValue + " Active (" + percentage + "%)";
+                      case 1:
+                        return (
+                          currentValue + " Recovered (" + percentage + "%)"
+                        );
+                      case 2:
+                        return currentValue + " Deaths (" + percentage + "%)";
+                      default:
+                        return currentValue + " (" + percentage + "%)";
                     }
                   }
-                ]
+                }
               }
             }}
+            data={infoTileData}
+            height={100}
             legend={{ display: false }}
           />
         </div>
