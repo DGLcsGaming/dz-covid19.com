@@ -25,15 +25,15 @@ function App() {
 
   useEffect(() => {
     socket.on("currentStats", data => {
-      console.log("CurrentStats Loaded!");
+      console.log("CurrentStats Loaded!", new Date(Date.now()).toISOString());
       setCurrentStats(data);
     });
     socket.on("dailyStats", data => {
-      console.log("Daily Loaded!");
+      console.log("Daily Loaded!", new Date(Date.now()).toISOString());
       setDailyStats(data);
     });
     socket.on("wilayas", data => {
-      console.log("Wilayas Loaded!");
+      console.log("Wilayas Loaded!", new Date(Date.now()).toISOString());
       setWilayas(data);
     });
   }, []);
