@@ -375,7 +375,7 @@ div {
   position: absolute;
   padding: 5px 10px;
   background-color: #444;
-  z-index: 999999;
+  z-index: 9999;
   height: 50px;
   width: calc(100vw - 316px);
   bottom: 0;
@@ -383,9 +383,22 @@ div {
   margin-left: 316px;
   color: #fff;
   opacity: 0.9;
+  flex-wrap: nowrap;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
 }
 .navbar-nav {
   flex: 1;
+  flex-direction: row;
+}
+.navbar-items {
+  justify-content: space-between;
+  flex-grow: 1;
+  align-items: center;
+}
+.nav-item {
+  margin-left: 10px;
 }
 .mapCircle {
   animation: mapCirclePulse 1s ease-out;
@@ -545,4 +558,37 @@ div {
 }
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navdrawer-container {
+  display: flex;
+  position: fixed;
+  height: 100vh;
+  width: 70vw;
+  top: 0;
+  right: 0;
+  z-index: 99999;
+  padding: 24px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px 0px 0px 0px;
+  backdrop-filter: blur(5px);
+  overflow: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.backdrop-container {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 99998;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.mobile .navbar-items,
+.mobile .navbar-nav {
+  flex-direction: column;
+  align-items: center;
 }

@@ -2,7 +2,9 @@ import React, { useState, useEffect, useMemo } from "react";
 import "./odometer-theme-default.css";
 import "./App.css";
 import "./flickity.css";
-import Header from "./components/Header.js";
+import Header from "./components/Header";
+import NavDrawer from "./components/NavDrawer";
+import Backdrop from "./components/Backdrop";
 import CountryTab from "./components/CountryTab";
 import MyMap from "./components/MyMap";
 import { wilayasContext } from "./contexts/wilayasContext";
@@ -22,6 +24,41 @@ function App() {
   const [currentStats, setCurrentStats] = useState(null);
   const [dailyStats, setDailyStats] = useState(null);
   const [wilayas, setWilayas] = useState(null);
+  const [isServerDown, setIsServerDown] = useState(false);
+  const [navDrawerVisible, setNavDrawerVisible] = useState({
+    opacity: 0,
+    display: "none"
+  });
+
+  const navTogglerClick = () => {
+    if (navDrawerVisible.display === "none") {
+      setNavDrawerVisible({ opacity: 0, display: "block" });
+      setTimeout(() => {
+        setNavDrawerVisible({ display: "block", opacity: 1 });
+      }, 10);
+    } else {
+      setNavDrawerVisible({ display: "block", opacity: 0 });
+      setTimeout(() => {
+        setNavDrawerVisible({ opacity: 0, display: "none" });
+      }, 300);
+    }
+  };
+
+  const hideBackDrop = () => {
+    setNavDrawerVisible({ display: "block", opacity: 0 });
+    setTimeout(() => {
+      setNavDrawerVisible({ opacity: 0, display: "none" });
+    }, 300);
+  };
+
+  socket.io.on("connect_error", function() {
+    console.log("Error connecting to Socket.io server");
+    setIsServerDown(true);
+  });
+  socket.on("connect", function() {
+    console.log("Connected to Socket.io server");
+    setIsServerDown(false);
+  });
 
   useEffect(() => {
     socket.on("currentStats", data => {
@@ -38,8 +75,14 @@ function App() {
     });
   }, []);
 
-  var content = <h1> Loading .. </h1>;
-  if (currentStats != null && dailyStats != null && wilayas != null) {
+  var content;
+
+  if (
+    currentStats != null &&
+    dailyStats != null &&
+    wilayas != null &&
+    !isServerDown
+  ) {
     content = (
       <div className="App">
         <globalContext.Provider value={[globalState, setGlobalState]}>
@@ -47,12 +90,22 @@ function App() {
             <dailyStatsContext.Provider value={[dailyStats, setDailyStats]}>
               <wilayasContext.Provider value={[wilayas, setWilayas]}>
                 <div className={width >= 800 ? "desktop" : "mobile"}>
-                  <div className="content">
+                  <div
+                    className="content"
+                    style={
+                      navDrawerVisible.display === "block"
+                        ? { overflowY: "hidden" }
+                        : { overflowY: "auto" }
+                    }>
                     <CountryTab />
                     <MyMap />
                   </div>
+                  <NavDrawer visible={navDrawerVisible} click={hideBackDrop} />
                   <Header />
-                  <button className="navbar-toggler" type="button">
+                  <button
+                    className="navbar-toggler"
+                    type="button"
+                    onClick={navTogglerClick}>
                     <span className="navbar-toggler-icon"></span>
                   </button>
                 </div>
@@ -62,6 +115,10 @@ function App() {
         </globalContext.Provider>
       </div>
     );
+  } else if (isServerDown) {
+    content = <h1>Server is Offline</h1>;
+  } else {
+    content = <h1> Loading .. </h1>;
   }
 
   return content;
