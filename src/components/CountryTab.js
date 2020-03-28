@@ -24,6 +24,15 @@ function CountryTab() {
             <Area key={wilaya.code} data={wilaya} />
           ))}
       </div>
+      <div className="signature">
+        <small>
+          Made with &#10084;&#65039; by{" "}
+          <strong>
+            <a href="https://facebook.com/DGLCS">Ghoul Faical</a>
+          </strong>{" "}
+          in Algeria
+        </small>
+      </div>
     </div>
   );
 }

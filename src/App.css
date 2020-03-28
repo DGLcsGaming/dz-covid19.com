@@ -594,9 +594,16 @@ div {
   z-index: 99998;
   transition: opacity 0.3s ease-in-out;
 }
-
 .mobile .navbar-items,
 .mobile .navbar-nav {
   flex-direction: column;
   align-items: center;
+}
+.desktop .signature {
+  display: none;
+}
+.mobile .signature {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0px;
 }
