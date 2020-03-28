@@ -15,6 +15,7 @@ import useWindowDimensions from "./hooks/useWindowDimensions";
 import openSocket from "socket.io-client";
 
 const socket = openSocket("http://212.24.98.17:4000");
+//const socket = openSocket("http://localhost:4000");
 
 function App() {
   const [globalState, setGlobalState] = useState({
@@ -72,6 +73,9 @@ function App() {
     socket.on("wilayas", data => {
       console.log("Wilayas Loaded!", new Date(Date.now()).toISOString());
       setWilayas(data);
+    });
+    socket.on("clientscount", data => {
+      console.log("Clients Online: " + data);
     });
   }, []);
 

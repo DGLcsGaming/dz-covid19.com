@@ -15,8 +15,8 @@ const NavDrawer = props => {
         className="navdrawer-container"
         style={
           props.visible.opacity === 1
-            ? { transform: "translateX(0%)" }
-            : { transform: "translateX(100%)" }
+            ? { transform: "translateX(0%)", willChange: "transform" }
+            : { transform: "translateX(100%)", willChange: "transform" }
         }>
         <div className="flex navbar-items">
           <ul className="navbar-nav">

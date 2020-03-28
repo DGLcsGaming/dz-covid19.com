@@ -4,7 +4,6 @@ import Area from "./Area";
 import Graph from "./Graph";
 import { wilayasContext } from "../contexts/wilayasContext";
 
-
 function CountryTab() {
   const [wilayas, setWilayas] = useContext(wilayasContext);
   return (
@@ -12,18 +11,19 @@ function CountryTab() {
       <div className="pullbar" />
       <div className="pageName text-center">
         <a href="#">
-          <img src="./img/corona.svg" height="40px"/>
+          <img src="./img/corona.svg" height="40px" />
         </a>
         <span>Algeria COVID-19 Tracker</span>
       </div>
       <InfoTile />
-      <Graph /> 
+      <Graph />
       <div className="areas">
-          {wilayas.sort((a, b) => b.confirmed - a.confirmed).map(wilaya => (
-            <Area key={wilaya.code} data={wilaya}/>
+        {wilayas
+          .sort((a, b) => b.confirmed - a.confirmed)
+          .map(wilaya => (
+            <Area key={wilaya.code} data={wilaya} />
           ))}
-       </div>
-       
+      </div>
     </div>
   );
 }

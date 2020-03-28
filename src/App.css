@@ -118,6 +118,7 @@ div {
 }
 .areas:hover {
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .area {
@@ -422,6 +423,7 @@ div {
 }
 
 .circlePopup .tooltip .topToolTip {
+  will-change: transform;
   top: -20px;
   left: 50%;
   transform: translate(-50%, -100%);
@@ -512,6 +514,7 @@ div {
   display: unset;
   overflow-x: hidden;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   background-color: #c8c8c8;
   height: 100vh;
 }
@@ -519,6 +522,7 @@ div {
   display: none;
 }
 .mobile .map {
+  will-change: transform;
   position: fixed;
   width: 100%;
 }
@@ -544,9 +548,11 @@ div {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  will-change: transform;
 }
 
 .navbar-toggler {
+  will-change: transform;
   color: rgba(255, 255, 255, 1);
   border-color: rgba(0, 0, 0, 0.2);
   position: fixed;
@@ -561,6 +567,7 @@ div {
 }
 
 .navdrawer-container {
+  will-change: transform;
   display: flex;
   position: fixed;
   height: 100vh;
@@ -578,6 +585,7 @@ div {
 }
 
 .backdrop-container {
+  will-change: transform;
   position: fixed;
   height: 100vh;
   width: 100vw;
