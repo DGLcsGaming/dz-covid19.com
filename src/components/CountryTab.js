@@ -1,11 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, Fragment } from "react";
 import InfoTile from "./InfoTile";
-import Area from "./Area";
 import Graph from "./Graph";
+import Wilyas from "./Wilayas";
 import { wilayasContext } from "../contexts/wilayasContext";
+import { currentStatsContext } from "../contexts/currentStatsContext";
+import { dailyStatsContext } from "../contexts/dailyStatsContext";
+import { ReactComponent as Loading } from "../Icons/Loading.svg";
 
 function CountryTab() {
   const [wilayas, setWilayas] = useContext(wilayasContext);
+  const [currentStats, setCurrentStats] = useContext(currentStatsContext);
+  const [dailyStats, setDailyStats] = useContext(dailyStatsContext);
   return (
     <div className="country tab">
       <div className="pullbar" />
@@ -15,15 +20,16 @@ function CountryTab() {
         </a>
         <span>Algeria COVID-19 Tracker</span>
       </div>
-      <InfoTile />
-      <Graph />
-      <div className="areas">
-        {wilayas
-          .sort((a, b) => b.confirmed - a.confirmed)
-          .map(wilaya => (
-            <Area key={wilaya.code} data={wilaya} />
-          ))}
-      </div>
+
+      {currentStats === null || dailyStats === null || wilayas === null ? (
+        <Loading />
+      ) : (
+        <Fragment>
+          <InfoTile />
+          <Graph />
+          <Wilyas wilayas={wilayas} />
+        </Fragment>
+      )}
       <div className="signature">
         <small>
           Made with &#10084;&#65039; by{" "}

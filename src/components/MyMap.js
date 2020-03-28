@@ -14,9 +14,12 @@ function MyMap() {
     setCurrentZoom(map.current.leafletElement.getZoom());
   };
 
-  var maxWilaya = wilayas.reduce((max, wilaya) =>
-    max.confirmed > wilaya.confirmed ? max : wilaya
-  );
+  var maxWilaya;
+  if (wilayas !== null) {
+    maxWilaya = wilayas.reduce((max, wilaya) =>
+      max.confirmed > wilaya.confirmed ? max : wilaya
+    );
+  }
 
   const [globalState, setGlobalState] = useContext(globalContext);
   const handleClick = code => {
@@ -34,18 +37,22 @@ function MyMap() {
           url="	https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
           attribution=""
         />
-        {wilayas.map(wilaya => {
-          if (wilaya.confirmed && wilaya.confirmed > 0)
-            return (
-              <Wilaya
-                key={wilaya.code}
-                wilaya={wilaya}
-                maxWilaya={maxWilaya}
-                click={handleClick}
-                zoom={currentZoom}
-              />
-            );
-        })}
+        {wilayas === null ? (
+          <div>Loading...</div>
+        ) : (
+          wilayas.map(wilaya => {
+            if (wilaya.confirmed && wilaya.confirmed > 0)
+              return (
+                <Wilaya
+                  key={wilaya.code}
+                  wilaya={wilaya}
+                  maxWilaya={maxWilaya}
+                  click={handleClick}
+                  zoom={currentZoom}
+                />
+              );
+          })
+        )}
       </Map>
     </div>
   );

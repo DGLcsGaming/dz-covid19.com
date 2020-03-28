@@ -80,12 +80,7 @@ function App() {
 
   var content;
 
-  if (
-    currentStats != null &&
-    dailyStats != null &&
-    wilayas != null &&
-    !isServerDown
-  ) {
+  if (!isServerDown) {
     content = (
       <div className="App">
         <globalContext.Provider value={[globalState, setGlobalState]}>
