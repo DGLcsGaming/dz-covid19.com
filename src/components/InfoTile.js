@@ -37,7 +37,7 @@ function InfoTile() {
   return (
     <div className="infoTile">
       <div className="title text-center" title="Total Confirmed Cases">
-        Total Confirmed Cases (dz)
+        Total Confirmed Cases
       </div>
       <div className="confirmedContainer">
         <div className="confirmed text-center">
