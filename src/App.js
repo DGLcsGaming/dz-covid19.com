@@ -4,7 +4,6 @@ import "./App.css";
 import "./flickity.css";
 import Header from "./components/Header";
 import NavDrawer from "./components/NavDrawer";
-import Backdrop from "./components/Backdrop";
 import CountryTab from "./components/CountryTab";
 import MyMap from "./components/MyMap";
 import { wilayasContext } from "./contexts/wilayasContext";
