@@ -32,7 +32,7 @@ const NavDrawer = props => {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                About Us
+                Disclaimer
               </a>
             </li>
           </ul>

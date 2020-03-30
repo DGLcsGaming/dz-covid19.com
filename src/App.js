@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, Fragment } from "react";
 import "./odometer-theme-default.css";
 import "./App.css";
 import "./flickity.css";
@@ -12,14 +12,23 @@ import { dailyStatsContext } from "./contexts/dailyStatsContext";
 import { globalContext } from "./contexts/globalContext";
 import useWindowDimensions from "./hooks/useWindowDimensions";
 import openSocket from "socket.io-client";
+import { CookiesProvider } from "react-cookie";
+import { useCookies } from "react-cookie";
+import usePushNotifications from "./hooks/usePushNotifications";
+import Modal from "react-modal";
+import GetNotifiedButton from "./components/GetNotifiedButton";
+import { ReactComponent as Bell } from "./Icons/Bell.svg";
 
-//const socket = openSocket("http://212.24.98.17:4000");
+Modal.setAppElement("#root");
+
 const socket = openSocket("//:4000");
 
 function App() {
   const [globalState, setGlobalState] = useState({
     selectedWilayaId: null
   });
+  const [cookies, setCookie, removeCookie] = useCookies(["push_subscription"]);
+
   const [width, height] = useWindowDimensions();
   const [currentStats, setCurrentStats] = useState(null);
   const [dailyStats, setDailyStats] = useState(null);
@@ -29,6 +38,22 @@ function App() {
     opacity: 0,
     display: "none"
   });
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  // Push Notifications
+  const {
+    userConsent,
+    pushNotificationSupported,
+    userSubscription,
+    onClickAskUserPermission,
+    onClickSusbribeToPushNotification,
+    onClickSendSubscriptionToPushServer,
+    pushServerSubscriptionId,
+    onClickSendNotification,
+    error,
+    loading,
+    updateSubscription
+  } = usePushNotifications();
+  const isConsentGranted = userConsent === "granted";
 
   const navTogglerClick = () => {
     if (navDrawerVisible.display === "none") {
@@ -78,40 +103,160 @@ function App() {
     });
   }, []);
 
+  const handleSubscribeButtonYes = () => {
+    onClickAskUserPermission();
+  };
+  useEffect(() => {
+    if (loading || (Object.keys(cookies).length !== 0 && userSubscription))
+      return;
+
+    if (Object.keys(cookies).length !== 0 && !userSubscription) {
+      //Subscription expired, refresh!
+      console.log("Registration Expired!");
+      updateSubscription(cookies.push_subscription);
+      removeCookie("push_subscription");
+      return;
+    }
+
+    if (isConsentGranted) {
+      if (userSubscription) {
+        if (pushServerSubscriptionId) {
+          let d = new Date();
+          d.setTime(d.getTime() + 365 * 24 * 3600 * 1000);
+          setCookie("push_subscription", pushServerSubscriptionId, {
+            path: "/",
+            expires: d,
+            sameSite: "lax"
+          });
+          console.log(
+            "You can send Push notifications now!: " + pushServerSubscriptionId
+          );
+        } else {
+          console.log("onClickSendSubscriptionToPushServer()..");
+          onClickSendSubscriptionToPushServer();
+        }
+      } else {
+        console.log("onClickSusbribeToPushNotification()..");
+        onClickSusbribeToPushNotification();
+      }
+    }
+  }, [
+    cookies,
+    loading,
+    isConsentGranted,
+    userSubscription,
+    pushServerSubscriptionId
+  ]);
+
   var content;
 
   if (!isServerDown) {
     content = (
-      <div className="App">
-        <globalContext.Provider value={[globalState, setGlobalState]}>
-          <currentStatsContext.Provider value={[currentStats, setCurrentStats]}>
-            <dailyStatsContext.Provider value={[dailyStats, setDailyStats]}>
-              <wilayasContext.Provider value={[wilayas, setWilayas]}>
-                <div className={width >= 800 ? "desktop" : "mobile"}>
-                  <div
-                    className="content"
-                    style={
-                      navDrawerVisible.display === "block"
-                        ? { overflowY: "hidden" }
-                        : { overflowY: "auto" }
-                    }>
-                    <CountryTab />
-                    <MyMap />
+      <CookiesProvider>
+        <div className="App">
+          <globalContext.Provider value={[globalState, setGlobalState]}>
+            <currentStatsContext.Provider
+              value={[currentStats, setCurrentStats]}>
+              <dailyStatsContext.Provider value={[dailyStats, setDailyStats]}>
+                <wilayasContext.Provider value={[wilayas, setWilayas]}>
+                  <div className={width >= 800 ? "desktop" : "mobile"}>
+                    <div
+                      className="content"
+                      style={
+                        navDrawerVisible.display === "block"
+                          ? { overflowY: "hidden" }
+                          : { overflowY: "auto" }
+                      }>
+                      <CountryTab />
+                      <MyMap />
+                    </div>
+                    <GetNotifiedButton
+                      click={() => setModalIsOpen(true)}
+                      style={
+                        userSubscription && Object.keys(cookies).length !== 0
+                          ? { display: "none" }
+                          : { display: "block" }
+                      }
+                    />
+                    <Modal
+                      isOpen={modalIsOpen}
+                      onRequestClose={() => setModalIsOpen(false)}
+                      style={{
+                        overlay: {
+                          backgroundColor: "rgba(0, 0, 0, 0.75)",
+                          zIndex: 99999
+                        },
+                        content: {
+                          top: "25%",
+                          left: "50%",
+                          right: "auto",
+                          bottom: "auto",
+                          marginRight: "-50%",
+                          transform: "translate(-50%, -50%)"
+                        }
+                      }}
+                      contentLabel="Example Modal">
+                      {pushServerSubscriptionId &&
+                      Object.keys(cookies).length !== 0 ? (
+                        <p>Thanks for subscribing!</p>
+                      ) : (
+                        <div className="notificationModalContent">
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "center"
+                            }}>
+                            <Bell
+                              height="25px"
+                              width="25px"
+                              style={{
+                                fill: "#38a169",
+                                margin: "0 auto"
+                              }}
+                            />
+                          </div>
+                          <p>
+                            Do you want to recieve notifications about daily
+                            statistics?
+                          </p>
+                          <div className="modalButtonsContainer">
+                            <button
+                              className="yes"
+                              onClick={handleSubscribeButtonYes}>
+                              <Bell
+                                width="15px"
+                                height="15px"
+                                style={{ fill: "#fff" }}
+                              />{" "}
+                              &nbsp; Yes
+                            </button>
+                            <button
+                              className="no"
+                              onClick={() => setModalIsOpen(false)}>
+                              No
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </Modal>
+                    <NavDrawer
+                      visible={navDrawerVisible}
+                      click={hideBackDrop}
+                    />
+                    <Header />
+                    <button
+                      className="navbar-toggler"
+                      type="button"
+                      onClick={navTogglerClick}>
+                      <span className="navbar-toggler-icon"></span>
+                    </button>
                   </div>
-                  <NavDrawer visible={navDrawerVisible} click={hideBackDrop} />
-                  <Header />
-                  <button
-                    className="navbar-toggler"
-                    type="button"
-                    onClick={navTogglerClick}>
-                    <span className="navbar-toggler-icon"></span>
-                  </button>
-                </div>
-              </wilayasContext.Provider>
-            </dailyStatsContext.Provider>
-          </currentStatsContext.Provider>
-        </globalContext.Provider>
-      </div>
+                </wilayasContext.Provider>
+              </dailyStatsContext.Provider>
+            </currentStatsContext.Provider>
+          </globalContext.Provider>
+        </div>
+      </CookiesProvider>
     );
   } else if (isServerDown) {
     content = <h1>Server is Offline</h1>;

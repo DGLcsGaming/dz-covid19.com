@@ -12,9 +12,11 @@
     "leaflet": "^1.6.0",
     "react": "^16.13.0",
     "react-chartjs-2": "^2.9.0",
+    "react-cookie": "^4.0.3",
     "react-dom": "^16.13.0",
     "react-flickity-component": "^3.5.0",
     "react-leaflet": "^2.6.3",
+    "react-modal": "^3.11.2",
     "react-odometerjs": "^2.1.1",
     "react-scripts": "3.4.0",
     "socket.io-client": "^2.3.0"

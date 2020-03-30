@@ -29,7 +29,7 @@ function MyMap() {
   return (
     <div className="map">
       <Map
-        center={[29.03696, 3.295898]}
+        center={[31.03696, 3.295898]}
         zoom={6}
         ref={map}
         onzoomend={handleZoom}>
