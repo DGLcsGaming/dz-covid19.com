@@ -639,7 +639,7 @@ a:not([href]):not([tabindex]):focus {
   font-size: 1.25rem;
   line-height: 1;
   border-radius: 0.3rem;
-  z-index: 99;
+  z-index: 400;
 }
 .notificationModalContent > p {
   padding-top: 0.7em;
@@ -757,4 +757,5 @@ a:not([href]):not([tabindex]):focus {
   font-size: 1.25rem;
   line-height: 1;
   border-radius: 0.3rem;
+  z-index: 99;
 }
