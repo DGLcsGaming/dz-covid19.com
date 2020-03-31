@@ -3,7 +3,6 @@ const host =
     ? "https://dz-covid19.com/api/"
     : "http://localhost:4000/api/";
 
-console.log(process.env);
 function post(path, body) {
   return fetch(`${host}${path}`, {
     credentials: "omit",
