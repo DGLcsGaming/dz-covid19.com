@@ -24,7 +24,7 @@ Modal.setAppElement("#root");
 const socket =
   process.env.NODE_ENV === "production"
     ? openSocket("./")
-    : openSocket("http://localhost:4000/");
+    : openSocket("http://localhost:4000", { path: "/api" });
 
 function App() {
   const [globalState, setGlobalState] = useState({
