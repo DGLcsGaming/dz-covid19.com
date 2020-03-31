@@ -23,8 +23,8 @@ Modal.setAppElement("#root");
 
 const socket =
   process.env.NODE_ENV === "production"
-    ? openSocket("http://212.24.98.17", { path: "/api/ws" })
-    : openSocket("http://localhost:4000", { path: "/api/ws" });
+    ? openSocket("https://dz-covid19.com", { path: "/ws" })
+    : openSocket("http://localhost:4001", { path: "/ws" });
 
 function App() {
   const [globalState, setGlobalState] = useState({
