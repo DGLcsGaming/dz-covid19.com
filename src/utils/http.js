@@ -1,7 +1,7 @@
 const host =
   process.env.NODE_ENV === "production"
     ? "https://dz-covid19.com/api/"
-    : "http://localhost:4000";
+    : "http://localhost:4000/api/";
 
 function post(path, body) {
   return fetch(`${host}${path}`, {
@@ -9,7 +9,7 @@ function post(path, body) {
     headers: {
       "content-type": "application/json;charset=UTF-8",
       "sec-fetch-mode": "cors",
-      "x-access-token": process.env.API_KEY
+      "x-access-token": process.env.REACT_APP_API_KEY
     },
     body: JSON.stringify(body),
     method: "POST",
@@ -29,7 +29,7 @@ function get(path) {
     headers: {
       "content-type": "application/json;charset=UTF-8",
       "sec-fetch-mode": "cors",
-      "x-access-token": process.env.API_KEY
+      "x-access-token": process.env.REACT_APP_API_KEY
     },
     method: "GET",
     mode: "cors"

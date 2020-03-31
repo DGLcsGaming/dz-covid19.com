@@ -82,8 +82,8 @@ export default function usePushNotifications() {
     setLoading(true);
     setError(false);
     createNotificationSubscription()
-      .then(function(subscrition) {
-        setUserSubscription(subscrition);
+      .then(function(subscription) {
+        setUserSubscription(subscription);
         setLoading(false);
       })
       .catch(err => {
@@ -116,6 +116,7 @@ export default function usePushNotifications() {
         setLoading(false);
       })
       .catch(err => {
+        console.log(err);
         setLoading(false);
         setError(err);
       });
