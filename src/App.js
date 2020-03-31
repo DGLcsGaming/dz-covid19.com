@@ -21,7 +21,7 @@ import { ReactComponent as Bell } from "./Icons/Bell.svg";
 
 Modal.setAppElement("#root");
 
-const socket = openSocket("/api");
+const socket = openSocket("http://localhost:4000/api");
 
 function App() {
   const [globalState, setGlobalState] = useState({
