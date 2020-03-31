@@ -23,7 +23,7 @@ Modal.setAppElement("#root");
 
 const socket =
   process.env.NODE_ENV === "production"
-    ? openSocket("/")
+    ? openSocket("https://dz-covid19.com/")
     : openSocket("http://localhost:4000/");
 
 function App() {
