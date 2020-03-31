@@ -79,16 +79,15 @@ function App() {
     }, 300);
   };
 
-  socket.io.on("connect_error", function() {
-    console.log("Error connecting to Socket.io server");
-    setIsServerDown(true);
-  });
-  socket.on("connect", function() {
-    console.log("Connected to Socket.io server");
-    setIsServerDown(false);
-  });
-
   useEffect(() => {
+    socket.io.on("connect_error", function() {
+      console.log("Error connecting to Socket.io server");
+      setIsServerDown(true);
+    });
+    socket.on("connect", function() {
+      console.log("Connected to Socket.io server");
+      setIsServerDown(false);
+    });
     socket.on("currentStats", data => {
       console.log("CurrentStats Loaded!", new Date(Date.now()).toISOString());
       setCurrentStats(data);
