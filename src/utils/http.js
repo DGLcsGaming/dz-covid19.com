@@ -8,7 +8,8 @@ function post(path, body) {
     credentials: "omit",
     headers: {
       "content-type": "application/json;charset=UTF-8",
-      "sec-fetch-mode": "cors"
+      "sec-fetch-mode": "cors",
+      "x-access-token": process.env.API_KEY
     },
     body: JSON.stringify(body),
     method: "POST",
@@ -27,7 +28,8 @@ function get(path) {
     credentials: "omit",
     headers: {
       "content-type": "application/json;charset=UTF-8",
-      "sec-fetch-mode": "cors"
+      "sec-fetch-mode": "cors",
+      "x-access-token": process.env.API_KEY
     },
     method: "GET",
     mode: "cors"
