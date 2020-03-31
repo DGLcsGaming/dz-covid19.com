@@ -23,7 +23,7 @@ Modal.setAppElement("#root");
 
 const socket =
   process.env.NODE_ENV === "production"
-    ? openSocket("https://212.24.98.17", { path: "/api/ws" })
+    ? openSocket("http://212.24.98.17", { path: "/api/ws" })
     : openSocket("http://localhost:4000", { path: "/api/ws" });
 
 function App() {
