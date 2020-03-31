@@ -1,4 +1,3 @@
-require("dotenv").config();
 const host =
   process.env.NODE_ENV === "production"
     ? "https://dz-covid19.com/api/"
