@@ -52,7 +52,7 @@ const LanguageDropdown = props => {
         </div>
         <img
           className="select-box__icon"
-          src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
+          src="https://cdn.onlinewebfonts.com/svg/img_295694.svg"
           alt="Arrow Icon"
           aria-hidden="true"
         />
