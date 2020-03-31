@@ -6,6 +6,7 @@ import { wilayasContext } from "../contexts/wilayasContext";
 import { currentStatsContext } from "../contexts/currentStatsContext";
 import { dailyStatsContext } from "../contexts/dailyStatsContext";
 import { ReactComponent as Loading } from "../Icons/Loading.svg";
+import LanguageDropdown from "./LanguageDropdown";
 
 function CountryTab() {
   const [wilayas, setWilayas] = useContext(wilayasContext);
@@ -14,6 +15,7 @@ function CountryTab() {
   return (
     <div className="country tab">
       <div className="pullbar" />
+      <LanguageDropdown />
       <div className="pageName text-center">
         <a href="#">
           <img src="./img/corona.svg" height="40px" />

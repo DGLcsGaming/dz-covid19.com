@@ -18,6 +18,7 @@ import usePushNotifications from "./hooks/usePushNotifications";
 import Modal from "react-modal";
 import GetNotifiedButton from "./components/GetNotifiedButton";
 import { ReactComponent as Bell } from "./Icons/Bell.svg";
+import LanguageDropdown from "./components/LanguageDropdown";
 
 Modal.setAppElement("#root");
 
