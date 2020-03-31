@@ -1,6 +1,6 @@
 const host =
   process.env.NODE_ENV === "production"
-    ? "https://dz-covid19.com/api"
+    ? "https://dz-covid19.com/api/"
     : "http://localhost:4000";
 
 function post(path, body) {
