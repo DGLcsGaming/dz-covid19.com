@@ -11,7 +11,7 @@ const LanguageDropdown = props => {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    if (Object.keys(cookies).length !== 0) {
+    if (cookies.lang) {
       setSelectedLang(cookies.lang);
     } else {
       i18n.changeLanguage(selectedLang);
@@ -27,7 +27,7 @@ const LanguageDropdown = props => {
 
   useEffect(() => {
     // Selected: En, Cookies: Ar
-    if (Object.keys(cookies).length !== 0 && selectedLang !== cookies.lang) {
+    if (cookies.lang && selectedLang !== cookies.lang) {
       i18n.changeLanguage(selectedLang);
       let d = new Date();
       d.setTime(d.getTime() + 365 * 24 * 3600 * 1000);
