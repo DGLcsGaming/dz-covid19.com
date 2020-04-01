@@ -22,6 +22,7 @@
     "react-leaflet": "^2.6.3",
     "react-modal": "^3.11.2",
     "react-odometerjs": "^2.1.1",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "socket.io-client": "^2.3.0"
   },

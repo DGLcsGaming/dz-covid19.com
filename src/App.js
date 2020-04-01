@@ -19,6 +19,7 @@ import Modal from "react-modal";
 import GetNotifiedButton from "./components/GetNotifiedButton";
 import { ReactComponent as Bell } from "./Icons/Bell.svg";
 import { useTranslation } from "react-i18next";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 Modal.setAppElement("#root");
 
@@ -111,10 +112,9 @@ function App() {
     onClickAskUserPermission();
   };
   useEffect(() => {
-    if (loading || (Object.keys(cookies).length !== 0 && userSubscription))
-      return;
+    if (loading || (cookies.push_subscription && userSubscription)) return;
 
-    if (Object.keys(cookies).length !== 0 && !userSubscription) {
+    if (cookies.push_subscription && !userSubscription) {
       //Subscription expired, refresh!
       console.log("Registration Expired!");
       updateSubscription(cookies.push_subscription);
@@ -156,108 +156,110 @@ function App() {
 
   if (!isServerDown) {
     content = (
-      <CookiesProvider>
-        <div className="App">
-          <globalContext.Provider value={[globalState, setGlobalState]}>
-            <currentStatsContext.Provider
-              value={[currentStats, setCurrentStats]}>
-              <dailyStatsContext.Provider value={[dailyStats, setDailyStats]}>
-                <wilayasContext.Provider value={[wilayas, setWilayas]}>
-                  <div className={width >= 800 ? "desktop" : "mobile"}>
-                    <div
-                      className="content"
-                      style={
-                        navDrawerVisible.display === "block"
-                          ? { overflowY: "hidden" }
-                          : { overflowY: "auto" }
-                      }>
-                      <CountryTab />
-                      <MyMap />
-                    </div>
-                    <GetNotifiedButton
-                      click={() => setModalIsOpen(true)}
-                      style={
-                        userSubscription && Object.keys(cookies).length !== 0
-                          ? { display: "none" }
-                          : { display: "block" }
-                      }
-                    />
-                    <Modal
-                      isOpen={modalIsOpen}
-                      onRequestClose={() => setModalIsOpen(false)}
-                      style={{
-                        overlay: {
-                          backgroundColor: "rgba(0, 0, 0, 0.75)",
-                          zIndex: 99999
-                        },
-                        content: {
-                          top: "25%",
-                          left: "50%",
-                          right: "auto",
-                          bottom: "auto",
-                          marginRight: "-50%",
-                          transform: "translate(-50%, -50%)"
+      <Router>
+        <CookiesProvider>
+          <div className="App">
+            <globalContext.Provider value={[globalState, setGlobalState]}>
+              <currentStatsContext.Provider
+                value={[currentStats, setCurrentStats]}>
+                <dailyStatsContext.Provider value={[dailyStats, setDailyStats]}>
+                  <wilayasContext.Provider value={[wilayas, setWilayas]}>
+                    <div className={width >= 800 ? "desktop" : "mobile"}>
+                      <div
+                        className="content"
+                        style={
+                          navDrawerVisible.display === "block"
+                            ? { overflowY: "hidden" }
+                            : { overflowY: "auto" }
+                        }>
+                        <CountryTab />
+                        <MyMap />
+                      </div>
+                      <GetNotifiedButton
+                        click={() => setModalIsOpen(true)}
+                        style={
+                          userSubscription && cookies.push_subscription
+                            ? { display: "none" }
+                            : { display: "block" }
                         }
-                      }}
-                      contentLabel="Example Modal">
-                      {pushServerSubscriptionId &&
-                      Object.keys(cookies).length !== 0 ? (
-                        <p>{t("Subscription.Thanks")}</p>
-                      ) : (
-                        <div className="notificationModalContent">
-                          <div
-                            style={{
-                              display: "flex",
-                              justifyContent: "center"
-                            }}>
-                            <Bell
-                              height="25px"
-                              width="25px"
+                      />
+                      <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={() => setModalIsOpen(false)}
+                        style={{
+                          overlay: {
+                            backgroundColor: "rgba(0, 0, 0, 0.75)",
+                            zIndex: 99999
+                          },
+                          content: {
+                            top: "25%",
+                            left: "50%",
+                            right: "auto",
+                            bottom: "auto",
+                            marginRight: "-50%",
+                            transform: "translate(-50%, -50%)"
+                          }
+                        }}
+                        contentLabel="Example Modal">
+                        {pushServerSubscriptionId &&
+                        cookies.push_subscription ? (
+                          <p>{t("Subscription.Thanks")}</p>
+                        ) : (
+                          <div className="notificationModalContent">
+                            <div
                               style={{
-                                fill: "#38a169",
-                                margin: "0 auto"
-                              }}
-                            />
-                          </div>
-                          <p>{t("Subscription.Question")}</p>
-                          <div className="modalButtonsContainer">
-                            <button
-                              className="yes"
-                              onClick={handleSubscribeButtonYes}>
+                                display: "flex",
+                                justifyContent: "center"
+                              }}>
                               <Bell
-                                width="15px"
-                                height="15px"
-                                style={{ fill: "#fff" }}
-                              />{" "}
-                              &nbsp; Yes
-                            </button>
-                            <button
-                              className="no"
-                              onClick={() => setModalIsOpen(false)}>
-                              No
-                            </button>
+                                height="25px"
+                                width="25px"
+                                style={{
+                                  fill: "#38a169",
+                                  margin: "0 auto"
+                                }}
+                              />
+                            </div>
+                            <p>{t("Subscription.Question")}</p>
+                            <div className="modalButtonsContainer">
+                              <button
+                                className="yes"
+                                onClick={handleSubscribeButtonYes}>
+                                <Bell
+                                  width="15px"
+                                  height="15px"
+                                  style={{ fill: "#fff" }}
+                                />{" "}
+                                &nbsp; Yes
+                              </button>
+                              <button
+                                className="no"
+                                onClick={() => setModalIsOpen(false)}>
+                                No
+                              </button>
+                            </div>
                           </div>
-                        </div>
-                      )}
-                    </Modal>
-                    <NavDrawer
-                      visible={navDrawerVisible}
-                      click={hideBackDrop}
-                    />
-                    <Header />
-                    <button
-                      className="navbar-toggler"
-                      type="button"
-                      onClick={navTogglerClick}>
-                      <span className="navbar-toggler-icon"></span>
-                    </button>
-                  </div>
-                </wilayasContext.Provider>
-              </dailyStatsContext.Provider>
-            </currentStatsContext.Provider>
-          </globalContext.Provider>
-        </div>
-      </CookiesProvider>
+                        )}
+                      </Modal>
+                      <NavDrawer
+                        visible={navDrawerVisible}
+                        click={hideBackDrop}
+                      />
+                      <Header />
+                      <button
+                        className="navbar-toggler"
+                        type="button"
+                        onClick={navTogglerClick}>
+                        <span className="navbar-toggler-icon"></span>
+                      </button>
+                    </div>
+                  </wilayasContext.Provider>
+                </dailyStatsContext.Provider>
+              </currentStatsContext.Provider>
+            </globalContext.Provider>
+          </div>
+        </CookiesProvider>
+      </Router>
     );
   } else if (isServerDown) {
     content = <h1>Server is Offline</h1>;
