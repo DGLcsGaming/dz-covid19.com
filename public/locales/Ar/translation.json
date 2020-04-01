@@ -1,0 +1,26 @@
+{
+  "General": {
+    "Confirmed": "مؤكدة",
+    "Active": "نشطة",
+    "Recovered": "متعافين",
+    "Deaths": "وفاة"
+  },
+  "Subscription": {
+    "Thanks": "!شكرا لإشتراكك",
+    "Question": "هل تريد أن تتلقى إشعارات عن الحالات اليومية؟"
+  },
+  "InfoTile": {
+    "TotalCases": "مجموع الحالات المؤكدة",
+    "Live": "مباشر"
+  },
+  "Graph": {
+    "NewCases": "حالات جديدة اليوم",
+    "Daily": "الحالات الجديدة اليومية",
+    "Distribution": "توزيع الحالات"
+  },
+  "Header": {
+    "Home": "الرئيسية",
+    "FAQ": "الأسئلة الشائعة",
+    "Disclaimer": "تنصل"
+  }
+}

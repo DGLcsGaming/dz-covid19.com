@@ -1,0 +1,26 @@
+{
+  "General": {
+    "Confirmed": "Confirmed",
+    "Active": "Active",
+    "Recovered": "Recovered",
+    "Deaths": "Deaths"
+  },
+  "Subscription": {
+    "Thanks": "Thanks for subscribing!",
+    "Question": "Do you want to recieve notifications about daily statistics?"
+  },
+  "InfoTile": {
+    "TotalCases": "Total Confirmed Cases",
+    "Live": "LIVE"
+  },
+  "Graph": {
+    "NewCases": "New Cases Today",
+    "Daily": "Daily New Cases",
+    "Distribution": "Distribution of Cases"
+  },
+  "Header": {
+    "Home": "Home",
+    "FAQ": "FAQ",
+    "Disclaimer": "Disclaimer"
+  }
+}

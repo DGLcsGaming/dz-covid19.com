@@ -3,12 +3,14 @@ import { Doughnut, Line } from "react-chartjs-2";
 import { currentStatsContext } from "../contexts/currentStatsContext";
 import { dailyStatsContext } from "../contexts/dailyStatsContext";
 import Flickity from "react-flickity-component";
+import { useTranslation } from "react-i18next";
 
 function Graph() {
+  const { t } = useTranslation();
   const [currentStats, setCurrentStats] = useContext(currentStatsContext);
   const [dailyStats, setDailyStats] = useContext(dailyStatsContext);
   const infoTileData = {
-    labels: ["Active", "Recovered", "Deaths"],
+    labels: [t("General.Active"), t("General.Recovered"), t("General.Deaths")],
     datasets: [
       {
         data: [
@@ -34,7 +36,7 @@ function Graph() {
     labels,
     datasets: [
       {
-        label: "New Cases Today",
+        label: t("Graph.NewCases"),
         fill: false,
         lineTension: 0.1,
         backgroundColor: "rgba(75,192,192,0.4)",
@@ -68,7 +70,7 @@ function Graph() {
           friction: 0.8
         }}>
         <div className="slider-item">
-          <div className="title text-center">Daily New Cases</div>
+          <div className="title text-center">{t("Graph.Daily")}</div>
           <Line
             id="dailynewcases"
             data={chartData}
@@ -89,7 +91,7 @@ function Graph() {
           />
         </div>
         <div className="slider-item">
-          <div className="title text-center">Distribution of Cases</div>
+          <div className="title text-center">{t("Graph.Distribution")}</div>
           <Doughnut
             id="doughnut"
             options={{
@@ -123,13 +125,26 @@ function Graph() {
                     );
                     switch (tooltipItem.index) {
                       case 0:
-                        return currentValue + " Active (" + percentage + "%)";
+                        return (
+                          currentValue +
+                          ` ${t("General.Active")} (` +
+                          percentage +
+                          "%)"
+                        );
                       case 1:
                         return (
-                          currentValue + " Recovered (" + percentage + "%)"
+                          currentValue +
+                          ` ${t("General.Recovered")} (` +
+                          percentage +
+                          "%)"
                         );
                       case 2:
-                        return currentValue + " Deaths (" + percentage + "%)";
+                        return (
+                          currentValue +
+                          ` ${t("General.Deaths")} (` +
+                          percentage +
+                          "%)"
+                        );
                       default:
                         return currentValue + " (" + percentage + "%)";
                     }

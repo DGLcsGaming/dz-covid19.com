@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
+import { useTranslation } from "react-i18next";
 
 const NavDrawer = props => {
+  const { t } = useTranslation();
   return (
     <Fragment>
       <div
@@ -22,17 +24,17 @@ const NavDrawer = props => {
           <ul className="navbar-nav">
             <li className="nav-item active">
               <a className="nav-link" href="#">
-                Home <span className="sr-only">(current)</span>
+                {t("Header.Home")} <span className="sr-only">(current)</span>
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                FAQ
+                {t("Header.FAQ")}
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Disclaimer
+                {t("Header.Disclaimer")}
               </a>
             </li>
           </ul>

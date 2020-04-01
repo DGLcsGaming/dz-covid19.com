@@ -18,7 +18,7 @@ import usePushNotifications from "./hooks/usePushNotifications";
 import Modal from "react-modal";
 import GetNotifiedButton from "./components/GetNotifiedButton";
 import { ReactComponent as Bell } from "./Icons/Bell.svg";
-import LanguageDropdown from "./components/LanguageDropdown";
+import { useTranslation } from "react-i18next";
 
 Modal.setAppElement("#root");
 
@@ -28,6 +28,7 @@ const socket =
     : openSocket("http://localhost:4001", { path: "/ws" });
 
 function App() {
+  const { t } = useTranslation();
   const [globalState, setGlobalState] = useState({
     selectedWilayaId: null
   });
@@ -201,7 +202,7 @@ function App() {
                       contentLabel="Example Modal">
                       {pushServerSubscriptionId &&
                       Object.keys(cookies).length !== 0 ? (
-                        <p>Thanks for subscribing!</p>
+                        <p>{t("Subscription.Thanks")}</p>
                       ) : (
                         <div className="notificationModalContent">
                           <div
@@ -218,10 +219,7 @@ function App() {
                               }}
                             />
                           </div>
-                          <p>
-                            Do you want to recieve notifications about daily
-                            statistics?
-                          </p>
+                          <p>{t("Subscription.Question")}</p>
                           <div className="modalButtonsContainer">
                             <button
                               className="yes"

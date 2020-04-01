@@ -1,6 +1,7 @@
 import React from "react";
 import { Circle, Popup } from "react-leaflet";
 import Odometer from "react-odometerjs";
+import { useTranslation } from "react-i18next";
 
 function pickHex(weight) {
   var color1 = [241, 29, 40]; // red
@@ -59,6 +60,7 @@ function getGradientColor(start_color, end_color, percent) {
 }
 
 const Wilaya = props => {
+  const { t } = useTranslation();
   return (
     <Circle
       key={props.wilaya.code}
@@ -94,26 +96,26 @@ const Wilaya = props => {
           <div className="topToolTip">
             <div className="titleInfoBox">{props.wilaya.name}</div>
             <div className="statLine">
-              <div className="stat confirmed">Confirmed</div>
+              <div className="stat confirmed">{t("General.Confirmed")}</div>
               <div className="statCount confirmed font-bold">
                 <Odometer value={props.wilaya.confirmed} format="(,ddd)" />
               </div>
             </div>
             <div className="statLine divider"></div>
             <div className="statLine text-yellow-600">
-              <div className="stat">Active </div>
+              <div className="stat">{t("General.Active")}</div>
               <div className="statCount font-bold">
                 <Odometer value={props.wilaya.active} format="(,ddd)" />
               </div>
             </div>
             <div className="statLine text-green-600">
-              <div className="stat">Recovered </div>
+              <div className="stat">{t("General.Recovered")}</div>
               <div className="statCount font-bold">
                 <Odometer value={props.wilaya.recovered} format="(,ddd)" />
               </div>
             </div>
             <div className="statLine text-gray-600">
-              <div className="stat">Fatal </div>
+              <div className="stat">{t("General.Deaths")}</div>
               <div className="statCount font-bold">
                 <Odometer value={props.wilaya.deaths} format="(,ddd)" />
               </div>

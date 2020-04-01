@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function Header() {
+  const { t } = useTranslation();
   return (
     <nav className="navbar navbar-dark bg-dark">
       <a className="navbar-brand" href="#">
@@ -10,17 +12,17 @@ function Header() {
         <ul className="navbar-nav">
           <li className="nav-item active">
             <a className="nav-link" href="#">
-              Home <span className="sr-only">(current)</span>
+              {t("Header.Home")} <span className="sr-only">(current)</span>
             </a>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">
-              FAQ
+              {t("Header.FAQ")}
             </a>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">
-              Disclaimer
+              {t("Header.Disclaimer")}
             </a>
           </li>
         </ul>

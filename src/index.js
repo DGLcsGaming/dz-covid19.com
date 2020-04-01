@@ -4,7 +4,7 @@ import App from "./App";
 import "./i18n";
 
 ReactDOM.render(
-  <Suspense>
+  <Suspense fallback="<div></div>">
     <App />
   </Suspense>,
   document.getElementById("root")

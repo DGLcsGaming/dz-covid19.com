@@ -2,6 +2,7 @@ import React, { useContext, useMemo, useEffect } from "react";
 import { currentStatsContext } from "../contexts/currentStatsContext";
 import { dailyStatsContext } from "../contexts/dailyStatsContext";
 import Odometer from "react-odometerjs";
+import { useTranslation } from "react-i18next";
 
 const calcPercentage = (currentStats, dailyStats) => {
   var today, yesterday;
@@ -26,6 +27,7 @@ const calcPercentage = (currentStats, dailyStats) => {
 };
 
 function InfoTile() {
+  const { t } = useTranslation();
   const [currentStats, setCurrentStats] = useContext(currentStatsContext);
   const [dailyStats, setDailyStats] = useContext(dailyStatsContext);
 
@@ -37,7 +39,7 @@ function InfoTile() {
   return (
     <div className="infoTile">
       <div className="title text-center" title="Total Confirmed Cases">
-        Total Confirmed Cases
+        {t("InfoTile.TotalCases")}
       </div>
       <div className="confirmedContainer">
         <div className="confirmed text-center">
@@ -47,7 +49,7 @@ function InfoTile() {
           <div className="ring-container">
             <div className="ringring"></div>
             <div className="circle"></div>
-            <h6 className="live">LIVE</h6>
+            <h6 className="live">{t("InfoTile.Live")}</h6>
           </div>
           <div className="changeContainer text-center">
             <img className="svg-filter-red" src="./img/high.svg" />
@@ -71,7 +73,7 @@ function InfoTile() {
             </span>
           </div>
           <div className="py-1 w-full bg-yellow-200 text-sm lg:text-base font-semibold font-sans">
-            <span className="mx-2 active">Active</span>
+            <span className="mx-2 active">{t("General.Active")}</span>
           </div>
         </div>
         <div className="w-1/2 mx-2 flex flex-col rounded overflow-hidden statshadow text-center text-green-600">
@@ -81,7 +83,7 @@ function InfoTile() {
             </span>
           </div>
           <div className="py-1 w-full bg-green-200 text-sm lg:text-base font-semibold font-sans">
-            <span className="mx-2 recovered">Recovered</span>
+            <span className="mx-2 recovered">{t("General.Recovered")}</span>
           </div>
         </div>
         <div className="w-1/3 flex flex-col rounded overflow-hidden statshadow text-center text-gray-600">
@@ -91,7 +93,7 @@ function InfoTile() {
             </span>
           </div>
           <div className="py-1 w-full bg-gray-300 text-sm lg:text-base font-semibold font-sans">
-            <span className="mx-2 deaths">Deaths</span>
+            <span className="mx-2 deaths">{t("General.Deaths")}</span>
           </div>
         </div>
       </div>

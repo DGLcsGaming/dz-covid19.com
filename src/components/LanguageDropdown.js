@@ -1,10 +1,45 @@
-import React from "react";
-import { ReactComponent as Dz } from "../Icons/dz.svg";
-import { ReactComponent as Gb } from "../Icons/gb.svg";
-import { ReactComponent as Fr } from "../Icons/fr.svg";
+import React, { useState, useEffect } from "react";
+import { ReactComponent as Ar } from "../Icons/Ar.svg";
+import { ReactComponent as En } from "../Icons/En.svg";
+import { ReactComponent as Fr } from "../Icons/Fr.svg";
+import { useTranslation } from "react-i18next";
+import { useCookies } from "react-cookie";
 
 const LanguageDropdown = props => {
-  const handleChange = () => {};
+  const [selectedLang, setSelectedLang] = useState("En");
+  const [cookies, setCookie] = useCookies(["lang"]);
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    if (Object.keys(cookies).length !== 0) {
+      setSelectedLang(cookies.lang);
+    } else {
+      i18n.changeLanguage(selectedLang);
+      let d = new Date();
+      d.setTime(d.getTime() + 365 * 24 * 3600 * 1000);
+      setCookie("lang", selectedLang, {
+        path: "/",
+        expires: d,
+        sameSite: "lax"
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    // Selected: En, Cookies: Ar
+    if (Object.keys(cookies).length !== 0 && selectedLang !== cookies.lang) {
+      i18n.changeLanguage(selectedLang);
+      let d = new Date();
+      d.setTime(d.getTime() + 365 * 24 * 3600 * 1000);
+      setCookie("lang", selectedLang, {
+        path: "/",
+        expires: d,
+        sameSite: "lax"
+      });
+      return;
+    }
+  }, [selectedLang]);
+
   return (
     <div className="select-box">
       <div className="select-box__current" tabIndex="1">
@@ -12,28 +47,28 @@ const LanguageDropdown = props => {
           <input
             className="select-box__input"
             type="radio"
-            id="Gb"
-            value="Gb"
-            name="Gb"
-            checked={true}
-            onChange={handleChange}
+            id="En"
+            value="En"
+            name="En"
+            checked={selectedLang === "En" ? true : false}
+            onChange={() => {}}
           />
           <p className="select-box__input-text">
-            <Gb width="20px" style={{ margin: "2px 5px 0px 5px" }} />
+            <En />
           </p>
         </div>
         <div className="select-box__value">
           <input
             className="select-box__input"
             type="radio"
-            id="Dz"
-            value="Dz"
-            name="Dz"
-            checked={false}
-            onChange={handleChange}
+            id="Ar"
+            value="Ar"
+            name="Ar"
+            checked={selectedLang === "Ar" ? true : false}
+            onChange={() => {}}
           />
           <p className="select-box__input-text">
-            <Dz width="20px" style={{ margin: "2px 5px 0px 5px" }} />
+            <Ar />
           </p>
         </div>
         <div className="select-box__value">
@@ -43,11 +78,11 @@ const LanguageDropdown = props => {
             id="Fr"
             value="Fr"
             name="Fr"
-            checked={false}
-            onChange={handleChange}
+            checked={selectedLang === "Fr" ? true : false}
+            onChange={() => {}}
           />
           <p className="select-box__input-text">
-            <Fr width="20px" style={{ margin: "2px 5px 0px 5px" }} />
+            <Fr />
           </p>
         </div>
         <img
@@ -58,14 +93,14 @@ const LanguageDropdown = props => {
         />
       </div>
       <ul className="select-box__list">
-        <li>
-          <Gb width="24px" style={{ marginTop: "12px" }} htmlFor="Gb" />
+        <li onClick={() => setSelectedLang("En")}>
+          <En className="select-box__option" />
         </li>
-        <li>
-          <Dz width="24px" style={{ marginTop: "12px" }} htmlFor="Dz" />
+        <li onClick={() => setSelectedLang("Ar")}>
+          <Ar className="select-box__option" />
         </li>
-        <li>
-          <Fr width="24px" style={{ marginTop: "12px" }} htmlFor="Fr" />
+        <li onClick={() => setSelectedLang("Fr")}>
+          <Fr className="select-box__option" />
         </li>
       </ul>
     </div>
