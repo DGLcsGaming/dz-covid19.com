@@ -26,7 +26,6 @@ const LanguageDropdown = props => {
   }, []);
 
   useEffect(() => {
-    // Selected: En, Cookies: Ar
     if (cookies.lang && selectedLang !== cookies.lang) {
       i18n.changeLanguage(selectedLang);
       let d = new Date();
