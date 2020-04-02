@@ -6,7 +6,7 @@ import Backend from "i18next-xhr-backend";
 // have a look at the Quick start guide
 // for passing in lng and translations on init
 
-const Languages = ["En", "Fr", "Ar"];
+const Languages = ["Ar", "En", "Fr"];
 i18n
   // load translation using xhr -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
   // learn more: https://github.com/i18next/i18next-xhr-backend
@@ -16,8 +16,8 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    fallbackLng: "En",
-    debug: true,
+    fallbackLng: "Ar",
+    debug: false,
     whitelist: Languages,
 
     interpolation: {

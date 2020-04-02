@@ -37,6 +37,17 @@ const NavDrawer = props => {
                 {t("Header.Home")} <span className="sr-only">(current)</span>
               </Link>
             </li>
+            <li className={currentRoute === "/advices" ? "nav-item active" : "nav-item"}>
+              <Link
+                className="nav-link"
+                to="/advices"
+                onClick={() => {
+                  setCurrentRoute("/advices");
+                  props.click();
+                }}>
+                {t("Header.Advices")}
+              </Link>
+            </li>
             <li className={currentRoute === "/faq" ? "nav-item active" : "nav-item"}>
               <Link
                 className="nav-link"

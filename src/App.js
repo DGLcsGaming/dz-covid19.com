@@ -23,6 +23,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Disclaimer from "./components/Disclaimer";
 import Faq from "./components/Faq";
 import "./material-expansion-panel.min.css";
+import Advices from "./components/Advices";
 Modal.setAppElement("#root");
 
 const socket =
@@ -32,6 +33,7 @@ const socket =
 
 function App() {
   const { t, i18n } = useTranslation();
+  const [isArabic, setIsArabic] = useState(true);
   const [globalState, setGlobalState] = useState({
     selectedWilayaId: null
   });
@@ -109,6 +111,13 @@ function App() {
     socket.on("clientscount", data => {
       console.log("Clients Online: " + data);
     });
+    i18n.on("languageChanged", lng => {
+      if (lng === "Ar") {
+        setIsArabic(true);
+      } else {
+        setIsArabic(false);
+      }
+    });
     return () => {
       socket.io.off("connect_error");
       socket.off("connect");
@@ -116,6 +125,7 @@ function App() {
       socket.off("dailyStats");
       socket.off("wilayas");
       socket.off("clientscount");
+      i18n.off("languageChanged");
     };
   }, []);
 
@@ -157,8 +167,6 @@ function App() {
 
   var content;
 
-  var isArabic = i18n.language === "Ar";
-
   if (!isServerDown) {
     content = (
       <CookiesProvider>
@@ -184,6 +192,10 @@ function App() {
                               <CountryTab style={{ display: "none" }} />
                               <Faq />
                             </Route>
+                            <Route path="/advices" exact>
+                              <CountryTab style={{ display: "none" }} />
+                              <Advices />
+                            </Route>
                           </Switch>
                         ) : (
                           <Switch>
@@ -198,6 +210,10 @@ function App() {
                             <Route path="/faq" exact>
                               <CountryTab />
                               <Faq />
+                            </Route>
+                            <Route path="/advices" exact>
+                              <CountryTab />
+                              <Advices style={{ fontSize: "-10%" }} />
                             </Route>
                           </Switch>
                         )}

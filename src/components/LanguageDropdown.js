@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { useCookies } from "react-cookie";
 
 const LanguageDropdown = props => {
-  const [selectedLang, setSelectedLang] = useState("En");
+  const [selectedLang, setSelectedLang] = useState("Ar");
   const [cookies, setCookie] = useCookies(["lang"]);
   const { i18n } = useTranslation();
   useEffect(() => {
@@ -45,20 +45,6 @@ const LanguageDropdown = props => {
           <input
             className="select-box__input"
             type="radio"
-            id="En"
-            value="En"
-            name="En"
-            checked={selectedLang === "En" ? true : false}
-            onChange={() => {}}
-          />
-          <p className="select-box__input-text">
-            <En />
-          </p>
-        </div>
-        <div className="select-box__value">
-          <input
-            className="select-box__input"
-            type="radio"
             id="Ar"
             value="Ar"
             name="Ar"
@@ -67,6 +53,20 @@ const LanguageDropdown = props => {
           />
           <p className="select-box__input-text">
             <Ar />
+          </p>
+        </div>
+        <div className="select-box__value">
+          <input
+            className="select-box__input"
+            type="radio"
+            id="En"
+            value="En"
+            name="En"
+            checked={selectedLang === "En" ? true : false}
+            onChange={() => {}}
+          />
+          <p className="select-box__input-text">
+            <En />
           </p>
         </div>
         <div className="select-box__value">
