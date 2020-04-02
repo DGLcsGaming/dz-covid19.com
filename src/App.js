@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, Fragment } from "react";
+import React, { useState, useEffect, useMemo, Fragment, Suspense } from "react";
 import "./odometer-theme-default.css";
 import "./App.css";
 import "./flickity.css";
@@ -20,7 +20,9 @@ import GetNotifiedButton from "./components/GetNotifiedButton";
 import { ReactComponent as Bell } from "./Icons/Bell.svg";
 import { useTranslation } from "react-i18next";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import Disclaimer from "./components/Disclaimer";
+import Faq from "./components/Faq";
+import "./material-expansion-panel.min.css";
 Modal.setAppElement("#root");
 
 const socket =
@@ -29,7 +31,7 @@ const socket =
     : openSocket("http://localhost:4001", { path: "/ws" });
 
 function App() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [globalState, setGlobalState] = useState({
     selectedWilayaId: null
   });
@@ -60,6 +62,7 @@ function App() {
     updateSubscription
   } = usePushNotifications();
   const isConsentGranted = userConsent === "granted";
+  const isMobile = width < 800;
 
   const navTogglerClick = () => {
     if (navDrawerVisible.display === "none") {
@@ -106,6 +109,14 @@ function App() {
     socket.on("clientscount", data => {
       console.log("Clients Online: " + data);
     });
+    return () => {
+      socket.io.off("connect_error");
+      socket.off("connect");
+      socket.off("currentStats");
+      socket.off("dailyStats");
+      socket.off("wilayas");
+      socket.off("clientscount");
+    };
   }, []);
 
   const handleSubscribeButtonYes = () => {
@@ -132,9 +143,7 @@ function App() {
             expires: d,
             sameSite: "lax"
           });
-          console.log(
-            "You can send Push notifications now!: " + pushServerSubscriptionId
-          );
+          console.log("You can send Push notifications now!: " + pushServerSubscriptionId);
         } else {
           console.log("onClickSendSubscriptionToPushServer()..");
           onClickSendSubscriptionToPushServer();
@@ -144,44 +153,58 @@ function App() {
         onClickSusbribeToPushNotification();
       }
     }
-  }, [
-    cookies,
-    loading,
-    isConsentGranted,
-    userSubscription,
-    pushServerSubscriptionId
-  ]);
+  }, [cookies, loading, isConsentGranted, userSubscription, pushServerSubscriptionId]);
 
   var content;
 
+  var isArabic = i18n.language === "Ar";
+
   if (!isServerDown) {
     content = (
-      <Router>
-        <CookiesProvider>
-          <div className="App">
+      <CookiesProvider>
+        <Router>
+          <div className={isArabic ? "App arabic" : "App nonarabic"}>
             <globalContext.Provider value={[globalState, setGlobalState]}>
-              <currentStatsContext.Provider
-                value={[currentStats, setCurrentStats]}>
+              <currentStatsContext.Provider value={[currentStats, setCurrentStats]}>
                 <dailyStatsContext.Provider value={[dailyStats, setDailyStats]}>
                   <wilayasContext.Provider value={[wilayas, setWilayas]}>
-                    <div className={width >= 800 ? "desktop" : "mobile"}>
-                      <div
-                        className="content"
-                        style={
-                          navDrawerVisible.display === "block"
-                            ? { overflowY: "hidden" }
-                            : { overflowY: "auto" }
-                        }>
-                        <CountryTab />
-                        <MyMap />
+                    <div className={!isMobile ? "desktop" : "mobile"}>
+                      <div className="content" style={navDrawerVisible.display === "block" ? { overflowY: "hidden" } : { overflowY: "auto" }}>
+                        {isMobile ? (
+                          <Switch>
+                            <Route path="/" exact>
+                              <CountryTab />
+                              <MyMap />
+                            </Route>
+                            <Route path="/disclaimer" exact>
+                              <CountryTab style={{ display: "none" }} />
+                              <Disclaimer />
+                            </Route>
+                            <Route path="/faq" exact>
+                              <CountryTab style={{ display: "none" }} />
+                              <Faq />
+                            </Route>
+                          </Switch>
+                        ) : (
+                          <Switch>
+                            <Route path="/" exact>
+                              <CountryTab />
+                              <MyMap />
+                            </Route>
+                            <Route path="/disclaimer" exact>
+                              <CountryTab />
+                              <Disclaimer />
+                            </Route>
+                            <Route path="/faq" exact>
+                              <CountryTab />
+                              <Faq />
+                            </Route>
+                          </Switch>
+                        )}
                       </div>
                       <GetNotifiedButton
                         click={() => setModalIsOpen(true)}
-                        style={
-                          userSubscription && cookies.push_subscription
-                            ? { display: "none" }
-                            : { display: "block" }
-                        }
+                        style={userSubscription && cookies.push_subscription ? { display: "none" } : { display: "block" }}
                       />
                       <Modal
                         isOpen={modalIsOpen}
@@ -200,9 +223,8 @@ function App() {
                             transform: "translate(-50%, -50%)"
                           }
                         }}
-                        contentLabel="Example Modal">
-                        {pushServerSubscriptionId &&
-                        cookies.push_subscription ? (
+                        contentLabel="Notification">
+                        {pushServerSubscriptionId && cookies.push_subscription ? (
                           <p>{t("Subscription.Thanks")}</p>
                         ) : (
                           <div className="notificationModalContent">
@@ -222,34 +244,19 @@ function App() {
                             </div>
                             <p>{t("Subscription.Question")}</p>
                             <div className="modalButtonsContainer">
-                              <button
-                                className="yes"
-                                onClick={handleSubscribeButtonYes}>
-                                <Bell
-                                  width="15px"
-                                  height="15px"
-                                  style={{ fill: "#fff" }}
-                                />{" "}
-                                &nbsp; Yes
+                              <button className="yes" onClick={handleSubscribeButtonYes}>
+                                <Bell width="15px" height="15px" style={{ fill: "#fff" }} /> &nbsp; Yes
                               </button>
-                              <button
-                                className="no"
-                                onClick={() => setModalIsOpen(false)}>
+                              <button className="no" onClick={() => setModalIsOpen(false)}>
                                 No
                               </button>
                             </div>
                           </div>
                         )}
                       </Modal>
-                      <NavDrawer
-                        visible={navDrawerVisible}
-                        click={hideBackDrop}
-                      />
+                      <NavDrawer visible={navDrawerVisible} click={hideBackDrop} />
                       <Header />
-                      <button
-                        className="navbar-toggler"
-                        type="button"
-                        onClick={navTogglerClick}>
+                      <button className="navbar-toggler" type="button" onClick={navTogglerClick}>
                         <span className="navbar-toggler-icon"></span>
                       </button>
                     </div>
@@ -258,8 +265,8 @@ function App() {
               </currentStatsContext.Provider>
             </globalContext.Provider>
           </div>
-        </CookiesProvider>
-      </Router>
+        </Router>
+      </CookiesProvider>
     );
   } else if (isServerDown) {
     content = <h1>Server is Offline</h1>;
@@ -271,18 +278,3 @@ function App() {
 }
 
 export default App;
-/*
-        <currentStatsContext.Provider value={[currentStats, setCurrentStats]}>
-          <dailyStatsContext.Provider value={[dailyStats, setDailyStats]}>
-            <wilayasContext.Provider value={[wilayas, setWilayas]}>
-              <div className="desktop">
-                <div className="content">
-                  <CountryTab />
-                  <MyMap />
-                </div>
-                <Header />
-              </div>
-            </wilayasContext.Provider>
-          </dailyStatsContext.Provider>
-        </currentStatsContext.Provider>
-        */

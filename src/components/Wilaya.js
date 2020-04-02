@@ -3,18 +3,6 @@ import { Circle, Popup } from "react-leaflet";
 import Odometer from "react-odometerjs";
 import { useTranslation } from "react-i18next";
 
-function pickHex(weight) {
-  var color1 = [241, 29, 40]; // red
-  var color2 = [255, 161, 44]; // orange
-  var w1 = weight;
-  var w2 = 1 - w1;
-  var rgb = [
-    Math.round(color1[0] * w1 + color2[0] * w2),
-    Math.round(color1[1] * w1 + color2[1] * w2),
-    Math.round(color1[2] * w1 + color2[2] * w2)
-  ];
-  return rgb;
-}
 function normilize(val, max, min) {
   return (val - min) / (max - min);
 }
@@ -25,11 +13,11 @@ function getGradientColor(start_color, end_color, percent) {
   end_color = end_color.replace(/^\s*#|\s*$/g, "");
 
   // convert 3 char codes --> 6, e.g. `E0F` --> `EE00FF`
-  if (start_color.length == 3) {
+  if (start_color.length === 3) {
     start_color = start_color.replace(/(.)/g, "$1$1");
   }
 
-  if (end_color.length == 3) {
+  if (end_color.length === 3) {
     end_color = end_color.replace(/(.)/g, "$1$1");
   }
 
@@ -52,9 +40,9 @@ function getGradientColor(start_color, end_color, percent) {
   diff_blue = (diff_blue * percent + start_blue).toString(16).split(".")[0];
 
   // ensure 2 digits by color
-  if (diff_red.length == 1) diff_red = "0" + diff_red;
-  if (diff_green.length == 1) diff_green = "0" + diff_green;
-  if (diff_blue.length == 1) diff_blue = "0" + diff_blue;
+  if (diff_red.length === 1) diff_red = "0" + diff_red;
+  if (diff_green.length === 1) diff_green = "0" + diff_green;
+  if (diff_blue.length === 1) diff_blue = "0" + diff_blue;
 
   return "#" + diff_red + diff_green + diff_blue;
 }
@@ -68,24 +56,8 @@ const Wilaya = props => {
         lat: props.wilaya.coordinates[0],
         lng: props.wilaya.coordinates[1]
       }}
-      fillColor={getGradientColor(
-        "#ff6f00",
-        "#FF0000",
-        normilize(
-          Math.log10(props.wilaya.confirmed),
-          Math.log10(props.maxWilaya.confirmed),
-          0
-        )
-      )}
-      color={getGradientColor(
-        "#ff6f00",
-        "#FF0000",
-        normilize(
-          Math.log10(props.confirmed),
-          Math.log10(props.maxWilaya.confirmed),
-          0
-        )
-      )}
+      fillColor={getGradientColor("#ff6f00", "#FF0000", normilize(Math.log10(props.wilaya.confirmed), Math.log10(props.maxWilaya.confirmed), 0))}
+      color={getGradientColor("#ff6f00", "#FF0000", normilize(Math.log10(props.confirmed), Math.log10(props.maxWilaya.confirmed), 0))}
       fillOpacity=".5"
       opacity=".2"
       className="mapCircle"

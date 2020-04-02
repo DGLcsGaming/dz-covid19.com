@@ -8,12 +8,12 @@ import { dailyStatsContext } from "../contexts/dailyStatsContext";
 import { ReactComponent as Loading } from "../Icons/Loading.svg";
 import LanguageDropdown from "./LanguageDropdown";
 
-function CountryTab() {
+const CountryTab = props => {
   const [wilayas, setWilayas] = useContext(wilayasContext);
   const [currentStats, setCurrentStats] = useContext(currentStatsContext);
   const [dailyStats, setDailyStats] = useContext(dailyStatsContext);
   return (
-    <div className="country tab">
+    <div className="country tab" style={props.style}>
       <div className="pullbar" />
       <LanguageDropdown />
       <div className="pageName text-center">
@@ -45,6 +45,6 @@ function CountryTab() {
       </div>
     </div>
   );
-}
+};
 
 export default CountryTab;

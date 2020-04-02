@@ -1,0 +1,90 @@
+.expPanel {
+  background: #fff;
+  width: 100%;
+  height: 48px;
+  margin: 0;
+  -webkit-box-shadow: 0 -1px 0 #e5e5e5, 0 0 2px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0 -1px 0 #e5e5e5, 0 0 2px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 -1px 0 #e5e5e5, 0 0 2px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+  border-bottom: 1px solid #e0e0e0;
+  overflow: hidden;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.expPanel.active {
+  height: auto;
+  overflow: auto;
+  margin: 16px 0;
+}
+.expPanel .actions {
+  height: 32px;
+  padding: 8px 0px 0 24px;
+  color: #9e9e9e;
+  float: left;
+}
+.expPanel .title {
+  height: 24px;
+  padding: 8px 24px 0 0;
+  color: #424242;
+  float: right;
+}
+.expPanel .title i {
+  float: left;
+}
+.expPanel .title .text {
+  height: 20px;
+  display: inline-block;
+  font-size: 15px;
+  margin-left: 16px;
+  padding-top: 4px;
+}
+.expPanel .expIcon {
+  -webkit-transition: transform 0.3s;
+  -moz-transition: transform 0.3s;
+  -ms-transition: transform 0.3s;
+  -o-transition: transform 0.3s;
+  transition: transform 0.3s;
+  -webkit-transform: rotate(0);
+  -moz-transform: rotate(0);
+  -ms-transform: rotate(0);
+  -o-transform: rotate(0);
+  transform: rotate(0);
+}
+.expPanel .expIcon.active {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.expPanel .actionButtonBar {
+  width: 100%;
+  border-top: 1px solid #e0e0e0;
+  padding: 16px 0;
+}
+.expPanel .actionButtonBar button {
+  margin-right: 8px;
+}
+.expPanel .panelContent {
+  padding: 16px 24px;
+}
+.expPanel .panelTitle {
+  height: 48px;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+.expPanel .panelTitle:active {
+  background: #eee;
+}
+.clear {
+  clear: both;
+}
+.panelExpanded .actionButtonBar button {
+  float: right;
+}

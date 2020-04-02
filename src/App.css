@@ -59,12 +59,8 @@
 .bg-dark {
   background-color: #343a40 !important;
 }
-div {
-  font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI",
-    -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
-}
 a {
-  color: #007bff;
+  color: #3597ff;
   text-decoration: none;
   background-color: transparent;
 }
@@ -84,7 +80,7 @@ a:not([href]):not([tabindex]):focus {
 a:not([href]):not([tabindex]):focus {
   outline: 0;
 }
-.navbar-toggler-icon {
+.mobile .navbar-toggler-icon {
   display: inline-block;
   width: 1.5em;
   height: 1.5em;
@@ -95,7 +91,6 @@ a:not([href]):not([tabindex]):focus {
 }
 
 /* Bootstrap Needed Classes End*/
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -172,13 +167,11 @@ a:not([href]):not([tabindex]):focus {
 }
 .svg-filter-green {
   height: 23px;
-  filter: invert(52%) sepia(55%) saturate(445%) hue-rotate(95deg)
-    brightness(91%) contrast(92%);
+  filter: invert(52%) sepia(55%) saturate(445%) hue-rotate(95deg) brightness(91%) contrast(92%);
 }
 .svg-filter-red {
   height: 30px;
-  filter: invert(92%) sepia(76%) saturate(9000%) hue-rotate(15deg)
-    brightness(139%) contrast(115%);
+  filter: invert(92%) sepia(76%) saturate(9000%) hue-rotate(15deg) brightness(139%) contrast(115%);
 }
 .infoTile .confirmed {
   font-size: 50px;
@@ -252,12 +245,7 @@ a:not([href]):not([tabindex]):focus {
   color: white;
 }
 .area.selected {
-  background: radial-gradient(
-      50% 351.19% at 50% 50%,
-      rgba(0, 128, 157, 0.56) 0%,
-      rgba(0, 128, 157, 0.7) 100%
-    ),
-    #ffffff;
+  background: radial-gradient(50% 351.19% at 50% 50%, rgba(0, 128, 157, 0.56) 0%, rgba(0, 128, 157, 0.7) 100%), #ffffff;
 }
 .w-full {
   width: 100%;
@@ -338,11 +326,6 @@ a:not([href]):not([tabindex]):focus {
 }
 .font-bold {
   font-weight: 700;
-}
-.font-sans {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
-    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }
 .flex-auto {
   -webkit-box-flex: 1;
@@ -645,6 +628,47 @@ a:not([href]):not([tabindex]):focus {
 .notificationModalContent > p {
   padding-top: 0.7em;
 }
+.desktop .disclaimer-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+.desktop .disclaimer-container ul {
+  direction: rtl;
+  text-align: right;
+  text-decoration: none;
+  list-style-type: none;
+}
+.desktop .disclaimer-container li {
+  font-size: 1.4rem;
+  color: #1a202c;
+  line-height: 160%;
+  font-weight: normal;
+}
+.desktop .disclaimer-container li:before {
+  content: "-";
+  margin-left: 0.2rem;
+}
+.desktop .disclaimer-container li:after {
+  content: ".";
+}
+.desktop .disclaimer-header {
+  font-size: 1.6rem;
+  color: #2d3748;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+.desktop .faq-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
 /* Mobile CSS*/
 
 .mobile {
@@ -687,8 +711,10 @@ a:not([href]):not([tabindex]):focus {
   transform: translateX(-50%);
   will-change: transform;
 }
-
-.navbar-toggler {
+.desktop .navbar-toggler {
+  display: none;
+}
+.mobile .navbar-toggler {
   will-change: transform;
   color: rgba(255, 255, 255, 1);
   border-color: rgba(0, 0, 0, 0.2);
@@ -702,7 +728,7 @@ a:not([href]):not([tabindex]):focus {
   line-height: 1;
   border-radius: 0.3rem;
 }
-.navbar-toggler-icon {
+.mobile .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
@@ -767,8 +793,6 @@ a:not([href]):not([tabindex]):focus {
   left: 316px;
   display: block;
   margin: 0 auto;
-  font-family: "Open Sans", "Helvetica Neue", "Segoe UI", "Calibri", "Arial",
-    sans-serif;
   font-size: 10px;
   color: #000;
 }
@@ -783,11 +807,7 @@ a:not([href]):not([tabindex]):focus {
   -webkit-animation-name: none;
   animation-name: none;
 }
-.desktop
-  .select-box__current:focus
-  + .select-box__list
-  .desktop
-  .select-box__option {
+.desktop .select-box__current:focus + .select-box__list .desktop .select-box__option {
   cursor: pointer;
 }
 .desktop .select-box__current:focus .select-box__icon {
@@ -863,8 +883,6 @@ a:not([href]):not([tabindex]):focus {
   right: 0;
   display: block;
   margin: 0 auto;
-  font-family: "Open Sans", "Helvetica Neue", "Segoe UI", "Calibri", "Arial",
-    sans-serif;
   font-size: 10px;
   color: #000;
 }
@@ -879,11 +897,7 @@ a:not([href]):not([tabindex]):focus {
   -webkit-animation-name: none;
   animation-name: none;
 }
-.mobile
-  .select-box__current:focus
-  + .select-box__list
-  .mobile
-  .select-box__option {
+.mobile .select-box__current:focus + .select-box__list .mobile .select-box__option {
   cursor: pointer;
 }
 .mobile .select-box__current:focus .select-box__icon {
@@ -971,4 +985,77 @@ a:not([href]):not([tabindex]):focus {
     -webkit-transform: scaleY(0);
     transform: scaleY(0);
   }
+}
+
+.mobile .disclaimer-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+.mobile .disclaimer-container ul {
+  direction: rtl;
+  text-align: right;
+  text-decoration: none;
+  list-style-type: none;
+}
+.mobile .disclaimer-container li {
+  font-size: 1.4rem;
+  color: #1a202c;
+  line-height: 160%;
+  font-weight: normal;
+}
+.mobile .disclaimer-container li:before {
+  content: "-";
+  margin-left: 0.2rem;
+}
+.mobile .disclaimer-container li:after {
+  content: ".";
+}
+.mobile .disclaimer-header {
+  font-size: 1.6rem;
+  color: #2d3748;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+.material-icons {
+  background: url("https://cdn.onlinewebfonts.com/svg/img_295694.svg");
+  display: block;
+  height: 20px;
+  text-indent: -99999em;
+  width: 20px;
+  overflow: hidden;
+}
+.expPanel .panelTitle .title .material-icons {
+  display: none;
+}
+.expPanel .panelTitle .title .text {
+  font-weight: 600;
+}
+.expPanel .actions button {
+  background-color: transparent;
+  border: none;
+}
+.arabic {
+  font-family: Tajawal, sans-serif !important;
+}
+.nonarabic {
+  font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+}
+.rtl {
+  text-align: right;
+  direction: rtl;
+}
+.mobile .faq-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+.mobile .expPanel {
+  height: 67px;
 }

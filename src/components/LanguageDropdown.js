@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { ReactComponent as Ar } from "../Icons/Ar.svg";
 import { ReactComponent as En } from "../Icons/En.svg";
 import { ReactComponent as Fr } from "../Icons/Fr.svg";
@@ -9,7 +9,6 @@ const LanguageDropdown = props => {
   const [selectedLang, setSelectedLang] = useState("En");
   const [cookies, setCookie] = useCookies(["lang"]);
   const { i18n } = useTranslation();
-
   useEffect(() => {
     if (cookies.lang) {
       setSelectedLang(cookies.lang);
@@ -84,12 +83,7 @@ const LanguageDropdown = props => {
             <Fr />
           </p>
         </div>
-        <img
-          className="select-box__icon"
-          src="https://cdn.onlinewebfonts.com/svg/img_295694.svg"
-          alt="Arrow Icon"
-          aria-hidden="true"
-        />
+        <img className="select-box__icon" src="https://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true" />
       </div>
       <ul className="select-box__list">
         <li onClick={() => setSelectedLang("En")}>

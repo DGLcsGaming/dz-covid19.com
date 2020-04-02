@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { Link, useLocation } from "react-router-dom";
 
 function Header() {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
+  const [currentRoute, setCurrentRoute] = useState(pathname);
+
   return (
     <nav className="navbar navbar-dark bg-dark">
       <a className="navbar-brand" href="#">
@@ -10,20 +14,20 @@ function Header() {
       </a>
       <div className="flex navbar-items">
         <ul className="navbar-nav">
-          <li className="nav-item active">
-            <a className="nav-link" href="#">
+          <li className={currentRoute === "/" ? "nav-item active" : "nav-item"}>
+            <Link className="nav-link" to="/" onClick={() => setCurrentRoute("/")}>
               {t("Header.Home")} <span className="sr-only">(current)</span>
-            </a>
+            </Link>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
+          <li className={currentRoute === "/faq" ? "nav-item active" : "nav-item"}>
+            <Link className="nav-link" to="/faq" onClick={() => setCurrentRoute("/faq")}>
               {t("Header.FAQ")}
-            </a>
+            </Link>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
+          <li className={currentRoute === "/disclaimer" ? "nav-item active" : "nav-item"}>
+            <Link className="nav-link" to="/disclaimer" onClick={() => setCurrentRoute("/disclaimer")}>
               {t("Header.Disclaimer")}
-            </a>
+            </Link>
           </li>
         </ul>
         <small>

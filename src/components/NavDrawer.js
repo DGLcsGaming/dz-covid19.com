@@ -1,8 +1,12 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Link, useLocation } from "react-router-dom";
 
 const NavDrawer = props => {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
+  const [currentRoute, setCurrentRoute] = useState(pathname);
+
   return (
     <Fragment>
       <div
@@ -22,28 +26,44 @@ const NavDrawer = props => {
         }>
         <div className="flex navbar-items">
           <ul className="navbar-nav">
-            <li className="nav-item active">
-              <a className="nav-link" href="#">
+            <li className={currentRoute === "/" ? "nav-item active" : "nav-item"}>
+              <Link
+                className="nav-link"
+                to="/"
+                onClick={() => {
+                  setCurrentRoute("/");
+                  props.click();
+                }}>
                 {t("Header.Home")} <span className="sr-only">(current)</span>
-              </a>
+              </Link>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
+            <li className={currentRoute === "/faq" ? "nav-item active" : "nav-item"}>
+              <Link
+                className="nav-link"
+                to="/faq"
+                onClick={() => {
+                  setCurrentRoute("/faq");
+                  props.click();
+                }}>
                 {t("Header.FAQ")}
-              </a>
+              </Link>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
+            <li className={currentRoute === "/disclaimer" ? "nav-item active" : "nav-item"}>
+              <Link
+                className="nav-link"
+                to="/disclaimer"
+                onClick={() => {
+                  setCurrentRoute("/disclaimer");
+                  props.click();
+                }}>
                 {t("Header.Disclaimer")}
-              </a>
+              </Link>
             </li>
           </ul>
           <small>
             Made with &#10084;&#65039; by{" "}
             <strong>
-              <a href="https://facebook.com/DGLCS" target="_blank">
-                Ghoul Faical
-              </a>
+              <a href="https://facebook.com/DGLCS">Ghoul Faical</a>
             </strong>{" "}
             in Algeria
           </small>
