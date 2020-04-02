@@ -19,7 +19,7 @@ i18n
     fallbackLng: "Ar",
     debug: false,
     whitelist: Languages,
-
+    preload: Languages,
     interpolation: {
       escapeValue: false // not needed for react as it escapes by default
     }
