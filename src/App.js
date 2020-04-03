@@ -63,9 +63,7 @@ function App() {
     loading,
     updateSubscription
   } = usePushNotifications();
-  if (pushNotificationSupported) {
-    const isConsentGranted = userConsent === "granted";
-  }
+  const isConsentGranted = userConsent === "granted";
   const isMobile = width < 800;
 
   const navTogglerClick = () => {
@@ -132,11 +130,10 @@ function App() {
   }, []);
 
   const handleSubscribeButtonYes = () => {
-    if (pushNotificationSupported) onClickAskUserPermission();
+    onClickAskUserPermission();
   };
   useEffect(() => {
-    if (!pushNotificationSupported || loading) return;
-    if (cookies.push_subscription && userSubscription) return;
+    if (loading || (cookies.push_subscription && userSubscription)) return;
 
     if (cookies.push_subscription && !userSubscription) {
       //Subscription expired, refresh!
@@ -221,13 +218,10 @@ function App() {
                           </Switch>
                         )}
                       </div>
-                      {pushNotificationSupported && (
-                        <GetNotifiedButton
-                          click={() => setModalIsOpen(true)}
-                          style={userSubscription && cookies.push_subscription ? { display: "none" } : { display: "block" }}
-                        />
-                      )}
-
+                      <GetNotifiedButton
+                        click={() => setModalIsOpen(true)}
+                        style={userSubscription && cookies.push_subscription ? { display: "none" } : { display: "block" }}
+                      />
                       <Modal
                         isOpen={modalIsOpen}
                         onRequestClose={() => setModalIsOpen(false)}
@@ -246,7 +240,7 @@ function App() {
                           }
                         }}
                         contentLabel="Notification">
-                        {pushNotificationSupported && pushServerSubscriptionId && cookies.push_subscription ? (
+                        {pushServerSubscriptionId && cookies.push_subscription ? (
                           <p>{t("Subscription.Thanks")}</p>
                         ) : (
                           <div className="notificationModalContent">
