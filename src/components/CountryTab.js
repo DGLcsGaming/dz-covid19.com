@@ -7,6 +7,7 @@ import { currentStatsContext } from "../contexts/currentStatsContext";
 import { dailyStatsContext } from "../contexts/dailyStatsContext";
 import { ReactComponent as Loading } from "../Icons/Loading.svg";
 import LanguageDropdown from "./LanguageDropdown";
+import Beta from "./Beta";
 
 const CountryTab = props => {
   const [wilayas, setWilayas] = useContext(wilayasContext);
@@ -14,6 +15,7 @@ const CountryTab = props => {
   const [dailyStats, setDailyStats] = useContext(dailyStatsContext);
   return (
     <div className="country tab" style={props.style}>
+      <Beta />
       <div className="pullbar" />
       <LanguageDropdown />
       <div className="pageName text-center">

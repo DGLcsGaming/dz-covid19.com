@@ -444,6 +444,7 @@ a:not([href]):not([tabindex]):focus {
   top: 2px;
   color: #de3700;
   font-size: 11px;
+  white-space: nowrap;
 }
 .footerItems {
   display: flex;
@@ -614,7 +615,8 @@ a:not([href]):not([tabindex]):focus {
 }
 .getnotifiedbutton {
   color: rgba(255, 255, 255, 1);
-  border-color: rgba(0, 0, 0, 0.2);
+  border-color: transparent;
+  background-color: white;
   position: fixed;
   top: 10px;
   right: 10px;
@@ -622,8 +624,242 @@ a:not([href]):not([tabindex]):focus {
   padding: 0.4rem 0.56rem 0.25rem 0.56rem;
   font-size: 1.25rem;
   line-height: 1;
-  border-radius: 0.3rem;
+  border-radius: 2rem;
   z-index: 400;
+}
+.getnotifiedbutton svg {
+  -webkit-animation: ring 4s 0.7s ease-in-out infinite;
+  -webkit-transform-origin: 50% 4px;
+  -moz-animation: ring 4s 0.7s ease-in-out infinite;
+  -moz-transform-origin: 50% 4px;
+  animation: ring 4s 0.7s ease-in-out infinite;
+}
+@-webkit-keyframes ring {
+  0% {
+    -webkit-transform: rotateZ(0);
+  }
+  1% {
+    -webkit-transform: rotateZ(30deg);
+  }
+  3% {
+    -webkit-transform: rotateZ(-28deg);
+  }
+  5% {
+    -webkit-transform: rotateZ(34deg);
+  }
+  7% {
+    -webkit-transform: rotateZ(-32deg);
+  }
+  9% {
+    -webkit-transform: rotateZ(30deg);
+  }
+  11% {
+    -webkit-transform: rotateZ(-28deg);
+  }
+  13% {
+    -webkit-transform: rotateZ(26deg);
+  }
+  15% {
+    -webkit-transform: rotateZ(-24deg);
+  }
+  17% {
+    -webkit-transform: rotateZ(22deg);
+  }
+  19% {
+    -webkit-transform: rotateZ(-20deg);
+  }
+  21% {
+    -webkit-transform: rotateZ(18deg);
+  }
+  23% {
+    -webkit-transform: rotateZ(-16deg);
+  }
+  25% {
+    -webkit-transform: rotateZ(14deg);
+  }
+  27% {
+    -webkit-transform: rotateZ(-12deg);
+  }
+  29% {
+    -webkit-transform: rotateZ(10deg);
+  }
+  31% {
+    -webkit-transform: rotateZ(-8deg);
+  }
+  33% {
+    -webkit-transform: rotateZ(6deg);
+  }
+  35% {
+    -webkit-transform: rotateZ(-4deg);
+  }
+  37% {
+    -webkit-transform: rotateZ(2deg);
+  }
+  39% {
+    -webkit-transform: rotateZ(-1deg);
+  }
+  41% {
+    -webkit-transform: rotateZ(1deg);
+  }
+
+  43% {
+    -webkit-transform: rotateZ(0);
+  }
+  100% {
+    -webkit-transform: rotateZ(0);
+  }
+}
+
+@-moz-keyframes ring {
+  0% {
+    -moz-transform: rotate(0);
+  }
+  1% {
+    -moz-transform: rotate(30deg);
+  }
+  3% {
+    -moz-transform: rotate(-28deg);
+  }
+  5% {
+    -moz-transform: rotate(34deg);
+  }
+  7% {
+    -moz-transform: rotate(-32deg);
+  }
+  9% {
+    -moz-transform: rotate(30deg);
+  }
+  11% {
+    -moz-transform: rotate(-28deg);
+  }
+  13% {
+    -moz-transform: rotate(26deg);
+  }
+  15% {
+    -moz-transform: rotate(-24deg);
+  }
+  17% {
+    -moz-transform: rotate(22deg);
+  }
+  19% {
+    -moz-transform: rotate(-20deg);
+  }
+  21% {
+    -moz-transform: rotate(18deg);
+  }
+  23% {
+    -moz-transform: rotate(-16deg);
+  }
+  25% {
+    -moz-transform: rotate(14deg);
+  }
+  27% {
+    -moz-transform: rotate(-12deg);
+  }
+  29% {
+    -moz-transform: rotate(10deg);
+  }
+  31% {
+    -moz-transform: rotate(-8deg);
+  }
+  33% {
+    -moz-transform: rotate(6deg);
+  }
+  35% {
+    -moz-transform: rotate(-4deg);
+  }
+  37% {
+    -moz-transform: rotate(2deg);
+  }
+  39% {
+    -moz-transform: rotate(-1deg);
+  }
+  41% {
+    -moz-transform: rotate(1deg);
+  }
+
+  43% {
+    -moz-transform: rotate(0);
+  }
+  100% {
+    -moz-transform: rotate(0);
+  }
+}
+
+@keyframes ring {
+  0% {
+    transform: rotate(0);
+  }
+  1% {
+    transform: rotate(30deg);
+  }
+  3% {
+    transform: rotate(-28deg);
+  }
+  5% {
+    transform: rotate(34deg);
+  }
+  7% {
+    transform: rotate(-32deg);
+  }
+  9% {
+    transform: rotate(30deg);
+  }
+  11% {
+    transform: rotate(-28deg);
+  }
+  13% {
+    transform: rotate(26deg);
+  }
+  15% {
+    transform: rotate(-24deg);
+  }
+  17% {
+    transform: rotate(22deg);
+  }
+  19% {
+    transform: rotate(-20deg);
+  }
+  21% {
+    transform: rotate(18deg);
+  }
+  23% {
+    transform: rotate(-16deg);
+  }
+  25% {
+    transform: rotate(14deg);
+  }
+  27% {
+    transform: rotate(-12deg);
+  }
+  29% {
+    transform: rotate(10deg);
+  }
+  31% {
+    transform: rotate(-8deg);
+  }
+  33% {
+    transform: rotate(6deg);
+  }
+  35% {
+    transform: rotate(-4deg);
+  }
+  37% {
+    transform: rotate(2deg);
+  }
+  39% {
+    transform: rotate(-1deg);
+  }
+  41% {
+    transform: rotate(1deg);
+  }
+
+  43% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(0);
+  }
 }
 .notificationModalContent > p {
   padding-top: 0.7em;
@@ -669,6 +905,71 @@ a:not([href]):not([tabindex]):focus {
   align-items: center;
   padding: 1em;
 }
+
+/* Ribbon */
+.desktop .faq-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+.desktop .expPanel {
+  height: 67px;
+}
+.desktop .ribbon {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  position: absolute;
+}
+.desktop .ribbon::before,
+.desktop .ribbon::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  display: block;
+  border: 4px solid #2980b9;
+}
+.desktop .ribbon span {
+  position: absolute;
+  display: block;
+  width: 146px;
+  height: 34px;
+  padding: 5px 0;
+  background-color: #3498db;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  text-align: center;
+}
+/* top right*/
+.desktop .ribbon-top {
+  top: -8px;
+  left: 244px;
+}
+.desktop .ribbon-top::before,
+.desktop .ribbon-top::after {
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+.desktop .ribbon-top::before {
+  top: 0;
+  left: 0;
+}
+.desktop .ribbon-top::after {
+  bottom: 0;
+  right: 0;
+}
+.desktop .ribbon-top span {
+  left: -21px;
+  top: 12px;
+  transform: rotate(45deg);
+}
+
 /* Mobile CSS*/
 
 .mobile {
@@ -715,9 +1016,8 @@ a:not([href]):not([tabindex]):focus {
   display: none;
 }
 .mobile .navbar-toggler {
-  will-change: transform;
   color: rgba(255, 255, 255, 1);
-  border-color: rgba(0, 0, 0, 0.2);
+  border-color: transparent;
   position: fixed;
   top: 10px;
   right: 10px;
@@ -726,7 +1026,7 @@ a:not([href]):not([tabindex]):focus {
   padding: 0.3rem 0.4rem;
   font-size: 1.25rem;
   line-height: 1;
-  border-radius: 0.3rem;
+  border-radius: 2rem;
 }
 .mobile .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
@@ -774,8 +1074,9 @@ a:not([href]):not([tabindex]):focus {
   margin: 10px 0px;
 }
 .mobile .getnotifiedbutton {
-  color: rgba(255, 255, 255, 1);
-  border-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  border-color: transparent;
+  background-color: white;
   position: fixed;
   top: 60px;
   right: 10px;
@@ -783,13 +1084,13 @@ a:not([href]):not([tabindex]):focus {
   padding: 0.4rem 0.56rem 0.25rem 0.56rem;
   font-size: 1.25rem;
   line-height: 1;
-  border-radius: 0.3rem;
+  border-radius: 2rem;
   z-index: 99;
 }
 
 .desktop .select-box {
   position: fixed;
-  top: 70px;
+  top: 75px;
   left: 316px;
   display: block;
   margin: 0 auto;
@@ -838,7 +1139,7 @@ a:not([href]):not([tabindex]):focus {
   width: 100%;
   margin: 0;
   padding: 5px;
-  background-color: rgba(128, 128, 128, 0.9);
+  background-color: #edf2f7;
   text-align: left;
   padding-right: 2em;
   border-radius: 0px 10px 10px 0px;
@@ -1058,4 +1359,56 @@ a:not([href]):not([tabindex]):focus {
 }
 .mobile .expPanel {
   height: 67px;
+}
+.mobile .ribbon {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  position: absolute;
+}
+.mobile .ribbon::before,
+.mobile .ribbon::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  display: block;
+  border: 4px solid #2980b9;
+}
+.mobile .ribbon span {
+  position: absolute;
+  display: block;
+  width: 146px;
+  height: 34px;
+  padding: 5px 0;
+  background-color: #3498db;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* top left*/
+.mobile .ribbon-top {
+  top: -10px;
+  left: -9px;
+}
+.mobile .ribbon-top::before,
+.mobile .ribbon-top::after {
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.mobile .ribbon-top::before {
+  top: 0px;
+  right: 0px;
+}
+.mobile .ribbon-top::after {
+  bottom: 0;
+  left: 0;
+}
+.mobile .ribbon-top span {
+  right: -24px;
+  top: 9px;
+  transform: rotate(-45deg);
 }

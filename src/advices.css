@@ -2736,3 +2736,7 @@ html {
     margin-top: 3.125vw;
   }
 }
+.FlowCard_3NwfR > h3,
+.FlowCard_1k0-w > h3 {
+  text-align: center;
+}

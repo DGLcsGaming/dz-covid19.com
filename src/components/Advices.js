@@ -1,74 +1,76 @@
 import React from "react";
 import "../advices.css";
+import { useTranslation } from "react-i18next";
 
 const Advices = props => {
+  const { t } = useTranslation();
   return (
     <main dir="rtl" className="mainContainer w-full max-w-screen-xl mx-auto py-6 md:flex-1 md:overflow-x-hidden">
       <div className="container p-5">
         <div className="Flow">
           <div className="Flow-Heading">
-            <h2 className="Flow-Heading-Title">إذا كنت تشك في إصابتك بفيروس كورونا COVID-19</h2>
+            <h2 className="Flow-Heading-Title">{t("Advices.Flow-Heading-Title")}</h2>
           </div>
           <div>
             <div className="only-pc">
               <div className="FlowCard_3NwfR">
-                <h3>فيما يتعلق بمركز الاستعلامات الهاتفي لعدوى COVID-19</h3>
+                <h3>{t("Advices.FlowCard_3NwfR")}</h3>
                 <div className="Outer_2sXgv OuterUpper_3DvDM">
                   <div className="CardBlock_1oXUz Past_2t-T3">
                     <section className="Flow_2pc4c">
                       <div className="FlowHeading_1iS7c">
                         <span>
                           <span place="past" className="FlowLText_5lR_B">
-                            خلال 14 يوم الماضية قبل ظهور المرض
+                            {t("Advices.FlowLText_5lR_B")}
                           </span>
-                          , هل كنت...
+                          {t("Advices.FlowLText_5lR_B_span")}
                         </span>
                       </div>
                       <div className="FlowInner_1AINm">
                         <div className="FlowItem_e2l-B">
-                          <strong className="FlowTitle_c_l5x">مع مريض COVID-19</strong>
+                          <strong className="FlowTitle_c_l5x">{t("Advices.FlowTitle_c_l5x")}</strong>
                           <span className="FlowPerson_3iKvi">
-                            كنت في &nbsp;
+                            {t("Advices.FlowPerson_3iKvi_1")} &nbsp;
                             <em place="closeContact" className="FlowLine___Ybi">
-                              مخالطة قريبة
+                              {t("Advices.FlowPerson_3iKvi_2")}
                             </em>
                           </span>
                         </div>
                         <div className="FlowItem_e2l-B">
                           <span className="FlowPerson_3iKvi FlowPersonS_1J6AJ">
-                            مسافر من &nbsp;
+                            {t("Advices.FlowPersonS_1J6AJ_1")} &nbsp;
                             <em place="area" className="FlowLine___Ybi">
-                              منطقة انتشار COVID-19
+                              {t("Advices.FlowPersonS_1J6AJ_1_area")}
                             </em>
                           </span>
                           <span className="FlowPerson_3iKvi FlowPersonS_1J6AJ">
-                            كنت &nbsp;
+                            {t("Advices.FlowPersonS_1J6AJ_2")} &nbsp;
                             <em place="inCloseContact" className="FlowLine___Ybi">
-                              مخالطة قريبة
+                              {t("Advices.inCloseContact")}
                             </em>
-                            &nbsp;مع العائدين
+                            &nbsp;{t("Advices.inCloseContact_em")}
                           </span>
                         </div>
                         <div className="FlowCondition_J9LTg">
                           <em className="FlowSymptom_28_SY">
-                            حمى
+                            {t("Advices.FlowSymptom_28_SY_1")}
                             <img src="/img/flow/check_circle-24px.svg" aria-hidden="true" className="FlowSymptomIcon_qyVsA" />
                           </em>
 
-                          <span className="FlowText_1_qsH">أو</span>
+                          <span className="FlowText_1_qsH">{t("Advices.Or")}</span>
                           <em className="FlowSymptom_28_SY">
-                            أعراض الجهاز التنفسي
+                            {t("Advices.FlowSymptom_28_SY_2")}
                             <img src="/img/flow/check_circle-24px.svg" aria-hidden="true" className="FlowSymptomIcon_qyVsA" />
                           </em>
 
-                          <span className="FlowText_1_qsH">و</span>
+                          <span className="FlowText_1_qsH">{t("Advices.And")}</span>
                           <em className="FlowSymptom_28_SY">
                             <span className="FlowTextSm_hBW5Y">
-                              درجة حرارة الجسم
+                              {t("Advices.FlowSymptom_28_SY_3")} &nbsp;
                               <span place="temperature">
-                                أكثر من
+                                {t("Advices.FlowTextSm_hBW5Y_temperature")}
                                 <span place="tempNum" className="FlowTemperature_1OgU-">
-                                  37.5 درجة مئوية
+                                  {t("Advices.FlowTextSm_hBW5Y_tempNum")}
                                 </span>
                               </span>
                             </span>
@@ -84,18 +86,18 @@ const Advices = props => {
                         <div className="FlowRowRowThree_1ww7o">
                           <p>
                             <img src="/img/flow/accessibility-24px.svg" aria-hidden="true" className="FlowRowRowThreeGeneralIcon_1d7xH" />
-                            الأشخاص الذين ليست لديهم أية ظروف صحية محددة
+                            {t("Advices.FlowRowRowThreeGeneralIcon_1d7xH")}
                           </p>
                         </div>
                         <div>
                           <p>
                             <span>
-                              لديك هذه الأعراض لـ &nbsp;
+                              {t("Advices.FlowRowRowThreeGeneralIcon_1d7xH_span")} &nbsp;
                               <span place="duration" className="FlowRowEmphasis_2piQf">
                                 <span place="day" className="FlowRowEmphasisDay_2yVbW">
                                   4
                                 </span>{" "}
-                                أيام متتالية أو أكثر
+                                {t("Advices.FlowRowEmphasisDay_2yVbW_day")}
                               </span>
                             </span>
                           </p>
@@ -105,9 +107,9 @@ const Advices = props => {
                         <div className="FlowRowCondition_kaBsY">
                           <p>
                             <span className="FlowRowConditionSmall_i3om-">
-                              لديك أعراض &nbsp;
+                              {t("Advices.FlowRowConditionSmall_i3om-1")} &nbsp;
                               <span place="cold" className="FlowRowConditionLarge_15_WW">
-                                نزلة برد/إنفلونزا
+                                {t("Advices.FlowRowConditionLarge_15_WW-cold")}
                               </span>
                             </span>
                           </p>
@@ -117,11 +119,11 @@ const Advices = props => {
                         <div className="FlowRowCondition_kaBsY">
                           <p>
                             <span className="FlowRowConditionSmall_i3om-">
-                              درجة حرارة الجسم
+                              {t("Advices.FlowSymptom_28_SY_3")} &nbsp;
                               <span place="temperature">
-                                أكثر من
+                                {t("Advices.FlowTextSm_hBW5Y_temperature")}
                                 <span place="tempNum" className="FlowRowConditionLarge_15_WW">
-                                  37.5 درجة مئوية
+                                  {t("Advices.FlowTextSm_hBW5Y_tempNum")}
                                 </span>
                               </span>
                             </span>
@@ -130,11 +132,11 @@ const Advices = props => {
                         </div>
 
                         <div className="FlowRowCondition_kaBsY">
-                          <p>إرهاق الشديد</p>
+                          <p>{t("Advices.FlowRowCondition_kaBsY_1")}</p>
                           <img src="/img/flow/check_circle-24px.svg" aria-hidden="true" className="FlowRowConditionIcon_1alQe" />
                         </div>
                         <div className="FlowRowCondition_kaBsY">
-                          <p>صعوبة في التنفس</p>
+                          <p>{t("Advices.FlowRowCondition_kaBsY_2")}</p>
                           <img src="/img/flow/check_circle-24px.svg" aria-hidden="true" className="FlowRowConditionIcon_1alQe" />
                         </div>
                       </div>
@@ -147,11 +149,11 @@ const Advices = props => {
                                 aria-hidden="true"
                                 className="FlowRowRowThreeCareTargetListItemIcon_1aNyc"
                               />
-                              كبار السن
+                              {t("Advices.OldPeople")}
                             </li>
                             <li className="FlowRowRowThreeCareTargetListItem_W6a_I">
                               <img src="/img/flow/accessible-24px.svg" aria-hidden="true" className="FlowRowRowThreeCareTargetListItemIcon_1aNyc" />
-                              الأشخاص الذين يعانون من أمراض مزمنة
+                              {t("Advices.IllPeople")}
                             </li>
                             <li className="FlowRowRowThreeCareTargetListItem_W6a_I">
                               <img
@@ -159,19 +161,19 @@ const Advices = props => {
                                 aria-hidden="true"
                                 className="FlowRowRowThreeCareTargetListItemIcon_1aNyc"
                               />
-                              النساء الحوامل
+                              {t("Advices.Pregnant")}
                             </li>
                           </ul>
                         </div>
                         <div>
                           <p>
                             <span>
-                              لديك هذه الأعراض لـ &nbsp;
+                              {t("Advices.Symptoms")} &nbsp;
                               <span place="duration" className="FlowRowEmphasis_2piQf">
                                 <span place="day" className="FlowRowEmphasisDay_2yVbW">
                                   2
                                 </span>{" "}
-                                أيام متتالية
+                                {t("Advices.Symptoms_day")}
                               </span>
                             </span>
                           </p>
@@ -186,26 +188,26 @@ const Advices = props => {
                         <div className="RowItems_1LH1F">
                           <div className="RowItemsHeader_3uPRh">
                             <img src="/img/flow/sentiment_very_dissatisfied-24px.svg" aria-hidden="true" className="RowItemsHeaderIcon_C80DQ" />
-                            إذا كنت تشعر بالقلق
+                            {t("Advices.")}
                           </div>
                         </div>
                         <div className="RowItems_1LH1F">
                           <div className="CheckBox_irTfs">
                             <img src="/img/flow/check_circle-24px.svg" aria-hidden="true" className="CheckBoxIcon_2XdHx" />
-                            حمى طفيفة
+                            {t("Advices.Fever")}
                           </div>
                           <div className="CheckBox_irTfs">
                             <img src="/img/flow/check_circle-24px.svg" aria-hidden="true" className="CheckBoxIcon_2XdHx" />
-                            سعال طفيف
+                            {t("Advices.Cough")}
                           </div>
                           <div className="CheckBox_irTfs">
                             <img src="/img/flow/check_circle-24px.svg" aria-hidden="true" className="CheckBoxIcon_2XdHx" />
-                            عدوى الخوف
+                            {t("Advices.Infection")}
                           </div>
                         </div>
                       </div>
                       <div className="SubtleBox_njJh7 Box2_3DYIg Center_3BCBk">
-                        <div className="LargerText_2j9J-">إستشر طبيب هاتفيا</div>
+                        <div className="LargerText_2j9J-">{t("Advices.CallDoctor")}</div>
                       </div>
                     </div>
                   </div>
@@ -214,21 +216,21 @@ const Advices = props => {
                       <div className="AdvisoryContainer_hIPT_">
                         <div className="AdvisoryContents_2dfls">
                           <div>
-                            <span className="AdvisoryContentsTitle_2skvV">مركز الاستشارات الهاتفية المشترك </span>
+                            <span className="AdvisoryContentsTitle_2skvV">{t("Advices.AdvisoryContentsTitle_2skvV")}</span>
                           </div>
-                          <div className="AdvisoryContentsColsSentense_17Ilp mt-4">مركز الاستشارات الهاتفية للعائدين و الذين على اتصال بهم</div>
+                          <div className="AdvisoryContentsColsSentense_17Ilp mt-4">{t("Advices.AdvisoryContentsColsSentense_17Ilp")}</div>
                           <div>
                             <div className="AdvisoryBoxContainer_2dhp5 AdvisoryWhiteBox_3C5r2">
-                              <span className="AdvisoryWhiteBoxSentense_11tBc">مفتوح 24 ساعة</span>
+                              <span className="AdvisoryWhiteBoxSentense_11tBc">{t("Advices.AdvisoryWhiteBoxSentense_11tBc")}</span>
                             </div>
                           </div>
                         </div>
                         <div className="AdvisoryContents_2dfls">
                           <div className="py-8">
-                            <div className="AdvisoryContentsTitle2_2lyeX">خلال أيام الأسبوع (النهار)</div>
+                            <div className="AdvisoryContentsTitle2_2lyeX">{t("Advices.AdvisoryContentsTitle2_2lyeX_1")}</div>
                             <div className="AdvisoryLink_3Ioou AdvisoryBlockCentering_2D323 mt-4">
                               <a href="http://covid19.sante.gov.dz/numeros-utiles/" target="_blank" rel="noopener">
-                                <span>تحقق من أرقام هواتف مراكز الصحة العمومية على الموقع الإلكتروني لمكتب الرعاية الاجتماعية والصحة العمومية</span>
+                                <span>{t("Advices.NumerosUtiles")}</span>
                                 <svg
                                   width="16px"
                                   height="16px"
@@ -250,11 +252,11 @@ const Advices = props => {
                         </div>
                         <div className="AdvisoryContents_2dfls">
                           <div className="pt-8">
-                            <div className="AdvisoryContentsTitle2_2lyeX">خلال أيام الأسبوع (الليل)</div>
-                            <span>الساعة 00/17 مساء - 00/9 صباحا</span>
+                            <div className="AdvisoryContentsTitle2_2lyeX">{t("Advices.AdvisoryContentsTitle2_2lyeX_2")}</div>
+                            <span>{t("Advices.AdvisoryContentsTitle2_2lyeX_time")}</span>
                           </div>
                           <div className="mt-1">
-                            <span className="AdvisoryContentsSubTitle_2lDKj">في عطلات نهاية الأسبوع، أيام العطل الرسمية (طوال اليوم)</span>
+                            <span className="AdvisoryContentsSubTitle_2lDKj">{t("Advices.AdvisoryContentsSubTitle_2lDKj")}</span>
                           </div>
                           <div className="AdvisoryTelephoneArea_2yORf AdvisoryBlockCentering_2D323 mt-1">
                             <a href="tel:3030" className="AdvisoryTelephone_1Eh56">
@@ -269,7 +271,7 @@ const Advices = props => {
                   <div className="Advisory2_3jO-C">
                     <div className="Container_T0DQ4">
                       <div className="pa-4 AdvisoryBoxContainer_2BQJW">
-                        <span>إذا كنت بحاجة إلى استشارة خبير</span>
+                        <span>{t("Advices.AdvisoryBoxContainer_2BQJW")}</span>
                       </div>
                     </div>
                   </div>
@@ -278,49 +280,50 @@ const Advices = props => {
             </div>
             <div className="only-sp">
               <div className="FlowCard_1k0-w">
-                <h3 className="mb-4">فيما يتعلق بمركز الاستعلامات الهاتفي لعدوى COVID-19</h3>
+                <h3 className="mb-4">{t("Advices.FlowCard_1k0-w_h3")}</h3>
                 <div className="FlowCard_1k0-w">
                   <div className="container_2S6d9">
                     <p className="heading_3F8wr">
                       <span>
                         <span place="past" className="fzLarge_1nk3t">
-                          خلال 14 يوم الماضية قبل ظهور المرض
+                          {t("Advices.fzLarge_1nk3t")}
                         </span>
-                        , هل كنت...
+                        {t("Advices.fzLarge_1nk3t_2")}
                       </span>
                     </p>
                     <p className="type_KqX-F">
-                      <strong className="source_-cnCA">مع مريض COVID-19</strong>
+                      <strong className="source_-cnCA">{t("Advices.FlowTitle_c_l5x")}</strong>
                       <span className="behavior_1gZAq fzXLarge_1ZbrK">
                         {" "}
-                        كنت في{" "}
+                        {t("Advices.FlowPerson_3iKvi_1")}{" "}
                         <em place="closeContact" className="underline_3C4ky">
-                          مخالطة قريبة
+                          {t("Advices.FlowPerson_3iKvi_2")}
                         </em>
                       </span>
                     </p>
                     <div className="rectContainer_IcqIt req_3vfF2">
-                      <p className="symptom_3YiOf">حمى</p>
-                      <p className="op_2MZ_t">أو</p>
-                      <p className="symptom_3YiOf">أعراض الجهاز التنفسي</p>
+                      <p className="symptom_3YiOf">{t("Advices.FlowSymptom_28_SY_1")}</p>
+                      <p className="op_2MZ_t">{t("Advices.Or")}</p>
+                      <p className="symptom_3YiOf">{t("Advices.FlowSymptom_28_SY_2")}</p>
                     </div>
                     <p className="type_KqX-F hr_3_lnV">
-                      <strong className="source_-cnCA">لايمكن تطبيقه</strong> <span className="behavior_1gZAq fzXLarge_1ZbrK">لايمكن تطبيقه</span>
+                      <strong className="source_-cnCA">{t("Advices.CannotBeApplied")}</strong>{" "}
+                      <span className="behavior_1gZAq fzXLarge_1ZbrK">{t("Advices.CannotBeApplied")}</span>
                     </p>
                     <div className="rectContainer_IcqIt req_3vfF2">
-                      <p className="symptom_3YiOf">أعراض الجهاز التنفسي</p>
-                      <p className="op_2MZ_t">و</p>
+                      <p className="symptom_3YiOf">{t("Advices.FlowSymptom_28_SY_2")}</p>
+                      <p className="op_2MZ_t">{t("Advices.And")}</p>
                       <p className="symptom_3YiOf">
                         <span className="fzSmall_1god5">
-                          درجة حرارة الجسم
+                          {t("Advices.FlowSymptom_28_SY_3")}
                           <span place="temperature" className="break_3msBX fzRegular_2LYDe">
-                            أكثر من <span place="tempNum">37.5 درجة مئوية</span>
+                            {t("Advices.FlowTextSm_hBW5Y_temperature")} <span place="tempNum">{t("Advices.FlowTextSm_hBW5Y_tempNum")}</span>
                           </span>
                         </span>
                       </p>
                     </div>
                     <a href="#consult" className="button_3UuHl clickable_Zch70">
-                      <span className="text_2ydX7"> الاستشارة COVID-19</span>
+                      <span className="text_2ydX7">{t("Advices.text_2ydX7")}</span>
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="icon_3w07k">
                         <path d="M128 0l-22.56 22.56L194.72 112H0v32h194.72l-89.28 89.44L128 256l128-128z" fill="#4d4d4d"></path>
                       </svg>
@@ -337,40 +340,40 @@ const Advices = props => {
                             fill="#4d4d4d"></path>
                         </svg>
                       </span>
-                      <span className="fzMedium_HVE7G">الأشخاص الذين ليست لديهم أية ظروف صحية محددة</span>
+                      <span className="fzMedium_HVE7G">{t("Advices.FlowRowRowThreeGeneralIcon_1d7xH")}</span>
                     </p>
                     <ul className="rectContainer_3fEl0 double_1FQQ2">
                       <li className="symptom_kr7b0">
                         <span>
                           <span>
-                            لديك أعراض <span place="cold">نزلة برد/إنفلونزا</span>
+                            {t("Advices.FlowRowConditionSmall_i3om-1")} <span place="cold">{t("Advices.FlowRowConditionLarge_15_WW-cold")}</span>
                           </span>
                         </span>
                       </li>
                       <li className="symptom_kr7b0">
                         <span className="fzSmall_zbGAe">
-                          درجة حرارة الجسم
+                          {t("Advices.FlowSymptom_28_SY_3")}
                           <span place="temperature" className="break_3ZMur fzRegular_39Ix9">
-                            أكثر من <span place="tempNum">37.5 درجة مئوية</span>
+                            {t("Advices.FlowTextSm_hBW5Y_temperature")} <span place="tempNum">{t("Advices.FlowTextSm_hBW5Y_tempNum")}</span>
                           </span>
                         </span>
                       </li>
-                      <li className="symptom_kr7b0">إرهاق الشديد</li>
-                      <li className="symptom_kr7b0">صعوبة في التنفس</li>
+                      <li className="symptom_kr7b0">{t("Advices.FlowRowCondition_kaBsY_1")}</li>
+                      <li className="symptom_kr7b0">{t("Advices.FlowRowCondition_kaBsY_2")}</li>
                     </ul>
                     <p className="duration_gz1al">
                       <span>
-                        لديك هذه الأعراض لـ &nbsp;
+                        {t("Advices.FlowRowRowThreeGeneralIcon_1d7xH_span")} &nbsp;
                         <span place="duration" className="underline_2zHYq fzLarge_uS3GD">
                           <strong place="day" className="fzNumeric_1jq4l">
                             4
                           </strong>{" "}
-                          أيام متتالية أو أكثر
+                          {t("Advices.FlowRowEmphasisDay_2yVbW_day")}
                         </span>
                       </span>
                     </p>
                     <a href="#consult" className="button_37pfW clickable_fOLmc">
-                      <span className="text_3KtUv"> الاستشارة COVID-19</span>
+                      <span className="text_3KtUv">{t("Advices.text_2ydX7")}</span>
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="icon_2_ze7">
                         <path d="M128 0l-22.56 22.56L194.72 112H0v32h194.72l-89.28 89.44L128 256l128-128z" fill="#4d4d4d"></path>
                       </svg>
@@ -388,7 +391,7 @@ const Advices = props => {
                               fill="#4d4d4d"></path>
                           </svg>
                         </span>
-                        كبار السن
+                        {t("Advices.OldPeople")}
                       </span>
                       <span className="item_1JzFy fzMedium_1xKgG">
                         <span className="icon_243O0">
@@ -398,7 +401,7 @@ const Advices = props => {
                               fill="#4d4d4d"></path>
                           </svg>
                         </span>
-                        الأشخاص الذين يعانون من أمراض مزمنة
+                        {t("Advices.IllPeople")}
                       </span>
                       <span className="item_1JzFy fzMedium_1xKgG">
                         <span className="icon_243O0">
@@ -408,42 +411,42 @@ const Advices = props => {
                               fill="#4d4d4d"></path>
                           </svg>
                         </span>
-                        النساء الحوامل
+                        {t("Advices.Pregnant")}
                       </span>
                     </div>
                     <ul className="rectContainer_Y9EIc double_3gnpf">
                       <li className="symptom_18Hen">
                         <span>
                           <span>
-                            لديك أعراض
-                            <span place="cold">نزلة برد/إنفلونزا</span>
+                            {t("Advices.FlowRowConditionSmall_i3om-1")}
+                            <span place="cold">{t("Advices.FlowRowConditionLarge_15_WW-cold")}</span>
                           </span>
                         </span>
                       </li>
                       <li className="symptom_18Hen">
                         <span className="fzSmall_2gyqR">
-                          درجة حرارة الجسم
+                          {t("Advices.FlowSymptom_28_SY_3")}
                           <span place="temperature" className="break_tPF1f fzRegular_j39Qs">
-                            أكثر من <span place="tempNum">37.5 درجة مئوية</span>
+                            {t("Advices.FlowTextSm_hBW5Y_temperature")} <span place="tempNum">{t("Advices.FlowTextSm_hBW5Y_tempNum")}</span>
                           </span>
                         </span>
                       </li>
-                      <li className="symptom_18Hen">إرهاق الشديد</li>
-                      <li className="symptom_18Hen">صعوبة في التنفس</li>
+                      <li className="symptom_18Hen">{t("Advices.FlowRowCondition_kaBsY_1")}</li>
+                      <li className="symptom_18Hen">{t("Advices.FlowRowCondition_kaBsY_2")}</li>
                     </ul>
                     <p className="duration_ZFJro">
                       <span>
-                        لديك هذه الأعراض لـ &nbsp;
+                        {t("Advices.FlowRowRowThreeGeneralIcon_1d7xH_span")} &nbsp;
                         <span place="duration" className="underline_2Aisl fzLarge_1emn1">
                           <strong place="day" className="fzNumeric_WU3Wn">
                             2
                           </strong>{" "}
-                          أيام متتالية
+                          {t("Advices.Symptoms_day")}
                         </span>
                       </span>
                     </p>
                     <a href="#consult" className="button_2n2iY clickable_2BTCl">
-                      <span className="text_2sPlT"> الاستشارة COVID-19</span>
+                      <span className="text_2sPlT">{t("Advices.text_2ydX7")}</span>
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="icon_243O0">
                         <path d="M128 0l-22.56 22.56L194.72 112H0v32h194.72l-89.28 89.44L128 256l128-128z" fill="#4d4d4d"></path>
                       </svg>
@@ -460,19 +463,25 @@ const Advices = props => {
                             fill="#4d4d4d"></path>
                         </svg>
                       </span>
-                      <span className="fzMedium_1esI1">إذا كنت تشعر بالقلق </span>
+                      <span className="fzMedium_1esI1">
+                        {t("Advices.If")} {t("Advices.FlowPersonS_1J6AJ_2")} {t("Advices.Worried_2")}{" "}
+                      </span>
                     </p>
                     <ul className="rectContainer_k2_Ux triple_P-5_c">
-                      <li className="symptom_ZdmGQ">حمى طفيفة</li>
-                      <li className="symptom_ZdmGQ">سعال طفيف</li>
-                      <li className="symptom_ZdmGQ">عدوى الخوف</li>
+                      <li className="symptom_ZdmGQ">
+                        {t("Advices.FlowSymptom_28_SY_1")} {t("Advices.Flow")}
+                      </li>
+                      <li className="symptom_ZdmGQ">{t("Advices.Cough")}</li>
+                      <li className="symptom_ZdmGQ">{t("Advices.Infection")}</li>
                     </ul>
                     <div className="callcenter_wJAjo">
-                      <p className="fzLarge_3_Xs4">إستشر طبيب هاتفيا</p>
-                      <p className="open_2LsyA">الساعة 00/9 صباحا - الساعة 00/9 ليلا (7 أيام في الأسبوع)</p>
+                      <p className="fzLarge_3_Xs4">{t("Advices.CallDoctor")}</p>
+                      <p className="open_2LsyA">{t("Advices.open_2LsyA")}</p>
                     </div>
                     <a href="#consult" className="button_uFqao clickable_1yVc2">
-                      <span className="text_2S6zg">إذا كنت بحاجة إلى استشارة خبير</span>
+                      <span className="text_2S6zg">
+                        {t("Advices.If")} {t("Advices.FlowPersonS_1J6AJ_2")} {t("Advices.Doctor_2")}
+                      </span>
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="icon_bz1e4">
                         <path d="M128 0l-22.56 22.56L194.72 112H0v32h194.72l-89.28 89.44L128 256l128-128z" fill="#4d4d4d"></path>
                       </svg>
@@ -482,19 +491,33 @@ const Advices = props => {
                 <div className="FlowCard_1k0-w FlowCardGrayBg_3Vwju">
                   <div className="container_1qcfj">
                     <h4 id="consult" className="heading_2DabJ fzXLarge_2Yn_h">
-                      مركز الاستشارات الهاتفية المشترك
-                      <small className="break_2gVuE fzRegular_2Vt7D mt5_2hVez">مركز الاستشارات الهاتفية للعائدين و الذين على اتصال بهم</small>
+                      {t("Advices.AdvisoryContentsTitle_2skvV")}
+                      <small className="break_2gVuE fzRegular_2Vt7D mt5_2hVez">{t("Advices.AdvisoryContentsColsSentense_17Ilp")}</small>
                     </h4>
                     <p className="open_SsmI1 fzMedium_12XE7">
-                      <span>مفتوح 24 ساعة</span>
+                      <span>{t("Advices.AdvisoryWhiteBoxSentense_11tBc")}</span>
                     </p>
                     <dl>
                       <div className="daytime_3f5BT">
-                        <dt className="title_3_kLB fzMedium_12XE7">خلال أيام الأسبوع (النهار)</dt>
+                        <dt className="title_3_kLB fzMedium_12XE7">{t("Advices.fzMedium_12XE7")}</dt>
                         <dd className="link_1-DTK">
                           <a href="http://covid19.sante.gov.dz/numeros-utiles/" target="_blank" rel="noopener">
-                            تحقق من أرقام هواتف مراكز الصحة العمومية على الموقع الإلكتروني لمكتب الرعاية الاجتماعية والصحة العمومبة
-                            <i aria-hidden="true" className="v-icon notranslate mdi mdi-open-in-new theme--light" style={{ fontSize: "16px" }}></i>
+                            {t("Advices.NumerosUtiles")}
+                            <svg
+                              width="16px"
+                              height="16px"
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="external-link-alt"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 512 512"
+                              style={{ margin: "1px 5px 0px 5px" }}>
+                              <path
+                                fill="currentColor"
+                                d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"></path>
+                            </svg>
                           </a>
                         </dd>
                       </div>
@@ -502,11 +525,11 @@ const Advices = props => {
                         <dt>
                           <ul className="night_1x8Jv">
                             <li>
-                              <span className="fzMedium_12XE7 break_2gVuE mb10_3fyFN">خلال أيام الأسبوع (الليل)</span>
-                              الساعة 00/17 مساء - 00/9 صباحا
+                              <span className="fzMedium_12XE7 break_2gVuE mb10_3fyFN">{t("Advices.fzMedium_12XE7_night")}</span>
+                              {t("Advices.AdvisoryContentsTitle2_2lyeX_time")}
                             </li>
                             <li>
-                              <span className="fzMedium_12XE7">في عطلات نهاية الأسبوع، أيام العطل الرسمية (طوال اليوم)</span>
+                              <span className="fzMedium_12XE7">{t("Advices.fzMedium_12XE7_weekend")}</span>
                             </li>
                           </ul>
                         </dt>
@@ -529,31 +552,31 @@ const Advices = props => {
                 <div className="FlowCard_1k0-w">
                   <div className="container_wi05o according_1pIKc">
                     <div className="heading_qGATr">
-                      وفقا للمكالمة
+                      {t("Advices.heading_qGATr")}
                       <span place="advisory" className="fzLarge_3LXho break_qRyCn">
-                        الاستشارات
+                        {t("Advices.advisory")}
                       </span>
                     </div>
                     <p className="diag_1GB4l">
-                      إذا كنت
+                      {t("Advices.If")} {t("Advices.FlowPersonS_1J6AJ_2")}
                       <span place="advice" className="fzXLLarge_2FpWZ break_qRyCn">
-                        ينصح بإجراء فحص
+                        {t("Advices.advice")}
                       </span>
-                      لـ COVID-19
+                      {t("Advices.advice_2")}
                     </p>
                     <p className="decision_DaNiY">
-                      <span className="fzSmall_1kSKY">تشخيص يقوم به طبيب في مرفق خارجي للمرضى تابع لـ COVID-19</span>
-                      <span className="fzLarge_3LXho break_qRyCn">تشخيص يقوم به طبيب في مرفق خارجي للمرضى تابع لـ COVID-19</span>
+                      <span className="fzSmall_1kSKY">{t("Advices.fzSmall_1kSKY_1")}</span>
+                      <span className="fzLarge_3LXho break_qRyCn">{t("Advices.fzSmall_1kSKY_1")}</span>
                     </p>
                     <div className="rectContainer_2rNi4 double_2T0Xf">
                       <a href="#not_required" className="rect_3zhDV result_3SGhs clickable_3etof">
                         <p>
                           <span>
-                            أنت
+                            {t("Advices.You")}
                             <span place="ifRequired" className="fzXLarge_2E5K6 break_qRyCn">
-                              غير مطلوب
+                              {t("Advices.ifRequired")}
                             </span>
-                            ليتم فحصه
+                            {t("Advices.toBeCheckedOn")}
                           </span>
                         </p>
                         <div aria-hidden="true" className="arrow_3gixV">
@@ -565,11 +588,11 @@ const Advices = props => {
                       <a href="#pcr" className="rect_3zhDV result_3SGhs clickable_3etof bgYellow_3xzCi">
                         <p>
                           <span>
-                            أنت
+                            {t("Advices.You")}
                             <span place="ifRequired" className="fzXLarge_2E5K6 break_qRyCn">
-                              مطلوب
+                              {t("Advices.ifRequired")}
                             </span>
-                            ليتم فحصه
+                            {t("Advices.toBeCheckedOn")}
                           </span>
                         </p>
                         <div aria-hidden="true" className="arrow_3gixV">
@@ -583,17 +606,14 @@ const Advices = props => {
                     </div>
                     <p id="pcr" className="diag_1GB4l hr_-ZUnH">
                       <span className="break_qRyCn">
-                        <span className="fzXLLarge_2FpWZ">اختبار تشخيص PCR</span>*{" "}
+                        <span className="fzXLLarge_2FpWZ">{t("Advices.PCR")}</span>*{" "}
                       </span>
-                      <small className="note_1EXJW fzSmall_1kSKY break_qRyCn">
-                        حتى إشعار آخر ، وبسبب الوقاية من العدوى في المستشفى ، لا تتوفر الفحوص التي يغطيها التأمين إلا في المؤسسات الطبية مثل العيادات
-                        الخارجية للعائدين وللإشخاص الذين على اتصال بهم.
-                      </small>
+                      <small className="note_1EXJW fzSmall_1kSKY break_qRyCn">{t("Advices.note_1EXJW")}</small>
                     </p>
                     <div className="rectContainer_2rNi4 double_2T0Xf">
                       <a href="#not_required" className="rect_3zhDV result_3SGhs clickable_3etof">
                         <p>
-                          <span className="fzXLarge_2E5K6">سالب</span>
+                          <span className="fzXLarge_2E5K6">{t("Advices.Negative")}</span>
                         </p>
                         <div aria-hidden="true" className="arrow_3gixV">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
@@ -603,7 +623,7 @@ const Advices = props => {
                       </a>
                       <a href="#hospitalized" className="rect_3zhDV result_3SGhs clickable_3etof bgYellow_3xzCi">
                         <p>
-                          <span className="fzXLarge_2E5K6">إيجابي</span>
+                          <span className="fzXLarge_2E5K6">{t("Advices.Positive")}</span>
                         </p>
                         <div aria-hidden="true" className="arrow_3gixV">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
@@ -615,11 +635,11 @@ const Advices = props => {
                       </a>
                     </div>
                     <p id="not_required" className="diag_1GB4l hr_-ZUnH">
-                      إذا كنت
+                      {t("Advices.If")} {t("Advices.FlowPersonS_1J6AJ_2")}
                       <span place="advice" className="break_qRyCn fzXLLarge_2FpWZ">
-                        لا ينصح بإجراء فحص
+                        {t("Advices.Advice_No")}
                       </span>
-                      لـ COVID-19
+                      {t("Advices.advice_2")}
                     </p>
                     <div className="rectContainer_2rNi4 double_2T0Xf">
                       <div className="rect_3zhDV solution_3mORU">
@@ -630,7 +650,7 @@ const Advices = props => {
                               fill="#4d4d4d"></path>
                           </svg>
                         </div>
-                        <p>ابق في المنزل</p>
+                        <p>{t("Advices.StayHome")}</p>
                       </div>
                       <div className="rect_3zhDV solution_3mORU">
                         <div aria-hidden="true" className="icon_inusm">
@@ -640,14 +660,14 @@ const Advices = props => {
                               fill="#4d4d4d"></path>
                           </svg>
                         </div>
-                        <p>راجع طبيبا عاما.</p>
+                        <p>{t("Advices.ConsultADoctor")}</p>
                       </div>
                       <div className="rect_3zhDV consult_1m00f">
                         <p>
                           <span>
-                            <span place="getWorse">إذا ازدادت الأعراض سوءاً،</span> اتصل بـ
+                            <span place="getWorse">{t("Advices.getWorse")}</span> {t("Advices.Call")}
                             <strong place="advisory" className="advisory_10rAK">
-                              مركز الاستشارات الهاتفية المشترك
+                              {t("Advices.AdvisoryContentsTitle_2skvV")}
                             </strong>
                           </span>
                         </p>
@@ -665,9 +685,9 @@ const Advices = props => {
                             fill="#4d4d4d"></path>
                         </svg>
                       </span>
-                      <span className="fzMedium_11635">بحاجة إلى العلاج في المستشفى</span>
+                      <span className="fzMedium_11635">{t("Advices.Hospitilazed")}</span>
                     </p>
-                    <p className="facility_26MME fzXLarge_15My9">المؤسسات الطبية المعينة لأمراض معدية محددة والمؤسسات المعادلة لها</p>
+                    <p className="facility_26MME fzXLarge_15My9">{t("Advices.facility_26MME")}</p>
                   </div>
                 </div>
               </div>
