@@ -63,7 +63,9 @@ function App() {
     loading,
     updateSubscription
   } = usePushNotifications();
-  const isConsentGranted = userConsent === "granted";
+  if (pushNotificationSupported) {
+    const isConsentGranted = userConsent === "granted";
+  }
   const isMobile = width < 800;
 
   const navTogglerClick = () => {
@@ -130,11 +132,11 @@ function App() {
   }, []);
 
   const handleSubscribeButtonYes = () => {
-    onClickAskUserPermission();
+    if (pushNotificationSupported) onClickAskUserPermission();
   };
   useEffect(() => {
-    if (!pushNotificationSupported) return;
-    if (loading || (cookies.push_subscription && userSubscription)) return;
+    if (!pushNotificationSupported || loading) return;
+    if (cookies.push_subscription && userSubscription) return;
 
     if (cookies.push_subscription && !userSubscription) {
       //Subscription expired, refresh!
@@ -219,12 +221,13 @@ function App() {
                           </Switch>
                         )}
                       </div>
-                      <GetNotifiedButton
-                        click={() => setModalIsOpen(true)}
-                        style={
-                          !pushNotificationSupported || (userSubscription && cookies.push_subscription) ? { display: "none" } : { display: "block" }
-                        }
-                      />
+                      {pushNotificationSupported && (
+                        <GetNotifiedButton
+                          click={() => setModalIsOpen(true)}
+                          style={userSubscription && cookies.push_subscription ? { display: "none" } : { display: "block" }}
+                        />
+                      )}
+
                       <Modal
                         isOpen={modalIsOpen}
                         onRequestClose={() => setModalIsOpen(false)}
@@ -243,7 +246,7 @@ function App() {
                           }
                         }}
                         contentLabel="Notification">
-                        {pushServerSubscriptionId && cookies.push_subscription ? (
+                        {pushNotificationSupported && pushServerSubscriptionId && cookies.push_subscription ? (
                           <p>{t("Subscription.Thanks")}</p>
                         ) : (
                           <div className="notificationModalContent">
