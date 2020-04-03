@@ -133,6 +133,7 @@ function App() {
     onClickAskUserPermission();
   };
   useEffect(() => {
+    if (!pushNotificationSupported) return;
     if (loading || (cookies.push_subscription && userSubscription)) return;
 
     if (cookies.push_subscription && !userSubscription) {

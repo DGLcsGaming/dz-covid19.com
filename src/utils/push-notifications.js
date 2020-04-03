@@ -1,11 +1,10 @@
-const pushServerPublicKey =
-  "BJbOYybLlMwHOK_HTjFk6Lzk5--foGOzoMgnlo4yd_aonJUj9EHG7JsokTW--tofSeTgC5u3eYoV_-iR7NWIrPY";
+const pushServerPublicKey = "BJbOYybLlMwHOK_HTjFk6Lzk5--foGOzoMgnlo4yd_aonJUj9EHG7JsokTW--tofSeTgC5u3eYoV_-iR7NWIrPY";
 
 /**
  * checks if Push notification and service workers are supported by your browser
  */
 function isPushNotificationSupported() {
-  return "serviceWorker" in navigator && "PushManager" in window;
+  return "serviceWorker" in navigator && "PushManager" in window && "Notification" in window;
 }
 
 /**
@@ -48,10 +47,4 @@ function getUserSubscription() {
     });
 }
 
-export {
-  isPushNotificationSupported,
-  askUserPermission,
-  registerServiceWorker,
-  createNotificationSubscription,
-  getUserSubscription
-};
+export { isPushNotificationSupported, askUserPermission, registerServiceWorker, createNotificationSubscription, getUserSubscription };
