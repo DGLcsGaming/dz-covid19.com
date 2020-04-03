@@ -133,6 +133,7 @@ function App() {
     onClickAskUserPermission();
   };
   useEffect(() => {
+    if (!pushNotificationSupported) return;
     if (loading || (cookies.push_subscription && userSubscription)) return;
 
     if (cookies.push_subscription && !userSubscription) {
@@ -220,7 +221,9 @@ function App() {
                       </div>
                       <GetNotifiedButton
                         click={() => setModalIsOpen(true)}
-                        style={userSubscription && cookies.push_subscription ? { display: "none" } : { display: "block" }}
+                        style={
+                          !pushNotificationSupported || (userSubscription && cookies.push_subscription) ? { display: "none" } : { display: "block" }
+                        }
                       />
                       <Modal
                         isOpen={modalIsOpen}
