@@ -15,7 +15,7 @@ const pushNotificationSupported = isPushNotificationSupported();
 //first thing to do: check if the push notifications are supported by the browser
 
 export default function usePushNotifications() {
-  const [userConsent, setSuserConsent] = useState(Notification.permission);
+  const [userConsent, setSuserConsent] = useState(pushNotificationSupported && Notification.permission);
   //to manage the user consent: Notification.permission is a JavaScript native function that return the current state of the permission
   //We initialize the userConsent with that value
   const [userSubscription, setUserSubscription] = useState(null);
@@ -40,6 +40,7 @@ export default function usePushNotifications() {
   //this effect runs only the first render
 
   useEffect(() => {
+    if (!pushNotificationSupported) return;
     setLoading(true);
     setError(false);
     const getExistingSubscription = async () => {
@@ -58,6 +59,7 @@ export default function usePushNotifications() {
    * If the user denies the consent, an error is created with the setError hook
    */
   const onClickAskUserPermission = () => {
+    if (!pushNotificationSupported) return;
     setLoading(true);
     setError(false);
     askUserPermission().then(consent => {
@@ -79,6 +81,7 @@ export default function usePushNotifications() {
    * Once the subscription is created, it uses the setUserSubscription hook
    */
   const onClickSusbribeToPushNotification = () => {
+    if (!pushNotificationSupported) return;
     setLoading(true);
     setError(false);
     createNotificationSubscription()
@@ -87,16 +90,7 @@ export default function usePushNotifications() {
         setLoading(false);
       })
       .catch(err => {
-        console.error(
-          "Couldn't create the notification subscription",
-          err,
-          "name:",
-          err.name,
-          "message:",
-          err.message,
-          "code:",
-          err.code
-        );
+        console.error("Couldn't create the notification subscription", err, "name:", err.name, "message:", err.message, "code:", err.code);
         setError(err);
         setLoading(false);
       });
@@ -107,6 +101,7 @@ export default function usePushNotifications() {
    * Once the subscription ics created on the server, it saves the id using the hook setPushServerSubscriptionId
    */
   const onClickSendSubscriptionToPushServer = () => {
+    if (!pushNotificationSupported) return;
     setLoading(true);
     setError(false);
     http
@@ -123,6 +118,7 @@ export default function usePushNotifications() {
   };
 
   const updateSubscription = oldSub => {
+    if (!pushNotificationSupported) return;
     setLoading(true);
     setError(false);
     http
