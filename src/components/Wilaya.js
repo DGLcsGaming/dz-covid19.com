@@ -6,62 +6,54 @@ import { useTranslation } from "react-i18next";
 function normilize(val, max, min) {
   return (val - min) / (max - min);
 }
-
-function getGradientColor(start_color, end_color, percent) {
-  // strip the leading # if it's there
-  start_color = start_color.replace(/^\s*#|\s*$/g, "");
-  end_color = end_color.replace(/^\s*#|\s*$/g, "");
-
-  // convert 3 char codes --> 6, e.g. `E0F` --> `EE00FF`
-  if (start_color.length === 3) {
-    start_color = start_color.replace(/(.)/g, "$1$1");
+function hslToHex(value) {
+  // valueToHeatMap + hslToHex
+  var h = (1.0 - value) * 240;
+  var s = 100;
+  var l = 50;
+  h /= 360;
+  s /= 100;
+  l /= 100;
+  let r, g, b;
+  if (s === 0) {
+    r = g = b = l; // achromatic
+  } else {
+    const hue2rgb = (p, q, t) => {
+      if (t < 0) t += 1;
+      if (t > 1) t -= 1;
+      if (t < 1 / 6) return p + (q - p) * 6 * t;
+      if (t < 1 / 2) return q;
+      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+      return p;
+    };
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+    r = hue2rgb(p, q, h + 1 / 3);
+    g = hue2rgb(p, q, h);
+    b = hue2rgb(p, q, h - 1 / 3);
   }
-
-  if (end_color.length === 3) {
-    end_color = end_color.replace(/(.)/g, "$1$1");
-  }
-
-  // get colors
-  var start_red = parseInt(start_color.substr(0, 2), 16),
-    start_green = parseInt(start_color.substr(2, 2), 16),
-    start_blue = parseInt(start_color.substr(4, 2), 16);
-
-  var end_red = parseInt(end_color.substr(0, 2), 16),
-    end_green = parseInt(end_color.substr(2, 2), 16),
-    end_blue = parseInt(end_color.substr(4, 2), 16);
-
-  // calculate new color
-  var diff_red = end_red - start_red;
-  var diff_green = end_green - start_green;
-  var diff_blue = end_blue - start_blue;
-
-  diff_red = (diff_red * percent + start_red).toString(16).split(".")[0];
-  diff_green = (diff_green * percent + start_green).toString(16).split(".")[0];
-  diff_blue = (diff_blue * percent + start_blue).toString(16).split(".")[0];
-
-  // ensure 2 digits by color
-  if (diff_red.length === 1) diff_red = "0" + diff_red;
-  if (diff_green.length === 1) diff_green = "0" + diff_green;
-  if (diff_blue.length === 1) diff_blue = "0" + diff_blue;
-
-  return "#" + diff_red + diff_green + diff_blue;
+  const toHex = (x) => {
+    const hex = Math.round(x * 255).toString(16);
+    return hex.length === 1 ? "0" + hex : hex;
+  };
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 }
 
-const Wilaya = props => {
+const Wilaya = (props) => {
   const { t } = useTranslation();
   return (
     <Circle
       key={props.wilaya.code}
       center={{
         lat: props.wilaya.coordinates[0],
-        lng: props.wilaya.coordinates[1]
+        lng: props.wilaya.coordinates[1],
       }}
-      fillColor={getGradientColor("#ff6f00", "#FF0000", normilize(Math.log10(props.wilaya.confirmed), Math.log10(props.maxWilaya.confirmed), 0))}
-      color={getGradientColor("#ff6f00", "#FF0000", normilize(Math.log10(props.confirmed), Math.log10(props.maxWilaya.confirmed), 0))}
-      fillOpacity=".5"
-      opacity=".2"
+      fillColor={hslToHex(normilize(props.wilaya.confirmed, props.maxWilaya.confirmed, 0))}
+      color={"#000000"}
+      fillOpacity=".4"
+      opacity="0.05"
       className="mapCircle"
-      radius={(Math.log(props.wilaya.confirmed * 2) * 100000) / props.zoom}
+      radius={(Math.log(props.wilaya.confirmed) * 400000) / (Math.pow(2, props.zoom) / 2)}
       onclick={() => props.click(props.wilaya.code)}>
       <Popup>
         <div className="circlePopup">
