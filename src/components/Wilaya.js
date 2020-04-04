@@ -48,9 +48,9 @@ const Wilaya = (props) => {
         lat: props.wilaya.coordinates[0],
         lng: props.wilaya.coordinates[1],
       }}
-      fillColor={hslToHex(normilize(props.wilaya.confirmed, props.maxWilaya.confirmed, 0))}
-      color={"#000000"}
-      fillOpacity=".4"
+      fillColor={"#ff1900"}
+      color={"#ff2f00"}
+      fillOpacity=".3"
       opacity="0.05"
       className="mapCircle"
       radius={(Math.log(props.wilaya.confirmed) * 400000) / (Math.pow(2, props.zoom) / 2)}
