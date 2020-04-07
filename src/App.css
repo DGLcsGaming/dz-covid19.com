@@ -1008,6 +1008,7 @@ a:not([href]):not([tabindex]):focus {
 }
 
 .desktop .count-button-text {
+  white-space: nowrap;
   font-family: Tajawal, sans-serif !important;
   font-size: 22px;
   font-weight: 600;
@@ -1518,6 +1519,7 @@ a:not([href]):not([tabindex]):focus {
 }
 
 .mobile .count-button-text {
+  white-space: nowrap;
   font-family: Tajawal, sans-serif !important;
   font-size: 22px;
   font-weight: 600;
