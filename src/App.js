@@ -24,18 +24,25 @@ import Disclaimer from "./components/Disclaimer";
 import Faq from "./components/Faq";
 import "./material-expansion-panel.min.css";
 import Advices from "./components/Advices";
+import ReactGA from "react-ga";
 Modal.setAppElement("#root");
+
+function initializeReactGA() {
+  ReactGA.initialize("UA-162774407-1");
+  ReactGA.pageview("/homepage");
+}
 
 const socket =
   process.env.NODE_ENV === "production"
     ? openSocket("https://dz-covid19.com", { path: "/ws" })
     : openSocket("http://localhost:4001", { path: "/ws" });
+//const socket = openSocket("http://13.64.28.121", { transports: ["websocket"] });
 
 function App() {
   const { t, i18n } = useTranslation();
   const [isArabic, setIsArabic] = useState(true);
   const [globalState, setGlobalState] = useState({
-    selectedWilayaId: null
+    selectedWilayaId: null,
   });
   const [cookies, setCookie, removeCookie] = useCookies(["push_subscription"]);
 
@@ -46,7 +53,7 @@ function App() {
   const [isServerDown, setIsServerDown] = useState(false);
   const [navDrawerVisible, setNavDrawerVisible] = useState({
     opacity: 0,
-    display: "none"
+    display: "none",
   });
   const [modalIsOpen, setModalIsOpen] = useState(false);
   // Push Notifications
@@ -61,7 +68,7 @@ function App() {
     onClickSendNotification,
     error,
     loading,
-    updateSubscription
+    updateSubscription,
   } = usePushNotifications();
   var isConsentGranted;
   if (pushNotificationSupported) {
@@ -92,30 +99,33 @@ function App() {
   };
 
   useEffect(() => {
-    socket.io.on("connect_error", function() {
+    socket.io.on("connect_error", function () {
       console.log("Error connecting to Socket.io server");
       setIsServerDown(true);
     });
-    socket.on("connect", function() {
+    socket.on("connect", function () {
       console.log("Connected to Socket.io server");
       setIsServerDown(false);
     });
-    socket.on("currentStats", data => {
+    socket.on("currentStats", (data) => {
       console.log("CurrentStats Loaded!", new Date(Date.now()).toISOString());
       setCurrentStats(data);
     });
-    socket.on("dailyStats", data => {
+    socket.on("dailyStats", (data) => {
       console.log("Daily Loaded!", new Date(Date.now()).toISOString());
       setDailyStats(data);
     });
-    socket.on("wilayas", data => {
+    socket.on("wilayas", (data) => {
       console.log("Wilayas Loaded!", new Date(Date.now()).toISOString());
       setWilayas(data);
     });
-    socket.on("clientscount", data => {
-      console.log("Clients Online: " + data);
+    socket.on("clientscount", (data) => {
+      console.log("Clients Online[SV1]: " + data);
     });
-    i18n.on("languageChanged", lng => {
+    socket.on("clientscount2", (data) => {
+      console.log("Clients Online[SV2]: " + data);
+    });
+    i18n.on("languageChanged", (lng) => {
       if (lng === "Ar") {
         setIsArabic(true);
       } else {
@@ -129,6 +139,7 @@ function App() {
       socket.off("dailyStats");
       socket.off("wilayas");
       socket.off("clientscount");
+      socket.off("clientscount2");
       i18n.off("languageChanged");
     };
   }, []);
@@ -156,7 +167,7 @@ function App() {
           setCookie("push_subscription", pushServerSubscriptionId, {
             path: "/",
             expires: d,
-            sameSite: "lax"
+            sameSite: "lax",
           });
           console.log("You can send Push notifications now!: " + pushServerSubscriptionId);
         } else {
@@ -236,7 +247,7 @@ function App() {
                         style={{
                           overlay: {
                             backgroundColor: "rgba(0, 0, 0, 0.75)",
-                            zIndex: 99999
+                            zIndex: 99999,
                           },
                           content: {
                             top: "25%",
@@ -244,8 +255,8 @@ function App() {
                             right: "auto",
                             bottom: "auto",
                             marginRight: "-50%",
-                            transform: "translate(-50%, -50%)"
-                          }
+                            transform: "translate(-50%, -50%)",
+                          },
                         }}
                         contentLabel="Notification">
                         {pushNotificationSupported && pushServerSubscriptionId && cookies.push_subscription ? (
@@ -255,14 +266,14 @@ function App() {
                             <div
                               style={{
                                 display: "flex",
-                                justifyContent: "center"
+                                justifyContent: "center",
                               }}>
                               <Bell
                                 height="25px"
                                 width="25px"
                                 style={{
                                   fill: "#38a169",
-                                  margin: "0 auto"
+                                  margin: "0 auto",
                                 }}
                               />
                             </div>
