@@ -24,13 +24,7 @@ import Disclaimer from "./components/Disclaimer";
 import Faq from "./components/Faq";
 import "./material-expansion-panel.min.css";
 import Advices from "./components/Advices";
-import ReactGA from "react-ga";
 Modal.setAppElement("#root");
-
-ReactGA.initialize("UA-162774407-1");
-ReactGA.set({
-  userId: auth.currentUserId(),
-});
 
 const socket =
   process.env.NODE_ENV === "production"
