@@ -969,7 +969,71 @@ a:not([href]):not([tabindex]):focus {
   top: 12px;
   transform: rotate(45deg);
 }
+.desktop .count-button {
+  z-index: 400;
+  position: absolute;
+  top: 125px;
+  left: 316px;
+  transition: all 0.2s ease-in-out;
+  -webkit-appearance: none;
+  text-decoration: none;
+  border-radius: 0 20px 20px 0px;
+  font-family: inherit;
+  background: #fff;
+  display: flex;
+  color: #fff;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 0.8rem;
+}
+.desktop .count-button-icon-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+.desktop .count-button-icon-text {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 15px;
+  color: #de3700;
+}
+.desktop .count-button-icon {
+  height: 15px;
+  width: 15px;
+  margin: 0 0.3rem;
+  fill: #de3700;
+}
 
+.desktop .count-button-text {
+  font-family: Tajawal, sans-serif !important;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 22px;
+  color: #de3700;
+}
+
+.desktop .count-button:hover {
+  transform: translateY(-2px);
+}
+.desktop .count-button:active {
+  transform: translateY(0);
+}
+
+.desktop .count-button:before {
+  animation: countpulse 2s ease infinite;
+  border-radius: 0 20px 20px 0px;
+  position: absolute;
+  background: #fff;
+  content: "";
+  z-index: -1;
+  bottom: 0px;
+  right: 0;
+  left: 0;
+  top: 0;
+}
 /* Mobile CSS*/
 
 .mobile {
@@ -1139,7 +1203,7 @@ a:not([href]):not([tabindex]):focus {
   width: 100%;
   margin: 0;
   padding: 5px;
-  background-color: #edf2f7;
+  background-color: #fff;
   text-align: left;
   padding-right: 2em;
   border-radius: 0px 10px 10px 0px;
@@ -1171,6 +1235,7 @@ a:not([href]):not([tabindex]):focus {
 .desktop .select-box__input-text svg {
   width: 3.5em;
   margin: 2px 5px 0px 5px;
+  box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .desktop .select-box__list svg {
   width: 4em;
@@ -1261,6 +1326,7 @@ a:not([href]):not([tabindex]):focus {
 .mobile .select-box__input-text svg {
   width: 24px;
   margin: 2px 5px 0px 5px;
+  box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .mobile .select-box__list svg {
   width: 28px;
@@ -1411,4 +1477,83 @@ a:not([href]):not([tabindex]):focus {
   right: -24px;
   top: 9px;
   transform: rotate(-45deg);
+}
+.mobile .count-button {
+  z-index: 99;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.2s ease-in-out;
+  -webkit-appearance: none;
+  text-decoration: none;
+  border-radius: 0 0 20px 20px;
+  font-family: inherit;
+  background: #fff;
+  display: flex;
+  color: #fff;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 0.8rem;
+}
+.mobile .count-button-icon-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+.mobile .count-button-icon-text {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 15px;
+  color: #de3700;
+}
+.mobile .count-button-icon {
+  height: 15px;
+  width: 15px;
+  margin: 0 0.3rem;
+  fill: #de3700;
+}
+
+.mobile .count-button-text {
+  font-family: Tajawal, sans-serif !important;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 22px;
+  color: #de3700;
+}
+
+.mobile .count-button:hover {
+  transform: translateY(-2px);
+}
+.mobile .count-button:active {
+  transform: translateY(0);
+}
+
+.mobile .count-button:before {
+  animation: countpulse 2s ease infinite;
+  border-radius: 0 0 20px 20px;
+  position: absolute;
+  background: #fff;
+  content: "";
+  z-index: -1;
+  bottom: 0px;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
+@keyframes countpulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1.2, 1.4);
+    opacity: 0;
+  }
 }

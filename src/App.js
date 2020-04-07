@@ -24,6 +24,7 @@ import Disclaimer from "./components/Disclaimer";
 import Faq from "./components/Faq";
 import "./material-expansion-panel.min.css";
 import Advices from "./components/Advices";
+import UsersCount from "./components/UsersCount";
 Modal.setAppElement("#root");
 
 const socket =
@@ -45,6 +46,7 @@ function App() {
   const [dailyStats, setDailyStats] = useState(null);
   const [wilayas, setWilayas] = useState(null);
   const [isServerDown, setIsServerDown] = useState(false);
+  const [userCount, setUserCount] = useState(0);
   const [navDrawerVisible, setNavDrawerVisible] = useState({
     opacity: 0,
     display: "none",
@@ -114,7 +116,8 @@ function App() {
       setWilayas(data);
     });
     socket.on("clientscount", (data) => {
-      console.log("Clients Online[SV1]: " + data);
+      console.log("Connected: " + data);
+      setUserCount(data);
     });
     socket.on("clientscount2", (data) => {
       console.log("Clients Online[SV2]: " + data);
@@ -228,6 +231,7 @@ function App() {
                           </Switch>
                         )}
                       </div>
+                      <UsersCount count={userCount} />
                       {pushNotificationSupported && (
                         <GetNotifiedButton
                           click={() => setModalIsOpen(true)}

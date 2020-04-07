@@ -9,7 +9,7 @@ import { ReactComponent as Loading } from "../Icons/Loading.svg";
 import LanguageDropdown from "./LanguageDropdown";
 import Beta from "./Beta";
 
-const CountryTab = props => {
+const CountryTab = (props) => {
   const [wilayas, setWilayas] = useContext(wilayasContext);
   const [currentStats, setCurrentStats] = useContext(currentStatsContext);
   const [dailyStats, setDailyStats] = useContext(dailyStatsContext);
