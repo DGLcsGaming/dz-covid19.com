@@ -580,6 +580,26 @@ a:not([href]):not([tabindex]):focus {
   font-weight: 600;
   font-size: 20px;
 }
+.recovered-difference {
+  color: #38a169;
+  padding-right: 0.3rem;
+  font-weight: 600;
+  font-size: 16px;
+  align-self: baseline;
+  position: absolute;
+  top: -5px;
+  right: 0px;
+}
+.deaths-difference {
+  color: #718096;
+  padding-right: 0.3rem;
+  font-weight: 600;
+  font-size: 16px;
+  align-self: baseline;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
 .change {
   position: relative;
   left: -3px;

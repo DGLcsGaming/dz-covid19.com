@@ -5,24 +5,17 @@ import Odometer from "react-odometerjs";
 import { useTranslation } from "react-i18next";
 
 const calcPercentage = (currentStats, dailyStats) => {
-  var today, yesterday;
-  today = parseInt(currentStats.confirmed);
+  var yesterday;
   var yesDate = new Date();
   yesDate.setUTCHours(0, 0, 0, 0);
   yesDate.setDate(yesDate.getDate() - 1);
-  yesterday = dailyStats.find(day => {
+  yesterday = dailyStats.find((day) => {
     return day.date === yesDate.toISOString();
   });
   if (yesterday) {
-    return [
-      Math.floor(
-        Math.round(((today - yesterday.confirmed) / yesterday.confirmed) * 100)
-      ),
-      today,
-      yesterday.confirmed
-    ];
+    return [Math.floor(Math.round(((currentStats.confirmed - yesterday.confirmed) / yesterday.confirmed) * 100)), yesterday];
   } else {
-    return [null, null, null];
+    return [null, null];
   }
 };
 
@@ -31,10 +24,7 @@ function InfoTile() {
   const [currentStats, setCurrentStats] = useContext(currentStatsContext);
   const [dailyStats, setDailyStats] = useContext(dailyStatsContext);
 
-  const [growthPercentage, today, yesterday] = useMemo(
-    () => calcPercentage(currentStats, dailyStats),
-    [currentStats, dailyStats]
-  );
+  const [growthPercentage, yesterday] = useMemo(() => calcPercentage(currentStats, dailyStats), [currentStats, dailyStats]);
 
   return (
     <div className="infoTile">
@@ -55,7 +45,7 @@ function InfoTile() {
             <img className="svg-filter-red" src="./img/high.svg" />
             <div className="change text-center red">
               <span className="difference">
-                +<Odometer value={today - yesterday} format="d" />
+                +<Odometer value={currentStats.confirmed - yesterday.confirmed} format="d" />
               </span>
               &nbsp; (
               <Odometer value={growthPercentage} format="d" />
@@ -76,8 +66,11 @@ function InfoTile() {
             <span className="mx-2 active">{t("General.Active")}</span>
           </div>
         </div>
-        <div className="w-1/2 mx-2 flex flex-col rounded overflow-hidden statshadow text-center text-green-600">
+        <div className="w-1/2 mx-2 flex flex-col rounded overflow-hidden statshadow text-center text-green-600" style={{ position: "relative" }}>
           <div className="h-16 pt-2 flex flex-auto items-center justify-center bg-green-100 text-xxl font-bold font-sans">
+            <div className="recovered-difference">
+              +<Odometer value={currentStats.recovered - yesterday.recovered} format="d" />
+            </div>
             <span className="mx-2">
               <Odometer value={currentStats.recovered} format="(,ddd)" />
             </span>
@@ -86,8 +79,11 @@ function InfoTile() {
             <span className="mx-2 recovered">{t("General.Recovered")}</span>
           </div>
         </div>
-        <div className="w-1/3 flex flex-col rounded overflow-hidden statshadow text-center text-gray-600">
-          <div className="h-16 pt-2 flex flex-auto items-center justify-center bg-gray-200 text-xl lg:text-3xl font-bold font-sans">
+        <div className="w-1/3 flex flex-col rounded overflow-hidden statshadow text-center text-gray-600" style={{ position: "relative" }}>
+          <div className="h-16 pt-2 flex flex-auto items-center justify-center bg-gray-200 text-xl font-bold font-sans">
+            <div className="deaths-difference">
+              +<Odometer value={currentStats.deaths - yesterday.deaths} format="d" />
+            </div>
             <span className="mx-2">
               <Odometer value={currentStats.deaths} format="(,ddd)" />
             </span>
