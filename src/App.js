@@ -27,10 +27,10 @@ import Advices from "./components/Advices";
 import ReactGA from "react-ga";
 Modal.setAppElement("#root");
 
-function initializeReactGA() {
-  ReactGA.initialize("UA-162774407-1");
-  ReactGA.pageview("/homepage");
-}
+ReactGA.initialize("UA-162774407-1");
+ReactGA.set({
+  userId: auth.currentUserId(),
+});
 
 const socket =
   process.env.NODE_ENV === "production"
