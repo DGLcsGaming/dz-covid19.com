@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, Fragment, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import "./odometer-theme-default.css";
 import "./App.css";
 import "./flickity.css";
@@ -12,14 +12,14 @@ import { dailyStatsContext } from "./contexts/dailyStatsContext";
 import { globalContext } from "./contexts/globalContext";
 import useWindowDimensions from "./hooks/useWindowDimensions";
 import openSocket from "socket.io-client";
-import { CookiesProvider } from "react-cookie";
-import { useCookies } from "react-cookie";
+import CookiesProvider from "react-cookie/lib/CookiesProvider";
+import useCookies from "react-cookie/lib/useCookies";
 import usePushNotifications from "./hooks/usePushNotifications";
 import Modal from "react-modal";
 import GetNotifiedButton from "./components/GetNotifiedButton";
 import { ReactComponent as Bell } from "./Icons/Bell.svg";
 import { useTranslation } from "react-i18next";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Disclaimer from "./components/Disclaimer";
 import Faq from "./components/Faq";
 import "./material-expansion-panel.min.css";
@@ -183,7 +183,7 @@ function App() {
   if (!isServerDown) {
     content = (
       <CookiesProvider>
-        <Router>
+        <BrowserRouter>
           <div className={isArabic ? "App arabic" : "App nonarabic"}>
             <globalContext.Provider value={[globalState, setGlobalState]}>
               <currentStatsContext.Provider value={[currentStats, setCurrentStats]}>
@@ -298,7 +298,7 @@ function App() {
               </currentStatsContext.Provider>
             </globalContext.Provider>
           </div>
-        </Router>
+        </BrowserRouter>
       </CookiesProvider>
     );
   } else if (isServerDown) {
