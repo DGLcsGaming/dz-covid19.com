@@ -178,6 +178,9 @@ function App() {
     }
   }, [cookies, loading, isConsentGranted, userSubscription, pushServerSubscriptionId]);
 
+  useEffect(() => {
+    alert("الموقع يتعرض لضغط كبير الآن, سيتم إصلاح المشكل بعد قليل, نعتذر عن ذلك");
+  }, []);
   var content;
 
   if (!isServerDown) {
