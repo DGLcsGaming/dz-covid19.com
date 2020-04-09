@@ -11,7 +11,6 @@ import { currentStatsContext } from "./contexts/currentStatsContext";
 import { dailyStatsContext } from "./contexts/dailyStatsContext";
 import { globalContext } from "./contexts/globalContext";
 import useWindowDimensions from "./hooks/useWindowDimensions";
-import openSocket from "socket.io-client";
 import CookiesProvider from "react-cookie/lib/CookiesProvider";
 import useCookies from "react-cookie/lib/useCookies";
 import usePushNotifications from "./hooks/usePushNotifications";
@@ -25,15 +24,25 @@ import Faq from "./components/Faq";
 import "./material-expansion-panel.min.css";
 import Advices from "./components/Advices";
 import UsersCount from "./components/UsersCount";
+import openSocket from "socket.io-client";
+import Axios from "axios";
 Modal.setAppElement("#root");
 
-/* const socket =
-  process.env.NODE_ENV === "production"
-    ? openSocket("https://server2.dz-covid19.com", { path: "/ws"})
-    : openSocket("http://localhost:4001", { path: "/ws" }); */
-const socket = openSocket("https://server2.dz-covid19.com", { path: "/ws", transports: ["websocket"] });
+/* if (process.env.NODE_ENV === "production") {
+    socket = openSocket("https://server2.dz-covid19.com", { path: "/ws", transports: ["websocket"] });
+} else {
+    socket = openSocket("http://localhost:4001", { path: "/ws" });
+} 
+
+socket = openSocket("https://dz-covid19.com", { path: "/ws" });
+socket = openSocket("https://server2.dz-covid19.com", { path: "/ws", transports: ["websocket"] });
+*/
+var socket;
+
+//socket = openSocket("https://dz-covid19.com", { path: "/ws" });
 
 function App() {
+  const [currentServer, setCurrentServer] = useState();
   const { t, i18n } = useTranslation();
   const [isArabic, setIsArabic] = useState(true);
   const [globalState, setGlobalState] = useState({
@@ -95,8 +104,37 @@ function App() {
   };
 
   useEffect(() => {
-    socket.io.on("connect_error", function () {
-      console.log("Error connecting to Socket.io server");
+    console.log("Selecting server..");
+    i18n.on("languageChanged", (lng) => {
+      if (lng === "Ar") {
+        setIsArabic(true);
+      } else {
+        setIsArabic(false);
+      }
+    });
+    Axios.get("https://dz-covid19.com/api/whichserver", {
+      headers: { "x-access-token": process.env.REACT_APP_API_KEY },
+    })
+      .then((data) => data.data.data.server)
+      .then((server) => {
+        if (server === 1) {
+          socket = openSocket("https://dz-covid19.com", { path: "/ws" });
+          setCurrentServer(1);
+        } else if (server === 2) {
+          socket = openSocket("https://server2.dz-covid19.com", { path: "/ws", transports: ["websocket"] });
+          setCurrentServer(2);
+        }
+      });
+    return () => {
+      i18n.off("languageChanged");
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!currentServer) return;
+    console.log("Connecting to Server #" + currentServer);
+    socket.io.on("connect_error", function (error) {
+      console.log("Error connecting to Socket.io server: " + JSON.stringify(error));
       setIsServerDown(true);
     });
     socket.on("connect", function () {
@@ -116,20 +154,28 @@ function App() {
       setWilayas(data);
     });
     socket.on("clientscount", (data) => {
-      console.log("Connected: " + data);
-      //setUserCount(data);
-    });
-    socket.on("clientscount2", (data) => {
-      console.log("Clients Online[SV2]: " + data);
+      console.log("Online[SV1]: " + data);
       setUserCount(data);
     });
-    i18n.on("languageChanged", (lng) => {
-      if (lng === "Ar") {
-        setIsArabic(true);
-      } else {
-        setIsArabic(false);
+    socket.on("clientscount2", (data) => {
+      console.log("Online[SV2]: " + data);
+      setUserCount(data);
+    });
+    socket.on("whichserver", (server) => {
+      console.log(currentServer, server);
+      if (currentServer !== server) {
+        if (server === 1) {
+          socket.disconnect();
+          socket = openSocket("https://dz-covid19.com", { path: "/ws" });
+          setCurrentServer(server);
+        } else if (server === 2) {
+          socket.disconnect();
+          socket = openSocket("https://server2.dz-covid19.com", { path: "/ws", transports: ["websocket"] });
+          setCurrentServer(server);
+        }
       }
     });
+
     return () => {
       socket.io.off("connect_error");
       socket.off("connect");
@@ -138,9 +184,8 @@ function App() {
       socket.off("wilayas");
       socket.off("clientscount");
       socket.off("clientscount2");
-      i18n.off("languageChanged");
     };
-  }, []);
+  }, [currentServer]);
 
   const handleSubscribeButtonYes = () => {
     onClickAskUserPermission();
