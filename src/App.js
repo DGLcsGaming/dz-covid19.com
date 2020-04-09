@@ -27,11 +27,11 @@ import Advices from "./components/Advices";
 import UsersCount from "./components/UsersCount";
 Modal.setAppElement("#root");
 
-const socket =
+/* const socket =
   process.env.NODE_ENV === "production"
-    ? openSocket("https://dz-covid19.com", { path: "/ws" })
-    : openSocket("http://localhost:4001", { path: "/ws" });
-//const socket = openSocket("http://13.64.28.121", { transports: ["websocket"] });
+    ? openSocket("https://server2.dz-covid19.com", { path: "/ws"})
+    : openSocket("http://localhost:4001", { path: "/ws" }); */
+const socket = openSocket("https://server2.dz-covid19.com", { path: "/ws", transports: ["websocket"] });
 
 function App() {
   const { t, i18n } = useTranslation();
