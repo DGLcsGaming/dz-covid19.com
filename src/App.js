@@ -117,10 +117,11 @@ function App() {
     });
     socket.on("clientscount", (data) => {
       console.log("Connected: " + data);
-      setUserCount(data);
+      //setUserCount(data);
     });
     socket.on("clientscount2", (data) => {
       console.log("Clients Online[SV2]: " + data);
+      setUserCount(data);
     });
     i18n.on("languageChanged", (lng) => {
       if (lng === "Ar") {
