@@ -162,7 +162,6 @@ function App() {
       setUserCount(data);
     });
     socket.on("whichserver", (server) => {
-      console.log(currentServer, server);
       if (currentServer !== server) {
         if (server === 1) {
           socket.disconnect();
