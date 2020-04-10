@@ -992,7 +992,7 @@ a:not([href]):not([tabindex]):focus {
 .desktop .count-button {
   z-index: 400;
   position: absolute;
-  top: 125px;
+  top: 75px;
   left: 316px;
   transition: all 0.2s ease-in-out;
   -webkit-appearance: none;
@@ -1036,13 +1036,6 @@ a:not([href]):not([tabindex]):focus {
   color: #de3700;
 }
 
-.desktop .count-button:hover {
-  transform: translateY(-2px);
-}
-.desktop .count-button:active {
-  transform: translateY(0);
-}
-
 .desktop .count-button:before {
   animation: countpulse 2s ease infinite;
   border-radius: 0 20px 20px 0px;
@@ -1054,6 +1047,33 @@ a:not([href]):not([tabindex]):focus {
   right: 0;
   left: 0;
   top: 0;
+}
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  border-collapse: collapse;
+  box-sizing: border-box;
+  margin-top: 1em;
+}
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+  padding: 0.25rem;
+}
+.table td {
+  padding: 0.5rem;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+}
+.table td,
+.table th {
+  padding: 0.3rem;
+  vertical-align: top;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 /* Mobile CSS*/
 
@@ -1089,7 +1109,7 @@ a:not([href]):not([tabindex]):focus {
 }
 .mobile .pullbar {
   height: 5px;
-  width: 75px;
+  width: 95px;
   background-color: #c4c4c4;
   border-radius: 100px;
   position: relative;
@@ -1120,8 +1140,10 @@ a:not([href]):not([tabindex]):focus {
 .navdrawer-container {
   will-change: transform;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   position: fixed;
-  height: 100vh;
+  height: 100%;
   width: 70vw;
   top: 0;
   right: 0;
@@ -1145,11 +1167,19 @@ a:not([href]):not([tabindex]):focus {
   z-index: 99998;
   transition: opacity 0.3s ease-in-out;
 }
-.mobile .navbar-items,
+
+.mobile .navbar-items {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 .mobile .navbar-nav {
   flex-direction: column;
   align-items: center;
+  flex: 1;
 }
+
 .desktop .signature {
   display: none;
 }
@@ -1175,7 +1205,7 @@ a:not([href]):not([tabindex]):focus {
 
 .desktop .select-box {
   position: fixed;
-  top: 75px;
+  top: 155px;
   left: 316px;
   display: block;
   margin: 0 auto;
@@ -1432,6 +1462,10 @@ a:not([href]):not([tabindex]):focus {
 .nonarabic {
   font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
 }
+.justify {
+  text-align: justify;
+  text-justify: inter-word;
+}
 .rtl {
   text-align: right;
   direction: rtl;
@@ -1499,14 +1533,92 @@ a:not([href]):not([tabindex]):focus {
   top: 9px;
   transform: rotate(-45deg);
 }
+.desktop .donations-container {
+  position: absolute;
+  top: 115px;
+  left: 316px;
+  height: 35px;
+  box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+  -webkit-appearance: none;
+  text-decoration: none;
+  border-radius: 0px 20px 20px 0;
+  font-family: inherit;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 0.8rem;
+  cursor: pointer;
+}
+.desktop .donations-container:before {
+  animation: countpulse 2s ease infinite;
+  border-radius: 0 20px 20px 0px;
+  position: absolute;
+  background: #fff;
+  content: "";
+  z-index: -1;
+  bottom: 0px;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
+.mobile .donations-container {
+  z-index: 99;
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  height: 35px;
+  box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.1);
+  transform: translateX(-50%);
+  transition: all 0.2s ease-in-out;
+  -webkit-appearance: none;
+  text-decoration: none;
+  border-radius: 20px 20px 0 0;
+  font-family: inherit;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 0.8rem;
+  cursor: pointer;
+}
+.donations-text {
+  font-weight: 600;
+  color: #de3700;
+}
+.modalDonationsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 1em;
+}
+.CCP {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.CCP img {
+  height: 80px;
+}
+.paypal {
+  align-self: center;
+}
+.paypal-image {
+  align-self: center;
+  height: 57px;
+  width: 100%;
+  padding: 0.5em 5em;
+}
 .mobile .count-button {
   z-index: 99;
   position: absolute;
   top: 0px;
   left: 50%;
   transform: translateX(-50%);
-  transition: all 0.2s ease-in-out;
-  -webkit-appearance: none;
   text-decoration: none;
   border-radius: 0 0 20px 20px;
   font-family: inherit;

@@ -24,6 +24,23 @@
     "Disclaimer": "Avertissement",
     "Advices": "Conseils"
   },
+  "Visitors": {
+    "visitors": "VISITEURS"
+  },
+  "Donations": {
+    "donatenow": "Faire un Don!",
+    "Description": "Avec le nombre grandissant d’utilisateurs, le prix d’hébergement devient de plus en plus dure à supporter, surtout pour un étudiant. Afin de nous permettre de pérenniser ce projet, nous comptons sur votre contribution.",
+    "Thanks": "MERCI !",
+    "Close": "Fermer",
+    "CCP_RIP_TITLE": "RIP",
+    "CCP_RIP_VALUE": "00799999002094707349",
+    "CCP_NUMKEY_TITLE": "CCP / Clé",
+    "CCP_NUMKEY_VALUE": "0020947073 / 49",
+    "CCP_NAME_TITLE": "Prénom",
+    "CCP_NAME_VALUE": "FAISAL",
+    "CCP_LASTNAME_TITLE": "Nom",
+    "CCP_LASTNAME_VALUE": "GHOUL"
+  },
   "Disclaimer": {
     "1": "الموقع هو مجرد مشروع خيري غير ربحي هدفه الوحيد التوعية لمواجهة وباء كورونا",
     "2": "جميع الإحصائيات المتواجدة في الموقع مأخوذة مباشرة بدون أي تغييرات من وزارة الصحة",

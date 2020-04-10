@@ -1,11 +1,13 @@
 import React from "react";
 import Odometer from "react-odometerjs";
+import { useTranslation } from "react-i18next";
 
 const UsersCount = (props) => {
+  const { t, i18n } = useTranslation();
   return (
     <div className="count-button">
       <div className="count-button-icon-container">
-        <span className="count-button-icon-text">زوار</span>
+        <span className="count-button-icon-text">{t("Visitors.visitors")}</span>
         <svg
           aria-hidden="true"
           focusable="false"

@@ -33,6 +33,23 @@
   "Beta": {
     "Beta": "BETA"
   },
+  "Visitors": {
+    "visitors": "VISITORS"
+  },
+  "Donations": {
+    "donatenow": "Donate Now!",
+    "Description": "As the number of people using this website grows, it gets quite expensive to pay for the hosting. Also as i'm a student, donations are the only way to keep this project alive.",
+    "Thanks": "THANK YOU!",
+    "Close": "Close",
+    "CCP_RIP_TITLE": "RIP",
+    "CCP_RIP_VALUE": "00799999002094707349",
+    "CCP_NUMKEY_TITLE": "CCP / Key",
+    "CCP_NUMKEY_VALUE": "0020947073 / 49",
+    "CCP_NAME_TITLE": "Name",
+    "CCP_NAME_VALUE": "FAISAL",
+    "CCP_LASTNAME_TITLE": "L. Name",
+    "CCP_LASTNAME_VALUE": "GHOUL"
+  },
   "Faq": [
     {
       "Title": "ما هو فيروس (كورونا) COVID-19؟",
