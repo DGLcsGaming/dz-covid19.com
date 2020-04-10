@@ -112,19 +112,24 @@ function App() {
         setIsArabic(false);
       }
     });
-    Axios.get("https://dz-covid19.com/api/whichserver", {
-      headers: { "x-access-token": process.env.REACT_APP_API_KEY },
-    })
-      .then((data) => data.data.data.server)
-      .then((server) => {
-        if (server === 1) {
-          socket = openSocket("https://dz-covid19.com", { path: "/ws" });
-          setCurrentServer(1);
-        } else if (server === 2) {
-          socket = openSocket("https://server2.dz-covid19.com", { path: "/ws", transports: ["websocket"] });
-          setCurrentServer(2);
-        }
-      });
+    if (process.env.NODE_ENV === "production") {
+      Axios.get("https://dz-covid19.com/api/whichserver", {
+        headers: { "x-access-token": process.env.REACT_APP_API_KEY },
+      })
+        .then((data) => data.data.data.server)
+        .then((server) => {
+          if (server === 1) {
+            socket = openSocket("https://dz-covid19.com", { path: "/ws" });
+            setCurrentServer(1);
+          } else if (server === 2) {
+            socket = openSocket("https://server2.dz-covid19.com", { path: "/ws", transports: ["websocket"] });
+            setCurrentServer(2);
+          }
+        });
+    } else {
+      socket = openSocket("http://localhost:4001", { path: "/ws" });
+      setCurrentServer(1);
+    }
     return () => {
       i18n.off("languageChanged");
     };

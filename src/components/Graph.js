@@ -13,20 +13,16 @@ function Graph() {
     labels: [t("General.Active"), t("General.Recovered"), t("General.Deaths")],
     datasets: [
       {
-        data: [
-          currentStats.active,
-          currentStats.recovered,
-          currentStats.deaths
-        ],
+        data: [currentStats.active, currentStats.recovered, currentStats.deaths],
         backgroundColor: ["#eeb34e", "#38a169", "#718096"],
-        hoverBackgroundColor: ["#eeb34e", "#38a169", "#718096"]
-      }
-    ]
+        hoverBackgroundColor: ["#eeb34e", "#38a169", "#718096"],
+      },
+    ],
   };
   // Preparing data
   const labels = [];
   const data = [];
-  dailyStats.forEach(day => {
+  dailyStats.forEach((day) => {
     var customDate = new Date(day.date);
     labels.push(customDate.getMonth() + 1 + "-" + customDate.getDate());
     data.push(day.confirmed);
@@ -54,9 +50,9 @@ function Graph() {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data
-      }
-    ]
+        data,
+      },
+    ],
   };
   return (
     <div className="graph">
@@ -67,7 +63,7 @@ function Graph() {
           autoPlay: 3000,
           pauseAutoPlayOnHover: true,
           selectedAttraction: 0.2,
-          friction: 0.8
+          friction: 0.8,
         }}>
         <div className="slider-item">
           <div className="title text-center">{t("Graph.Daily")}</div>
@@ -81,11 +77,11 @@ function Graph() {
                     ticks: {
                       autoSkip: true,
                       maxRotation: 90,
-                      minRotation: 0
-                    }
-                  }
-                ]
-              }
+                      minRotation: 0,
+                    },
+                  },
+                ],
+              },
             }}
             legend={{ display: false }}
           />
@@ -97,64 +93,42 @@ function Graph() {
             options={{
               responsive: true,
               legend: {
-                position: "bottom"
+                position: "bottom",
               },
               title: {
                 display: false,
-                text: ""
+                text: "",
               },
               animation: {
                 animateScale: true,
-                animateRotate: true
+                animateRotate: true,
               },
               tooltips: {
                 callbacks: {
-                  label: function(tooltipItem, data) {
+                  label: function (tooltipItem, data) {
                     var dataset = data.datasets[tooltipItem.datasetIndex];
-                    var total = dataset.data.reduce(function(
-                      previousValue,
-                      currentValue,
-                      currentIndex,
-                      array
-                    ) {
+                    var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
                       return previousValue + currentValue;
                     });
                     var currentValue = dataset.data[tooltipItem.index];
-                    var percentage = Math.floor(
-                      (currentValue / total) * 100 + 0.5
-                    );
+                    var percentage = Math.floor((currentValue / total) * 100 + 0.5);
                     switch (tooltipItem.index) {
                       case 0:
-                        return (
-                          currentValue +
-                          ` ${t("General.Active")} (` +
-                          percentage +
-                          "%)"
-                        );
+                        return currentValue + ` ${t("General.Active")} (` + percentage + "%)";
                       case 1:
-                        return (
-                          currentValue +
-                          ` ${t("General.Recovered")} (` +
-                          percentage +
-                          "%)"
-                        );
+                        return currentValue + ` ${t("General.Recovered")} (` + percentage + "%)";
                       case 2:
-                        return (
-                          currentValue +
-                          ` ${t("General.Deaths")} (` +
-                          percentage +
-                          "%)"
-                        );
+                        return currentValue + ` ${t("General.Deaths")} (` + percentage + "%)";
                       default:
                         return currentValue + " (" + percentage + "%)";
                     }
-                  }
-                }
-              }
+                  },
+                },
+              },
             }}
             data={infoTileData}
             height={100}
-            legend={{ display: false }}
+            legend={{ display: true }}
           />
         </div>
       </Flickity>
