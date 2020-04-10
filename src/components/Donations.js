@@ -79,7 +79,7 @@ const Donations = (props) => {
               <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                 <input type="hidden" name="cmd" value="_donations" />
                 <input type="hidden" name="business" value="med.l.red@me.com" />
-                <input type="hidden" name="currency_code" value="USD" />
+                <input type="hidden" name="currency_code" value="EUR" />
                 <input
                   type="image"
                   src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"

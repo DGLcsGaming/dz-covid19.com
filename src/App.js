@@ -38,7 +38,6 @@ socket = openSocket("https://dz-covid19.com", { path: "/ws" });
 socket = openSocket("https://server2.dz-covid19.com", { path: "/ws", transports: ["websocket"] });
 */
 var socket;
-
 //socket = openSocket("https://dz-covid19.com", { path: "/ws" });
 
 function App() {
@@ -112,6 +111,7 @@ function App() {
         setIsArabic(false);
       }
     });
+
     if (process.env.NODE_ENV === "production") {
       Axios.get("https://dz-covid19.com/api/whichserver", {
         headers: { "x-access-token": process.env.REACT_APP_API_KEY },
@@ -167,6 +167,7 @@ function App() {
       setUserCount(data);
     });
     socket.on("whichserver", (server) => {
+      console.log("Which Server!");
       if (currentServer !== server) {
         if (server === 1) {
           socket.disconnect();
@@ -188,9 +189,9 @@ function App() {
       socket.off("wilayas");
       socket.off("clientscount");
       socket.off("clientscount2");
+      socket.off("whichserver");
     };
   }, [currentServer]);
-
   const handleSubscribeButtonYes = () => {
     onClickAskUserPermission();
   };
