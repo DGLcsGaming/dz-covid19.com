@@ -15,6 +15,9 @@ const Donations = (props) => {
         setIsArabic(false);
       }
     });
+    return () => {
+      i18n.off();
+    };
   });
   return (
     <div>
@@ -74,7 +77,7 @@ const Donations = (props) => {
                 </tr>
               </tbody>
             </table>
-            <img className="paypal-image" src={`${process.env.PUBLIC_URL}/img/paypal.png`} />
+            {/*  <img className="paypal-image" src={`${process.env.PUBLIC_URL}/img/paypal.png`} />
             <div className="paypal">
               <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                 <input type="hidden" name="cmd" value="_donations" />
@@ -90,7 +93,7 @@ const Donations = (props) => {
                 />
                 <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
               </form>
-            </div>
+            </div> */}
           </div>
           <div className="modalButtonsContainer">
             <button className="yes" onClick={() => setModalIsOpen(false)}>

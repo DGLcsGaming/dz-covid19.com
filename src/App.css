@@ -129,13 +129,10 @@ a:not([href]):not([tabindex]):focus {
   display: flex;
   font-size: 18px;
   font-weight: 600;
-  line-height: 24px;
-  padding-bottom: 5px;
-  margin-bottom: 5px;
+  line-height: 19px;
   white-space: pre;
   justify-content: center;
   align-items: center;
-  border-bottom: #ddd 1px solid;
 }
 .pageName > a {
   margin-right: 0.7rem;
@@ -178,6 +175,10 @@ a:not([href]):not([tabindex]):focus {
   color: #de3700;
   font-weight: bold;
   line-height: 40px;
+}
+.infoTile {
+  border-top: #ddd 1px solid;
+  padding-top: 10px;
 }
 .country .legend {
   padding-top: 12px;
@@ -1075,8 +1076,20 @@ a:not([href]):not([tabindex]):focus {
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: rgba(0, 0, 0, 0.05);
 }
+.desktop .facebook {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 5px;
+}
 /* Mobile CSS*/
-
+.mobile .facebook {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 5px;
+}
 .mobile {
   display: unset;
   overflow-x: hidden;
@@ -1105,7 +1118,7 @@ a:not([href]):not([tabindex]):focus {
   background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(5px);
   min-height: 287px;
-  margin-top: 59vh;
+  margin-top: 52vh;
 }
 .mobile .pullbar {
   height: 5px;
@@ -1539,8 +1552,6 @@ a:not([href]):not([tabindex]):focus {
   left: 316px;
   height: 35px;
   box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease-in-out;
-  -webkit-appearance: none;
   text-decoration: none;
   border-radius: 0px 20px 20px 0;
   font-family: inherit;
@@ -1573,8 +1584,6 @@ a:not([href]):not([tabindex]):focus {
   height: 35px;
   box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.1);
   transform: translateX(-50%);
-  transition: all 0.2s ease-in-out;
-  -webkit-appearance: none;
   text-decoration: none;
   border-radius: 20px 20px 0 0;
   font-family: inherit;

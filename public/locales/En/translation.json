@@ -11,7 +11,8 @@
   },
   "InfoTile": {
     "TotalCases": "Total Confirmed Cases",
-    "Live": "LIVE"
+    "Live": "LIVE",
+    "Facebook": "Official page on Facebook"
   },
   "Graph": {
     "NewCases": "New Cases Today",

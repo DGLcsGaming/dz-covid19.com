@@ -103,6 +103,33 @@ function App() {
   };
 
   useEffect(() => {
+    window.addEventListener("focus", onFocus);
+    window.addEventListener("blur", onBlur);
+    return () => {
+      window.removeEventListener("focus", onFocus);
+      window.removeEventListener("blur", onBlur);
+    };
+  }, []);
+  const onFocus = () => {
+    if (!socket.connected) {
+      console.log("Focused again..connecting to the server..");
+      //socket.connect();
+      window.location.reload(true);
+    }
+  };
+  const onBlur = () => {
+    console.log("Lost Focus.. Disconnecting from the server after 10min if focus is not recovered..");
+    setTimeout(() => {
+      if (!document.hasFocus()) {
+        socket.disconnect();
+        console.log("Focus not recovered, disconnected from the server.");
+      } else {
+        console.log("Will not disconnect!");
+      }
+    }, 600000);
+  };
+
+  useEffect(() => {
     console.log("Selecting server..");
     i18n.on("languageChanged", (lng) => {
       if (lng === "Ar") {
@@ -127,7 +154,7 @@ function App() {
           }
         });
     } else {
-      socket = openSocket("http://localhost:4001", { path: "/ws" });
+      socket = openSocket("http://192.168.43.191:4001", { path: "/ws" });
       setCurrentServer(1);
     }
     return () => {
@@ -167,7 +194,6 @@ function App() {
       setUserCount(data);
     });
     socket.on("whichserver", (server) => {
-      console.log("Which Server!");
       if (currentServer !== server) {
         if (server === 1) {
           socket.disconnect();
