@@ -308,12 +308,12 @@ function App() {
                         )}
                       </div>
                       <UsersCount count={userCount} />
-                      {pushNotificationSupported && (
+                      {/* {pushNotificationSupported && (
                         <GetNotifiedButton
                           click={() => setModalIsOpen(true)}
                           style={userSubscription && cookies.push_subscription ? { display: "none" } : { display: "block" }}
                         />
-                      )}
+                      )} */}
 
                       <Modal
                         isOpen={modalIsOpen}
