@@ -38,6 +38,7 @@ socket = openSocket("https://dz-covid19.com", { path: "/ws" });
 socket = openSocket("https://server2.dz-covid19.com", { path: "/ws", transports: ["websocket"] });
 */
 var socket;
+var myTimeout;
 //socket = openSocket("https://dz-covid19.com", { path: "/ws" });
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
     display: "none",
   });
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [btnDisabled, setBtnDisabled] = useState(false);
   // Push Notifications
   const {
     userConsent,
@@ -111,21 +113,14 @@ function App() {
     };
   }, []);
   const onFocus = () => {
+    clearTimeout(myTimeout);
     if (!socket.connected) {
-      console.log("Focused again..connecting to the server..");
-      //socket.connect();
       window.location.reload(true);
     }
   };
   const onBlur = () => {
-    console.log("Lost Focus.. Disconnecting from the server after 10min if focus is not recovered..");
-    setTimeout(() => {
-      if (!document.hasFocus()) {
-        socket.disconnect();
-        console.log("Focus not recovered, disconnected from the server.");
-      } else {
-        console.log("Will not disconnect!");
-      }
+    myTimeout = setTimeout(() => {
+      socket.disconnect();
     }, 600000);
   };
 
@@ -220,6 +215,7 @@ function App() {
   }, [currentServer]);
   const handleSubscribeButtonYes = () => {
     onClickAskUserPermission();
+    setBtnDisabled(true);
   };
   useEffect(() => {
     if (!pushNotificationSupported) return;
@@ -357,7 +353,7 @@ function App() {
                             </div>
                             <p>{t("Subscription.Question")}</p>
                             <div className="modalButtonsContainer">
-                              <button className="yes" onClick={handleSubscribeButtonYes}>
+                              <button className="yes" onClick={() => handleSubscribeButtonYes()} disabled={btnDisabled}>
                                 <Bell width="15px" height="15px" style={{ fill: "#fff" }} /> &nbsp; Yes
                               </button>
                               <button className="no" onClick={() => setModalIsOpen(false)}>

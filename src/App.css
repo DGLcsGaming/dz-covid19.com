@@ -1090,6 +1090,11 @@ a:not([href]):not([tabindex]):focus {
   align-items: center;
   margin-bottom: 5px;
 }
+.fbLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .mobile {
   display: unset;
   overflow-x: hidden;

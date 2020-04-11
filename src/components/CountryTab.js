@@ -53,6 +53,11 @@ const CountryTab = (props) => {
           data-size="small"
           data-share="false"></div>
       </div>
+      <div className="fbLink">
+        <a href="https://fb.me/dzcovid19com" target="_blank">
+          https://fb.me/dzcovid19com
+        </a>
+      </div>
       {currentStats === null || dailyStats === null || wilayas === null ? (
         <Loading />
       ) : (
