@@ -38,7 +38,7 @@ function Header() {
         <small>
           Made with &#10084;&#65039; by{" "}
           <strong>
-            <a href="https://facebook.com/DGLCS">Ghoul Faical</a>
+            <a href="https://facebook.com/DGLCS">Ghoul Fayçal</a>
           </strong>{" "}
           in Algeria
         </small>

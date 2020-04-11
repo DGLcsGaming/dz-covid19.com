@@ -42,7 +42,8 @@ const CountryTab = (props) => {
         <span>Algeria COVID-19 Tracker</span>
       </div>
       <div className="facebook" style={isArabic ? { direction: "rtl" } : { direction: "ltr" }}>
-        <span>{t("InfoTile.Facebook")}</span>
+        {/* <span>{t("InfoTile.Facebook")}</span> */}
+        <span>{isArabic ? "الصفحة الرسمية على الفيسبوك" : "Page officielle sur Facebook"}</span>
         <div
           className="fb-like"
           data-href="https://www.facebook.com/dzcovid19com"
@@ -66,7 +67,7 @@ const CountryTab = (props) => {
           Made with &#10084;&#65039; by{" "}
           <strong>
             <a href="https://facebook.com/DGLCS" target="_blank">
-              Ghoul Faical
+              Ghoul Fayçal
             </a>
           </strong>{" "}
           in Algeria
