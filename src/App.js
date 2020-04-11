@@ -113,7 +113,7 @@ function App() {
     });
 
     if (process.env.NODE_ENV === "production") {
-      Axios.get("https://dz-covid19.com/api/whichserver", {
+      Axios.get("https://dz-covid19.com/api/which_server", {
         headers: { "x-access-token": process.env.REACT_APP_API_KEY },
       })
         .then((data) => data.data.data.server)
