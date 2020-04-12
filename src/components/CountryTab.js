@@ -32,7 +32,7 @@ const CountryTab = (props) => {
   return (
     <div className="country tab" style={props.style}>
       <div className="pullbar" />
-      <Donations />
+      {/* <Donations /> */}
       {/* <Beta /> */}
       <LanguageDropdown />
       <div className="pageName text-center">
@@ -67,7 +67,7 @@ const CountryTab = (props) => {
           <Wilyas wilayas={wilayas} />
         </Fragment>
       )}
-      <div className="signature">
+      {/* <div className="signature">
         <small>
           Made with &#10084;&#65039; by{" "}
           <strong>
@@ -77,7 +77,7 @@ const CountryTab = (props) => {
           </strong>{" "}
           in Algeria
         </small>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -35,13 +35,13 @@ function Header() {
             </Link>
           </li>
         </ul>
-        <small>
+        {/* <small>
           Made with &#10084;&#65039; by{" "}
           <strong>
             <a href="https://facebook.com/DGLCS">Ghoul Fayçal</a>
           </strong>{" "}
           in Algeria
-        </small>
+        </small> */}
       </div>
     </nav>
   );

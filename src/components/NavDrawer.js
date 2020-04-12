@@ -70,13 +70,13 @@ const NavDrawer = (props) => {
             </Link>
           </li>
         </ul>
-        <small style={{ textAlign: "center" }}>
+        {/* <small style={{ textAlign: "center" }}>
           Made with &#10084;&#65039; by{" "}
           <strong>
             <a href="https://facebook.com/DGLCS">Ghoul Fayçal</a>
           </strong>{" "}
           in Algeria
-        </small>
+        </small> */}
       </div>
     </Fragment>
   );
