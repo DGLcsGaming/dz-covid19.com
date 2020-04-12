@@ -1,9 +1,11 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import Modal from "react-modal";
+import { useCookies } from "react-cookie";
 Modal.setAppElement("#root");
 
 const Donations = (props) => {
+  const [cookies, setCookie] = useCookies(["donations"]);
   const { t, i18n } = useTranslation();
   const [isArabic, setIsArabic] = useState(true);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -19,6 +21,20 @@ const Donations = (props) => {
       i18n.off();
     };
   });
+  useEffect(() => {
+    if (!cookies.donations) {
+      setTimeout(() => {
+        setModalIsOpen(true);
+        let d = new Date();
+        d.setTime(d.getTime() + 24 * 3600 * 1000);
+        setCookie("donations", "1", {
+          path: "/",
+          expires: d,
+          sameSite: "lax",
+        });
+      }, 5000);
+    }
+  }, []);
   return (
     <div>
       <Modal

@@ -1122,8 +1122,8 @@ a:not([href]):not([tabindex]):focus {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(5px);
-  min-height: 287px;
-  margin-top: 54vh;
+  min-height: 45vh;
+  margin-top: 55vh;
 }
 .mobile .pullbar {
   height: 5px;
@@ -1671,13 +1671,6 @@ a:not([href]):not([tabindex]):focus {
   font-weight: 600;
   line-height: 22px;
   color: #de3700;
-}
-
-.mobile .count-button:hover {
-  transform: translateY(-2px);
-}
-.mobile .count-button:active {
-  transform: translateY(0);
 }
 
 .mobile .count-button:before {
