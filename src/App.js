@@ -149,7 +149,7 @@ function App() {
           }
         });
     } else {
-      socket = openSocket("http://192.168.43.191:4001", { path: "/ws" });
+      socket = openSocket("localhost:4001", { path: "/ws" });
       setCurrentServer(1);
     }
     return () => {

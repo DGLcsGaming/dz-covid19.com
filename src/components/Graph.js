@@ -5,6 +5,7 @@ import { dailyStatsContext } from "../contexts/dailyStatsContext";
 import { WilayasContext, wilayasContext } from "../contexts/wilayasContext";
 import Flickity from "react-flickity-component";
 import { useTranslation } from "react-i18next";
+import "chartjs-plugin-datalabels";
 
 function Graph() {
   const { t } = useTranslation();
@@ -81,7 +82,7 @@ function Graph() {
         <div className="slider-item">
           <div className="title text-center">الحالات الجديدة حسب الولاية</div>
           <Bar
-            height={200}
+            height={250}
             data={{
               datasets: [
                 {
@@ -93,6 +94,17 @@ function Graph() {
               labels: wilayaslabels,
             }}
             options={{
+              plugins: {
+                datalabels: {
+                  display: true,
+                  color: "black",
+                  font: {
+                    weight: "bold",
+                  },
+                  align: "end",
+                  anchor: "end",
+                },
+              },
               scales: {
                 xAxes: [
                   {
@@ -100,6 +112,15 @@ function Graph() {
                       autoSkip: false,
                       maxRotation: 75,
                       minRotation: 45,
+                    },
+                  },
+                ],
+                yAxes: [
+                  {
+                    ticks: {
+                      autoSkip: true,
+                      beginAtZero: true,
+                      suggestedMax: filteredWilayas[0].new_cases + 1,
                     },
                   },
                 ],
@@ -114,6 +135,11 @@ function Graph() {
             height={150}
             data={chartData}
             options={{
+              plugins: {
+                datalabels: {
+                  display: false,
+                },
+              },
               scales: {
                 xAxes: [
                   {
@@ -135,6 +161,11 @@ function Graph() {
             height={150}
             id="doughnut"
             options={{
+              plugins: {
+                datalabels: {
+                  display: false,
+                },
+              },
               responsive: true,
               legend: {
                 position: "bottom",

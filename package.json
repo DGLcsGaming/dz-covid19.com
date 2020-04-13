@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "chart.js": "^2.9.3",
+    "chartjs-plugin-datalabels": "^0.7.0",
     "flickity": "^2.2.1",
     "i18next": "^19.3.4",
     "i18next-browser-languagedetector": "^4.0.2",
