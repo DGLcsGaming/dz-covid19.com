@@ -92,7 +92,19 @@ function Graph() {
               ],
               labels: wilayaslabels,
             }}
-            options={{}}
+            options={{
+              scales: {
+                xAxes: [
+                  {
+                    ticks: {
+                      autoSkip: false,
+                      maxRotation: 75,
+                      minRotation: 45,
+                    },
+                  },
+                ],
+              },
+            }}
           />
         </div>
         <div className="slider-item">
