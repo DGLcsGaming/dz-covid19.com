@@ -17,7 +17,9 @@
   "Graph": {
     "NewCases": "حالات جديدة اليوم",
     "Daily": "الحالات الجديدة اليومية",
-    "Distribution": "توزيع الحالات"
+    "Distribution": "توزيع الحالات",
+    "NewCasesPerWilaya": "الحالات الجديدة حسب الولاية",
+    "NewCasesLabel": "حالات جديدة"
   },
   "Header": {
     "Home": "الرئيسية",

@@ -55,7 +55,7 @@ const Wilaya = (props) => {
       className="mapCircle"
       radius={(Math.log(props.wilaya.confirmed) * 400000) / (Math.pow(2, props.zoom) / 2)}
       onclick={() => props.click(props.wilaya.code)}>
-      <Popup>
+      <Popup maxWidth="auto">
         <div className="circlePopup">
           <div className="topToolTip">
             <div className="titleInfoBox">{props.wilaya.name}</div>
@@ -63,6 +63,7 @@ const Wilaya = (props) => {
               <div className="stat confirmed">{t("General.Confirmed")}</div>
               <div className="statCount confirmed font-bold">
                 <Odometer value={props.wilaya.confirmed} format="(,ddd)" />
+                <div className="delta">+{props.wilaya.new_cases}</div>
               </div>
             </div>
             <div className="statLine divider"></div>
@@ -82,6 +83,7 @@ const Wilaya = (props) => {
               <div className="stat">{t("General.Deaths")}</div>
               <div className="statCount font-bold">
                 <Odometer value={props.wilaya.deaths} format="(,ddd)" />
+                <div className="delta">+{props.wilaya.new_deaths}</div>
               </div>
             </div>
             <i></i>

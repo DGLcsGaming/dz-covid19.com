@@ -217,13 +217,13 @@ a:not([href]):not([tabindex]):focus {
   border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 20px;
   padding: 10px 16px;
   margin-bottom: 12px;
   cursor: pointer;
   user-select: none;
-  grid-template-columns: auto min-content;
+  grid-template-columns: auto max-content;
   grid-column-gap: 5px;
 }
 .area .areaName {
@@ -234,6 +234,33 @@ a:not([href]):not([tabindex]):focus {
 }
 .area .areaTotal {
   color: #767676;
+}
+.mobile .areaTotal .delta {
+  font-size: 12px;
+}
+.areaTotal .delta {
+  display: inline;
+  text-align: right;
+  font-size: 11px;
+  line-height: 15px;
+  margin-left: 8px;
+  background-color: #f5f5f5;
+  border-radius: 2px;
+  padding: 1px 4px 2px 4px;
+  font-weight: 600;
+}
+.circlePopup {
+  width: 110px;
+}
+.circlePopup .delta {
+  display: inline;
+  text-align: right;
+  font-size: 11px;
+  line-height: 15px;
+  background-color: #f5f5f5;
+  border-radius: 2px;
+  padding: 1px 4px 2px 4px;
+  font-weight: 600;
 }
 .area:hover,
 .area.expanded {
@@ -530,6 +557,7 @@ a:not([href]):not([tabindex]):focus {
   margin-bottom: 7px;
 }
 .circlePopup .statLine {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -554,7 +582,9 @@ a:not([href]):not([tabindex]):focus {
 .circlePopup .statCount.confirmed {
   color: #de3700;
 }
-
+.circlePopup .odometer {
+  margin-right: 3px;
+}
 .circlePopup .statCount {
   height: 20px;
   font-size: 13px;

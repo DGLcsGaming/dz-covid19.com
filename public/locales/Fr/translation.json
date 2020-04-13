@@ -17,7 +17,9 @@
   "Graph": {
     "NewCases": "Nouveaux Cas Aujourd'hui",
     "Daily": "Nouveaux Cas Quotidiens",
-    "Distribution": "Distribution Des Cas"
+    "Distribution": "Distribution Des Cas",
+    "NewCasesPerWilaya": "Nouveaux Cas Par Wilaya",
+    "NewCasesLabel": "Nouveaux Cas"
   },
   "Header": {
     "Home": "Accueil",

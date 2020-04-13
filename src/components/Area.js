@@ -8,10 +8,11 @@ function Area(props) {
   };
   return (
     <div id={props.data.name} className="area" onClick={handleClick}>
-      <div className="areaName">
-        {props.data.code}&nbsp;-&nbsp;{props.data.name}
+      <div className="areaName">{props.data.name}</div>
+      <div className="areaTotal">
+        <strong>{props.data.confirmed}</strong>
+        <div className="delta">+{props.data.new_cases}</div>
       </div>
-      <div className="areaTotal">{props.data.confirmed}</div>
     </div>
   );
 }
