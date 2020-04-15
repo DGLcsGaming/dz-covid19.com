@@ -16,7 +16,7 @@ import useCookies from "react-cookie/lib/useCookies";
 import usePushNotifications from "./hooks/usePushNotifications";
 import Modal from "react-modal";
 import GetNotifiedButton from "./components/GetNotifiedButton";
-import { ReactComponent as Bell } from "./Icons/Bell.svg";
+//import { ReactComponent as Bell } from "./Icons/Bell.svg";
 import { useTranslation } from "react-i18next";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Disclaimer from "./components/Disclaimer";
@@ -342,19 +342,19 @@ function App() {
                                 display: "flex",
                                 justifyContent: "center",
                               }}>
-                              <Bell
+                              {/* <Bell
                                 height="25px"
                                 width="25px"
                                 style={{
                                   fill: "#38a169",
                                   margin: "0 auto",
                                 }}
-                              />
+                              /> */}
                             </div>
                             <p>{t("Subscription.Question")}</p>
                             <div className="modalButtonsContainer">
                               <button className="yes" onClick={() => handleSubscribeButtonYes()} disabled={btnDisabled}>
-                                <Bell width="15px" height="15px" style={{ fill: "#fff" }} /> &nbsp; Yes
+                                {/*  <Bell width="15px" height="15px" style={{ fill: "#fff" }} /> &nbsp; Yes */}
                               </button>
                               <button className="no" onClick={() => setModalIsOpen(false)}>
                                 No
