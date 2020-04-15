@@ -3,7 +3,8 @@
     "Confirmed": "Confirmed",
     "Active": "Active",
     "Recovered": "Recovered",
-    "Deaths": "Deaths"
+    "Deaths": "Deaths",
+    "Hospitalized": "Under Treatment"
   },
   "Subscription": {
     "Thanks": "Thanks for subscribing!",

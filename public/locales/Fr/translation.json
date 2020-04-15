@@ -3,7 +3,8 @@
     "Confirmed": "Confirmés",
     "Active": "Actifs",
     "Recovered": "Rétablis",
-    "Deaths": "Décès"
+    "Deaths": "Décès",
+    "Hospitalized": "Sous traitement"
   },
   "Subscription": {
     "Thanks": "Merci pour votre subscription!",

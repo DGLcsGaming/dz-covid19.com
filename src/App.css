@@ -145,6 +145,12 @@ a:not([href]):not([tabindex]):focus {
   font-size: 13px;
   text-transform: uppercase;
 }
+#threestats {
+  padding-bottom: 0px;
+}
+#hospitalized {
+  padding-top: 0.5rem;
+}
 .confirmedContainer {
   display: flex;
   justify-content: center;
@@ -296,6 +302,15 @@ a:not([href]):not([tabindex]):focus {
 .w-1\/2 {
   width: 50%;
 }
+.bg-purple-200 {
+  background-color: #c4d8e4;
+}
+.bg-purple-100 {
+  background-color: #d8e5ed;
+}
+.text-purple-600 {
+  color: #4e89ae;
+}
 .text-yellow-600 {
   color: #eeb34e;
 }
@@ -346,6 +361,9 @@ a:not([href]):not([tabindex]):focus {
 .pt-2 {
   padding-top: 0.5rem;
 }
+.h-10 {
+  height: 2.5rem;
+}
 .h-16 {
   height: 4rem;
 }
@@ -380,6 +398,7 @@ a:not([href]):not([tabindex]):focus {
 .text-sm {
   font-size: 0.875rem;
 }
+
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;

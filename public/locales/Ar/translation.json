@@ -3,7 +3,8 @@
     "Confirmed": "مؤكدة",
     "Active": "نشطة",
     "Recovered": "متعافين",
-    "Deaths": "وفاة"
+    "Deaths": "وفاة",
+    "Hospitalized": "تحت العلاج"
   },
   "Subscription": {
     "Thanks": "!شكرا لإشتراكك",
