@@ -355,7 +355,7 @@ a:not([href]):not([tabindex]):focus {
   font-size: 1.25rem;
 }
 .text-xxl {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   line-height: 2rem;
 }
 .pt-2 {
@@ -503,7 +503,7 @@ a:not([href]):not([tabindex]):focus {
   position: absolute;
   padding: 5px 10px;
   background-color: #444;
-  z-index: 9999;
+  z-index: 9998;
   height: 50px;
   width: calc(100vw - 316px);
   bottom: 0;
@@ -1746,4 +1746,19 @@ a:not([href]):not([tabindex]):focus {
     transform: scale(1.2, 1.4);
     opacity: 0;
   }
+}
+
+.fullscreen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
