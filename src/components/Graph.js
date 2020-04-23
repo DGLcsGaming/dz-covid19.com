@@ -6,6 +6,7 @@ import { WilayasContext, wilayasContext } from "../contexts/wilayasContext";
 import Flickity from "react-flickity-component";
 import { useTranslation } from "react-i18next";
 import "chartjs-plugin-datalabels";
+import Modal from "react-modal";
 
 function Graph() {
   const { t } = useTranslation();
@@ -70,143 +71,165 @@ function Graph() {
   };
   return (
     <div className="graph">
-      <Flickity
-        options={{
-          adaptiveHeight: true,
-          wrapAround: true,
-          autoPlay: 3000,
-          pauseAutoPlayOnHover: true,
-          selectedAttraction: 0.2,
-          friction: 0.8,
-        }}>
-        <div className="slider-item">
-          <div className="title text-center">الحالات الجديدة حسب الولاية</div>
-          <Bar
-            height={250}
-            data={{
-              datasets: [
-                {
-                  label: "حالات جديدة",
-                  backgroundColor: "#de3700",
-                  data: newCasesData,
-                },
-              ],
-              labels: wilayaslabels,
-            }}
-            options={{
-              plugins: {
-                datalabels: {
-                  display: true,
-                  color: "black",
-                  font: {
-                    weight: "bold",
-                  },
-                  align: "end",
-                  anchor: "end",
-                },
-              },
-              scales: {
-                xAxes: [
+      <Modal
+        isOpen={false}
+        /* onRequestClose={() => setModalIsOpen(false)} */
+        style={{
+          overlay: {
+            backgroundColor: "rgba(0, 0, 0, 0.75)",
+            zIndex: 99999,
+          },
+          content: {
+            top: "50%",
+            left: "50%",
+            right: "auto",
+            bottom: "auto",
+            marginRight: "-50%",
+            transform: "translate(-50%, -50%)",
+            width: "100vw",
+            height: "100vh",
+            paddingRight: "10vw",
+            paddingLeft: "10vw",
+          },
+        }}
+        contentLabel="Notification">
+        <Flickity
+          options={{
+            adaptiveHeight: true,
+            wrapAround: true,
+            autoPlay: 3000,
+            pauseAutoPlayOnHover: true,
+            selectedAttraction: 0.2,
+            friction: 0.8,
+          }}>
+          <div className="slider-item">
+            <div className="title text-center">الحالات الجديدة حسب الولاية</div>
+            <Bar
+              data={{
+                datasets: [
                   {
-                    ticks: {
-                      autoSkip: false,
-                      maxRotation: 75,
-                      minRotation: 45,
-                    },
+                    label: "حالات جديدة",
+                    backgroundColor: "#de3700",
+                    data: newCasesData,
                   },
                 ],
-                yAxes: [
-                  {
-                    ticks: {
-                      autoSkip: true,
-                      beginAtZero: true,
-                      suggestedMax: filteredWilayas[0].new_cases + 1,
+                labels: wilayaslabels,
+              }}
+              options={{
+                plugins: {
+                  datalabels: {
+                    display: true,
+                    color: "black",
+                    font: {
+                      weight: "bold",
                     },
+                    align: "end",
+                    anchor: "end",
                   },
-                ],
-              },
-            }}
-          />
-        </div>
-        <div className="slider-item">
-          <div className="title text-center">{t("Graph.Daily")}</div>
-          <Line
-            id="dailynewcases"
-            height={150}
-            data={chartData}
-            options={{
-              plugins: {
-                datalabels: {
+                },
+                scales: {
+                  xAxes: [
+                    {
+                      ticks: {
+                        autoSkip: false,
+                        maxRotation: 75,
+                        minRotation: 45,
+                      },
+                    },
+                  ],
+                  yAxes: [
+                    {
+                      ticks: {
+                        autoSkip: true,
+                        beginAtZero: true,
+                        suggestedMax: filteredWilayas[0].new_cases + 1,
+                      },
+                    },
+                  ],
+                },
+              }}
+            />
+          </div>
+          <div className="slider-item">
+            <div className="title text-center">{t("Graph.Daily")}</div>
+            <Line
+              id="dailynewcases"
+              /* height={150} */
+              data={chartData}
+              options={{
+                plugins: {
+                  datalabels: {
+                    display: false,
+                  },
+                },
+                scales: {
+                  xAxes: [
+                    {
+                      ticks: {
+                        autoSkip: true,
+                        maxRotation: 90,
+                        minRotation: 0,
+                      },
+                    },
+                  ],
+                },
+              }}
+              legend={{ display: false }}
+            />
+          </div>
+          <div className="slider-item">
+            <div className="title text-center">{t("Graph.Distribution")}</div>
+            <Doughnut
+              /* height={150} */
+              id="doughnut"
+              options={{
+                plugins: {
+                  datalabels: {
+                    display: false,
+                  },
+                },
+                responsive: true,
+                legend: {
+                  position: "bottom",
+                },
+                title: {
                   display: false,
+                  text: "",
                 },
-              },
-              scales: {
-                xAxes: [
-                  {
-                    ticks: {
-                      autoSkip: true,
-                      maxRotation: 90,
-                      minRotation: 0,
+                animation: {
+                  animateScale: true,
+                  animateRotate: true,
+                },
+                tooltips: {
+                  callbacks: {
+                    label: function (tooltipItem, data) {
+                      var dataset = data.datasets[tooltipItem.datasetIndex];
+                      var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
+                        return previousValue + currentValue;
+                      });
+                      var currentValue = dataset.data[tooltipItem.index];
+                      var percentage = Math.floor((currentValue / total) * 100 + 0.5);
+                      switch (tooltipItem.index) {
+                        case 0:
+                          return currentValue + ` ${t("General.Active")} (` + percentage + "%)";
+                        case 1:
+                          return currentValue + ` ${t("General.Recovered")} (` + percentage + "%)";
+                        case 2:
+                          return currentValue + ` ${t("General.Deaths")} (` + percentage + "%)";
+                        default:
+                          return currentValue + " (" + percentage + "%)";
+                      }
                     },
                   },
-                ],
-              },
-            }}
-            legend={{ display: false }}
-          />
-        </div>
-        <div className="slider-item">
-          <div className="title text-center">{t("Graph.Distribution")}</div>
-          <Doughnut
-            height={150}
-            id="doughnut"
-            options={{
-              plugins: {
-                datalabels: {
-                  display: false,
                 },
-              },
-              responsive: true,
-              legend: {
-                position: "bottom",
-              },
-              title: {
-                display: false,
-                text: "",
-              },
-              animation: {
-                animateScale: true,
-                animateRotate: true,
-              },
-              tooltips: {
-                callbacks: {
-                  label: function (tooltipItem, data) {
-                    var dataset = data.datasets[tooltipItem.datasetIndex];
-                    var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
-                      return previousValue + currentValue;
-                    });
-                    var currentValue = dataset.data[tooltipItem.index];
-                    var percentage = Math.floor((currentValue / total) * 100 + 0.5);
-                    switch (tooltipItem.index) {
-                      case 0:
-                        return currentValue + ` ${t("General.Active")} (` + percentage + "%)";
-                      case 1:
-                        return currentValue + ` ${t("General.Recovered")} (` + percentage + "%)";
-                      case 2:
-                        return currentValue + ` ${t("General.Deaths")} (` + percentage + "%)";
-                      default:
-                        return currentValue + " (" + percentage + "%)";
-                    }
-                  },
-                },
-              },
-            }}
-            data={infoTileData}
-            height={100}
-            legend={{ display: true }}
-          />
-        </div>
-      </Flickity>
+              }}
+              data={infoTileData}
+              /* height={100} */
+              legend={{ display: true }}
+            />
+          </div>
+        </Flickity>
+      </Modal>
     </div>
   );
 }

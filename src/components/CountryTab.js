@@ -8,6 +8,7 @@ import { dailyStatsContext } from "../contexts/dailyStatsContext";
 import { ReactComponent as Loading } from "../Icons/Loading.svg";
 import LanguageDropdown from "./LanguageDropdown";
 import Beta from "./Beta";
+import Ramadan from "./Ramadan";
 import Donations from "../components/Donations";
 import { useTranslation } from "react-i18next";
 
@@ -32,6 +33,7 @@ const CountryTab = (props) => {
   return (
     <div className="country tab" style={props.style}>
       <div className="pullbar" />
+      <Ramadan />
       {/* <Donations /> */}
       {/* <Beta /> */}
       <LanguageDropdown />

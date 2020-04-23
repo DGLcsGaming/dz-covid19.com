@@ -1762,3 +1762,63 @@ a:not([href]):not([tabindex]):focus {
   align-items: center;
   z-index: 9999;
 }
+
+.sway2d {
+  transform-origin: 50% 0%;
+  transition: transform 1s ease-in-out;
+  animation: sway 5s ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes sway {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(13deg);
+  }
+  20% {
+    transform: rotate(-13deg);
+  }
+  30% {
+    transform: rotate(9deg);
+  }
+  40% {
+    transform: rotate(-9deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+  60% {
+    transform: rotate(-6deg);
+  }
+  70% {
+    transform: rotate(3deg);
+  }
+  80% {
+    transform: rotate(-3deg);
+  }
+  90% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.ramadan-text-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1em;
+}
+.ramadan-decorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.lantern {
+  position: absolute;
+  top: 34px;
+  left: 31px;
+}
