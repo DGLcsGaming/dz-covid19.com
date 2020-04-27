@@ -143,7 +143,7 @@ function Graph() {
                     ticks: {
                       autoSkip: true,
                       beginAtZero: true,
-                      suggestedMax: filteredWilayas[0].new_cases + 1,
+                      suggestedMax: filteredWilayas.length !== 0 ? filteredWilayas[0].new_cases + 1 : 0,
                     },
                   },
                 ],
