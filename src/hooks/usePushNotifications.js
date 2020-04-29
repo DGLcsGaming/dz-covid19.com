@@ -7,7 +7,7 @@ import {
   askUserPermission,
   registerServiceWorker,
   createNotificationSubscription,
-  getUserSubscription
+  getUserSubscription,
 } from "../utils/push-notifications";
 //import all the function created to manage the push notifications
 
@@ -30,6 +30,8 @@ export default function usePushNotifications() {
   //to manage errors
   const [loading, setLoading] = useState(true);
   //to manage async actions
+  const [alreadySubscribed, setAlreadySubscribed] = useState(false);
+  //to manage if already subscribed
 
   useEffect(() => {
     if (pushNotificationSupported) {
@@ -66,13 +68,13 @@ export default function usePushNotifications() {
     if (!pushNotificationSupported) return;
     setLoading(true);
     setError(false);
-    askUserPermission().then(consent => {
+    askUserPermission().then((consent) => {
       setSuserConsent(consent);
       if (consent !== "granted") {
         setError({
           name: "Consent denied",
           message: "You denied the consent to receive notifications",
-          code: 0
+          code: 0,
         });
       }
       setLoading(false);
@@ -89,11 +91,11 @@ export default function usePushNotifications() {
     setLoading(true);
     setError(false);
     createNotificationSubscription()
-      .then(function(subscription) {
+      .then(function (subscription) {
         setUserSubscription(subscription);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error("Couldn't create the notification subscription", err, "name:", err.name, "message:", err.message, "code:", err.code);
         setError(err);
         setLoading(false);
@@ -110,27 +112,33 @@ export default function usePushNotifications() {
     setError(false);
     http
       .post("subscription", userSubscription)
-      .then(function(response) {
-        setPushServerSubscriptionId(response.data.subscriptionId);
-        setLoading(false);
+      .then(function (response) {
+        if (response.error === 0) {
+          setPushServerSubscriptionId(response.data.subscriptionId);
+          setLoading(false);
+        } else {
+          console.log(response.data);
+          setAlreadySubscribed(true);
+          setLoading(false);
+        }
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         setLoading(false);
         setError(err);
       });
   };
 
-  const updateSubscription = oldSub => {
+  const updateSubscription = (oldSub) => {
     if (!pushNotificationSupported) return;
     setLoading(true);
     setError(false);
     http
       .post("updatesubscription", { subscriptionId: oldSub })
-      .then(function(response) {
+      .then(function (response) {
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         setLoading(false);
         setError(err);
       });
@@ -146,6 +154,7 @@ export default function usePushNotifications() {
     userSubscription,
     error,
     loading,
-    updateSubscription
+    updateSubscription,
+    alreadySubscribed,
   };
 }

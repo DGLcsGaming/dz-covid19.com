@@ -75,6 +75,7 @@ function App() {
     error,
     loading,
     updateSubscription,
+    alreadySubscribed,
   } = usePushNotifications();
   var isConsentGranted;
   if (pushNotificationSupported) {
@@ -218,7 +219,7 @@ function App() {
     setBtnDisabled(true);
   };
   useEffect(() => {
-    if (!pushNotificationSupported) return;
+    if (!pushNotificationSupported || alreadySubscribed) return;
     if (loading || (cookies.push_subscription && userSubscription)) return;
 
     if (cookies.push_subscription && !userSubscription) {
@@ -249,7 +250,7 @@ function App() {
         onClickSusbribeToPushNotification();
       }
     }
-  }, [cookies, loading, isConsentGranted, userSubscription, pushServerSubscriptionId]);
+  }, [cookies, loading, alreadySubscribed, isConsentGranted, userSubscription, pushServerSubscriptionId]);
 
   /*  useEffect(() => {
     alert("الموقع يتعرض لضغط كبير الآن, سيتم إصلاح المشكل بعد قليل, نعتذر عن ذلك");
@@ -308,12 +309,12 @@ function App() {
                         )}
                       </div>
                       <UsersCount count={userCount} />
-                      {/* {pushNotificationSupported && (
+                      {pushNotificationSupported && !alreadySubscribed && (
                         <GetNotifiedButton
                           click={() => setModalIsOpen(true)}
                           style={userSubscription && cookies.push_subscription ? { display: "none" } : { display: "block" }}
                         />
-                      )} */}
+                      )}
 
                       <Modal
                         isOpen={modalIsOpen}
