@@ -122,7 +122,7 @@ function App() {
   const onBlur = () => {
     myTimeout = setTimeout(() => {
       socket.disconnect();
-    }, 600000);
+    }, 18000000);
   };
 
   useEffect(() => {
