@@ -379,7 +379,11 @@ function App() {
       </CookiesProvider>
     );
   } else if (isServerDown) {
-    content = <h1>Server is Offline</h1>;
+    content = (
+      <h1 className={isArabic ? "arabic" : "nonarabic"} dir={isArabic ? "rtl" : "ltr"}>
+        {t("General.ConnectionLost")}
+      </h1>
+    );
   } else {
     content = <h1> Loading .. </h1>;
   }

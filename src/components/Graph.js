@@ -103,7 +103,7 @@ function Graph() {
           friction: 0.8,
         }}>
         <div className="slider-item">
-          <div className="title text-center">الحالات الجديدة حسب الولاية</div>
+          <div className="title text-center">{t("Graph.NewCasesPerWilaya")}</div>
           <Bar
             height={250}
             data={{

@@ -4,7 +4,8 @@
     "Active": "نشطة",
     "Recovered": "متعافين",
     "Deaths": "وفاة",
-    "Hospitalized": "تحت العلاج"
+    "Hospitalized": "تحت العلاج",
+    "ConnectionLost": "جاري إعادة الإتصال بالسيرفر ..."
   },
   "Subscription": {
     "Thanks": "!شكرا لإشتراكك",

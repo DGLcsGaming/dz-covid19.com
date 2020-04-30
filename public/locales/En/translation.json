@@ -4,7 +4,8 @@
     "Active": "Active",
     "Recovered": "Recovered",
     "Deaths": "Deaths",
-    "Hospitalized": "Under Treatment"
+    "Hospitalized": "Under Treatment",
+    "ConnectionLost": "Reconnecting to server..."
   },
   "Subscription": {
     "Thanks": "Thanks for subscribing!",
