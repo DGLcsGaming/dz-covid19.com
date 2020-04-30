@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, Fragment } from "react";
 import { Doughnut, Line, Bar } from "react-chartjs-2";
 import { currentStatsContext } from "../contexts/currentStatsContext";
 import { dailyStatsContext } from "../contexts/dailyStatsContext";
@@ -6,9 +6,8 @@ import { WilayasContext, wilayasContext } from "../contexts/wilayasContext";
 import Flickity from "react-flickity-component";
 import { useTranslation } from "react-i18next";
 import "chartjs-plugin-datalabels";
-import Modal from "react-modal";
 
-function Graph() {
+function Graph(props) {
   const { t } = useTranslation();
   const [currentStats, setCurrentStats] = useContext(currentStatsContext);
   const [dailyStats, setDailyStats] = useContext(dailyStatsContext);
@@ -70,34 +69,12 @@ function Graph() {
     ],
   };
   return (
-    <div className="graph">
-      {/* <Modal
-        isOpen={false}
-        /* onRequestClose={() => setModalIsOpen(false)} 
-        style={{
-          overlay: {
-            backgroundColor: "rgba(0, 0, 0, 0.75)",
-            zIndex: 99999,
-          },
-          content: {
-            top: "50%",
-            left: "50%",
-            right: "auto",
-            bottom: "auto",
-            marginRight: "-50%",
-            transform: "translate(-50%, -50%)",
-            width: "100vw",
-            height: "100vh",
-            paddingRight: "10vw",
-            paddingLeft: "10vw",
-          },
-        }}
-        contentLabel="Notification"> */}
+    <Fragment>
       <Flickity
         options={{
           adaptiveHeight: true,
           wrapAround: true,
-          autoPlay: 3000,
+          autoPlay: props.obs ? null : 3000,
           pauseAutoPlayOnHover: true,
           selectedAttraction: 0.2,
           friction: 0.8,
@@ -105,7 +82,7 @@ function Graph() {
         <div className="slider-item">
           <div className="title text-center">{t("Graph.NewCasesPerWilaya")}</div>
           <Bar
-            height={250}
+            height={props.obs ? null : 250}
             data={{
               datasets: [
                 {
@@ -230,8 +207,7 @@ function Graph() {
           />
         </div>
       </Flickity>
-      {/*  </Modal> */}
-    </div>
+    </Fragment>
   );
 }
 

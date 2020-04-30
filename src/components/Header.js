@@ -6,7 +6,6 @@ function Header() {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const [currentRoute, setCurrentRoute] = useState(pathname);
-  console.log("Header Rerendered!!!!!!!!");
   return (
     <nav className="navbar navbar-dark bg-dark">
       <a className="navbar-brand" href="#">

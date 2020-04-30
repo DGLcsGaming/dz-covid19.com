@@ -273,6 +273,9 @@ function App() {
                             <Route path="/wilayas" exact>
                               <CountryTab obs={true} />
                             </Route>
+                            <Route path="/newcases" exact>
+                              <CountryTab obs2={true} />
+                            </Route>
                             {/* For OBS ONLY  -- END */}
                             <Route path="/" exact>
                               <CountryTab />
@@ -296,6 +299,9 @@ function App() {
                             {/* For OBS ONLY  -- start */}
                             <Route path="/wilayas" exact>
                               <CountryTab obs={true} />
+                            </Route>
+                            <Route path="/newcases" exact>
+                              <CountryTab obs2={true} />
                             </Route>
                             {/* For OBS ONLY  -- END */}
                             <Route path="/" exact>

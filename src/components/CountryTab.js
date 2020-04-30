@@ -11,6 +11,7 @@ import Beta from "./Beta";
 import Ramadan from "./Ramadan";
 import Donations from "../components/Donations";
 import { useTranslation } from "react-i18next";
+import Modal from "react-modal";
 
 const CountryTab = (props) => {
   const areasRef = useRef(null);
@@ -91,7 +92,37 @@ const CountryTab = (props) => {
       ) : (
         <div id="scrollableTab" style={{ overflowY: "auto" }}>
           <InfoTile />
-          <Graph />
+          {props.obs2 ? (
+            <Modal
+              isOpen={true}
+              /* onRequestClose={() => setModalIsOpen(false)} */
+              style={{
+                overlay: {
+                  backgroundColor: "rgba(0, 0, 0, 0.75)",
+                  zIndex: 99999,
+                },
+                content: {
+                  top: "50%",
+                  left: "50%",
+                  right: "auto",
+                  bottom: "auto",
+                  marginRight: "-50%",
+                  transform: "translate(-50%, -50%)",
+                  width: "100vw",
+                  height: "100vh",
+                  paddingRight: "10vw",
+                  paddingLeft: "10vw",
+                },
+              }}
+              contentLabel="Notification">
+              <Graph obs={props.obs2} />
+            </Modal>
+          ) : (
+            <div className="graph">
+              <Graph />
+            </div>
+          )}
+
           <Wilyas ref={areasRef} wilayas={wilayas} />
         </div>
       )}
