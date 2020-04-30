@@ -72,7 +72,6 @@ const CountryTab = (props) => {
       </div>
       <div className="facebook" style={isArabic ? { direction: "rtl" } : { direction: "ltr" }}>
         <span>{t("InfoTile.Facebook")}</span>
-        {/* <span>{isArabic ? "الصفحة الرسمية على الفيسبوك" : "Page officielle sur Facebook"}</span> */}
         <div
           className="fb-like"
           data-href="https://www.facebook.com/dzcovid19com"
@@ -121,23 +120,25 @@ const CountryTab = (props) => {
               <Graph />
             </div>
           )}
-
           <Wilyas ref={areasRef} wilayas={wilayas} />
         </div>
       )}
-      {/* <div className="signature">
-            <small>
-              Made with &#10084;&#65039; by{" "}
-              <strong>
-                <a href="https://facebook.com/DGLCS" target="_blank">
-                  Ghoul Fayçal
-                </a>
-              </strong>{" "}
-              in Algeria
-            </small>
-          </div> */}
     </div>
   );
 };
 
 export default CountryTab;
+
+{
+  /* <div className="signature">
+  <small>
+    Made with &#10084;&#65039; by{" "}
+    <strong>
+      <a href="https://facebook.com/DGLCS" target="_blank">
+        Ghoul Fayçal
+      </a>
+    </strong>{" "}
+    in Algeria
+  </small>
+</div> */
+}
