@@ -158,7 +158,6 @@ function Graph(props) {
         <div className="slider-item">
           <div className="title text-center">{t("Graph.Distribution")}</div>
           <Doughnut
-            /* height={150} */
             id="doughnut"
             options={{
               plugins: {
@@ -202,7 +201,6 @@ function Graph(props) {
               },
             }}
             data={infoTileData}
-            /* height={100} */
             legend={{ display: true }}
           />
         </div>
