@@ -95,7 +95,6 @@ const CountryTab = (props) => {
           {props.obs2 ? (
             <Modal
               isOpen={true}
-              /* onRequestClose={() => setModalIsOpen(false)} */
               style={{
                 overlay: {
                   backgroundColor: "rgba(0, 0, 0, 0.75)",
