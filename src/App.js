@@ -270,6 +270,11 @@ function App() {
                       <div className="content" style={navDrawerVisible.display === "block" ? { overflowY: "hidden" } : { overflowY: "auto" }}>
                         {isMobile ? (
                           <Switch>
+                            {/* For OBS ONLY  -- start */}
+                            <Route path="/wilayas" exact>
+                              <CountryTab obs={true} />
+                            </Route>
+                            {/* For OBS ONLY  -- END */}
                             <Route path="/" exact>
                               <CountryTab />
                               <MyMap />

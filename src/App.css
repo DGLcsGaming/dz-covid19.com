@@ -1547,6 +1547,9 @@ a:not([href]):not([tabindex]):focus {
   text-align: right;
   direction: rtl;
 }
+#scrollableTab {
+  overflow-y: auto;
+}
 .mobile .faq-container {
   display: flex;
   flex-direction: column;

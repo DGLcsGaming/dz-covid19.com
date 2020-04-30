@@ -30,6 +30,31 @@ const CountryTab = (props) => {
       i18n.off();
     };
   });
+  var scrollIntervalOBS;
+  useEffect(() => {
+    if (props.obs === true && document.querySelector(".areas")) {
+      document.querySelector(".areas").style.cssText =
+        "display: flex; flex-direction: column; position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; background-color: white;";
+      document.querySelector(".graph").style.cssText = "display: none;";
+      document.querySelector(".country.tab").style.cssText = "margin-top: 0;";
+      var currentHeight = 0;
+      var Height = document.querySelector(".areas").scrollHeight - document.documentElement.scrollHeight;
+      var bool = true;
+      var step = 0.1;
+      var speed = 1;
+      scrollIntervalOBS = setInterval(() => {
+        if (currentHeight < 0 || currentHeight >= Height) bool = !bool;
+        if (bool) {
+          document.querySelector(".areas").scrollTo(0, (currentHeight += step));
+        } else {
+          document.querySelector(".areas").scrollTo(0, (currentHeight -= step));
+        }
+      }, speed);
+      return () => {
+        clearInterval(scrollIntervalOBS);
+      };
+    }
+  }, [props]);
   return (
     <div className="country tab" style={props.style}>
       <div className="pullbar" />
@@ -63,7 +88,7 @@ const CountryTab = (props) => {
       {currentStats === null || dailyStats === null || wilayas === null ? (
         <Loading />
       ) : (
-        <div style={{ overflowY: "auto" }}>
+        <div id="scrollableTab" style={{ overflowY: "auto" }}>
           <InfoTile />
           <Graph />
           <Wilyas wilayas={wilayas} />
