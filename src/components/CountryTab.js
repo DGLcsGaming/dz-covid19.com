@@ -32,7 +32,6 @@ const CountryTab = (props) => {
     };
   });
   var scrollIntervalOBS;
-  console.log(props, areasRef.current);
   useEffect(() => {
     if (props.obs === true && areasRef.current) {
       areasRef.current.style.cssText =
@@ -59,7 +58,6 @@ const CountryTab = (props) => {
   }, [props]);
   return (
     <div className="country tab" style={props.style}>
-      {console.log(new Date().toISOString())}
       <div className="pullbar" />
       <Ramadan />
       {/* <Donations /> */}
