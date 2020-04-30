@@ -650,6 +650,16 @@ a:not([href]):not([tabindex]):focus {
   top: 0px;
   right: 0px;
 }
+.hospitalized-difference {
+  color: #4e89ae;
+  padding-right: 0.3rem;
+  font-weight: 600;
+  font-size: 16px;
+  align-self: baseline;
+  position: absolute;
+  top: -5px;
+  right: 0px;
+}
 .change {
   position: relative;
   left: -3px;

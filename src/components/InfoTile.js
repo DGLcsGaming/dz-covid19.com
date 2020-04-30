@@ -96,12 +96,15 @@ function InfoTile() {
       <div id="hospitalized" className="legend flex flex-row justify-center flex justify-center w-full md:justify-end md:mt-0">
         <div className="w-full flex flex-col rounded overflow-hidden statshadow text-center text-purple-600" style={{ position: "relative" }}>
           <div className="h-10 py-1 flex flex-auto items-center justify-center bg-purple-100 text-xl font-bold font-sans">
+            <div className="hospitalized-difference">
+              +<Odometer value={currentStats.hospitalized - yesterday.hospitalized} format="d" />
+            </div>
             <span className="mx-2">
               <Odometer value={currentStats.hospitalized} format="(,ddd)" />
             </span>
           </div>
           <div className="py-1 w-full bg-purple-200 text-sm lg:text-base font-semibold font-sans">
-            <span className="mx-2 recovered">تحت العلاج{/* {t("General.Hospitalized")} */}</span>
+            <span className="mx-2 recovered">{t("General.Hospitalized")}</span>
           </div>
         </div>
       </div>
