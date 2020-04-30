@@ -63,11 +63,11 @@ const CountryTab = (props) => {
       {currentStats === null || dailyStats === null || wilayas === null ? (
         <Loading />
       ) : (
-        <Fragment>
+        <div style={{ overflowY: "auto" }}>
           <InfoTile />
           <Graph />
           <Wilyas wilayas={wilayas} />
-        </Fragment>
+        </div>
       )}
       {/* <div className="signature">
         <small>
