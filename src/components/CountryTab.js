@@ -38,7 +38,7 @@ const CountryTab = (props) => {
       document.querySelector(".graph").style.cssText = "display: none;";
       document.querySelector(".country.tab").style.cssText = "margin-top: 0;";
       var currentHeight = 0;
-      var Height = document.querySelector(".areas").scrollHeight - document.documentElement.scrollHeight;
+      var Height = document.querySelector(".areas").scrollHeight; /*  - document.documentElement.scrollHeight */
       var bool = true;
       var step = 0.1;
       var speed = 1;
