@@ -82,8 +82,7 @@ function App() {
     isConsentGranted = userConsent === "granted";
   }
 
-  const isMobile = width < 800;
-
+  var isMobile = width < 800;
   const navTogglerClick = () => {
     if (navDrawerVisible.display === "none") {
       setNavDrawerVisible({ opacity: 0, display: "block" });
@@ -294,6 +293,11 @@ function App() {
                           </Switch>
                         ) : (
                           <Switch>
+                            {/* For OBS ONLY  -- start */}
+                            <Route path="/wilayas" exact>
+                              <CountryTab obs={true} />
+                            </Route>
+                            {/* For OBS ONLY  -- END */}
                             <Route path="/" exact>
                               <CountryTab />
                               <MyMap />
