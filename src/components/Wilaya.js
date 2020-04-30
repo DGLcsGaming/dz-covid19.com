@@ -94,4 +94,6 @@ const Wilaya = (props) => {
   );
 };
 
-export default Wilaya;
+export default React.memo(Wilaya, (p, n) => {
+  return JSON.stringify(p) === JSON.stringify(n);
+});

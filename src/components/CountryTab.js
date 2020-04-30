@@ -1,4 +1,4 @@
-import React, { useContext, Fragment, useState, useEffect } from "react";
+import React, { useContext, Fragment, useState, useEffect, useRef, useMemo } from "react";
 import InfoTile from "./InfoTile";
 import Graph from "./Graph";
 import Wilyas from "./Wilayas";
@@ -13,6 +13,7 @@ import Donations from "../components/Donations";
 import { useTranslation } from "react-i18next";
 
 const CountryTab = (props) => {
+  const areasRef = useRef(null);
   const { t, i18n } = useTranslation();
   const [isArabic, setIsArabic] = useState(true);
   const [wilayas, setWilayas] = useContext(wilayasContext);
@@ -31,23 +32,24 @@ const CountryTab = (props) => {
     };
   });
   var scrollIntervalOBS;
+  console.log(props, areasRef.current);
   useEffect(() => {
-    if (props.obs === true && document.querySelector(".areas")) {
-      document.querySelector(".areas").style.cssText =
+    if (props.obs === true && areasRef.current) {
+      areasRef.current.style.cssText =
         "display: flex; flex-direction: column; position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; background-color: white;";
       document.querySelector(".graph").style.cssText = "display: none;";
       document.querySelector(".country.tab").style.cssText = "margin-top: 0;";
       var currentHeight = 0;
-      var Height = document.querySelector(".areas").scrollHeight; /*  - document.documentElement.scrollHeight */
+      var Height = areasRef.current.scrollHeight - document.documentElement.scrollHeight;
       var bool = true;
       var step = 0.1;
       var speed = 1;
       scrollIntervalOBS = setInterval(() => {
         if (currentHeight < 0 || currentHeight >= Height) bool = !bool;
         if (bool) {
-          document.querySelector(".areas").scrollTo(0, (currentHeight += step));
+          areasRef.current.scrollTo(0, (currentHeight += step));
         } else {
-          document.querySelector(".areas").scrollTo(0, (currentHeight -= step));
+          areasRef.current.scrollTo(0, (currentHeight -= step));
         }
       }, speed);
       return () => {
@@ -57,6 +59,7 @@ const CountryTab = (props) => {
   }, [props]);
   return (
     <div className="country tab" style={props.style}>
+      {console.log(new Date().toISOString())}
       <div className="pullbar" />
       <Ramadan />
       {/* <Donations /> */}
@@ -91,20 +94,20 @@ const CountryTab = (props) => {
         <div id="scrollableTab" style={{ overflowY: "auto" }}>
           <InfoTile />
           <Graph />
-          <Wilyas wilayas={wilayas} />
+          <Wilyas ref={areasRef} wilayas={wilayas} />
         </div>
       )}
       {/* <div className="signature">
-        <small>
-          Made with &#10084;&#65039; by{" "}
-          <strong>
-            <a href="https://facebook.com/DGLCS" target="_blank">
-              Ghoul Fayçal
-            </a>
-          </strong>{" "}
-          in Algeria
-        </small>
-      </div> */}
+            <small>
+              Made with &#10084;&#65039; by{" "}
+              <strong>
+                <a href="https://facebook.com/DGLCS" target="_blank">
+                  Ghoul Fayçal
+                </a>
+              </strong>{" "}
+              in Algeria
+            </small>
+          </div> */}
     </div>
   );
 };

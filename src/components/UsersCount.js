@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Odometer from "react-odometerjs";
 import { useTranslation } from "react-i18next";
 
 const UsersCount = (props) => {
+  const socket = props.socket;
+  const [userCount, setUserCount] = useState(0);
+  useEffect(() => {
+    if (socket) {
+      socket.on("clientscount", (data) => {
+        console.log("Online[SV1]: " + data);
+        setUserCount(data);
+      });
+      socket.on("clientscount2", (data) => {
+        console.log("Online[SV2]: " + data);
+        setUserCount(data);
+      });
+      return () => {
+        socket.off("clientscount");
+        socket.off("clientscount2");
+      };
+    }
+  }, [props]);
   const { t, i18n } = useTranslation();
   return (
     <div className="count-button">
@@ -21,7 +39,7 @@ const UsersCount = (props) => {
         </svg>
       </div>
       <span className="count-button-text">
-        <Odometer className="count-button-text" value={props.count} format="(,ddd)" />
+        <Odometer className="count-button-text" value={userCount} format="(,ddd)" />
       </span>
     </div>
   );

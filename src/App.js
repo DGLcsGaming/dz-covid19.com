@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./odometer-theme-default.css";
 import "./App.css";
 import "./flickity.css";
@@ -180,14 +180,14 @@ function App() {
       console.log("Wilayas Loaded!", new Date(Date.now()).toISOString());
       setWilayas(data);
     });
-    socket.on("clientscount", (data) => {
+    /*  socket.on("clientscount", (data) => {
       console.log("Online[SV1]: " + data);
       setUserCount(data);
     });
     socket.on("clientscount2", (data) => {
       console.log("Online[SV2]: " + data);
       setUserCount(data);
-    });
+    }); */
     socket.on("whichserver", (server) => {
       if (currentServer !== server) {
         if (server === 1) {
@@ -317,7 +317,7 @@ function App() {
                           </Switch>
                         )}
                       </div>
-                      <UsersCount count={userCount} />
+                      <UsersCount socket={socket} />
                       {pushNotificationSupported && !alreadySubscribed && (
                         <GetNotifiedButton
                           click={() => setModalIsOpen(true)}
@@ -396,7 +396,6 @@ function App() {
   } else {
     content = <h1> Loading .. </h1>;
   }
-
   return content;
 }
 
