@@ -16,6 +16,7 @@
     "i18next-xhr-backend": "^3.2.2",
     "leaflet": "^1.6.0",
     "react": "^16.13.0",
+    "react-adsense": "^0.1.0",
     "react-chartjs-2": "^2.9.0",
     "react-cookie": "^4.0.3",
     "react-dom": "^16.13.0",

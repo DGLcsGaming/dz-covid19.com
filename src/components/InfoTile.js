@@ -3,6 +3,7 @@ import { currentStatsContext } from "../contexts/currentStatsContext";
 import { dailyStatsContext } from "../contexts/dailyStatsContext";
 import Odometer from "react-odometerjs";
 import { useTranslation } from "react-i18next";
+import AdSense from "react-adsense";
 
 const calcPercentage = (currentStats, dailyStats) => {
   var yesterday;
@@ -108,6 +109,14 @@ function InfoTile() {
           </div>
         </div>
       </div>
+      {/* <AdSense.Google
+        client="ca-pub-3044347590723152"
+        slot="7748570575"
+        style={{ display: "block" }}
+        format="auto"
+        responsive="true"
+        layoutKey="-gw-1+2a-9x+5c"
+      /> */}
     </div>
   );
 }
