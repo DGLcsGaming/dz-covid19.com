@@ -112,7 +112,7 @@ function InfoTile() {
       <AdSense.Google
         client="ca-pub-3044347590723152"
         slot="7748570575"
-        style={{ display: "block", width="268px", height="250px" }}
+        style={{ display: "block" }}
         format="auto"
         responsive="true"
         layoutKey="-gw-1+2a-9x+5c"
