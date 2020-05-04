@@ -109,14 +109,18 @@ function InfoTile() {
           </div>
         </div>
       </div>
+      <h1 style={{ fontSize: "1px", textAlign: "center", color: "white", lineHeight: "1px" }}>Ooredoo</h1>
+      <h1 style={{ fontSize: "1px", textAlign: "center", color: "white", lineHeight: "1px" }}>Djezzy</h1>
       <AdSense.Google
         client="ca-pub-3044347590723152"
         slot="7748570575"
-        style={{ display: "block" }}
+        style={{ display: "block", height: 250 }}
         format="auto"
         responsive="true"
         layoutKey="-gw-1+2a-9x+5c"
       />
+      <p style={{ fontSize: "1px", textAlign: "center", color: "white", lineHeight: "1px" }}>Djezzy Ooredoo</p>
+      <p style={{ fontSize: "1px", textAlign: "center", color: "white", lineHeight: "1px" }}>Ooredoo Djezzy</p>
     </div>
   );
 }
