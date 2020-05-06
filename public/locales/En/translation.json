@@ -18,7 +18,7 @@
   },
   "Graph": {
     "NewCases": "New Cases Today",
-    "Daily": "Daily New Cases",
+    "Daily": "Total Cases Growth",
     "Distribution": "Distribution of Cases",
     "NewCasesPerWilaya": "New Cases Per Wilaya",
     "NewCasesLabel": "New Cases"
