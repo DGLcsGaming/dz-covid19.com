@@ -70,6 +70,7 @@ const CountryTab = (props) => {
         </a>
         <span>Algeria COVID-19 Tracker</span>
       </div>
+      <h1 style={{ fontSize: "1px", textAlign: "center", color: "white", lineHeight: "1px" }}>إحصائيات فيروس كورونا في الجزائر</h1>
       <div className="facebook" style={isArabic ? { direction: "rtl" } : { direction: "ltr" }}>
         <span>{t("InfoTile.Facebook")}</span>
         <div

@@ -109,9 +109,9 @@ function InfoTile() {
           </div>
         </div>
       </div>
-      <h1 style={{ fontSize: "1px", textAlign: "center", color: "white", lineHeight: "1px" }}>corona virus who.int</h1>
+      <h1 style={{ fontSize: "1px", textAlign: "center", color: "white", lineHeight: "1px" }}>إحصائيات فيروس كورونا في الجزائر</h1>
       <AdSense.Google client="ca-pub-3044347590723152" slot="7748570575" style={{ display: "block", height: 250, width: 268 }} format="" />
-      <p style={{ fontSize: "1px", textAlign: "center", color: "white", lineHeight: "1px" }}>corona virus who.int</p>
+      <p style={{ fontSize: "1px", textAlign: "center", color: "white", lineHeight: "1px" }}>إحصائيات فيروس كورونا في الجزائر</p>
     </div>
   );
 }
