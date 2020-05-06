@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import "./odometer-theme-default.css";
 import "./App.css";
 import "./flickity.css";
+import "./fonts.css";
 import Header from "./components/Header";
 import NavDrawer from "./components/NavDrawer";
 import CountryTab from "./components/CountryTab";
