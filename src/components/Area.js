@@ -22,16 +22,13 @@ function Area(props) {
         </div>
         <div className="areaStats areaRecovered">
           <strong>{t("General.Recovered")}</strong>
-          <div>
-            {props.data.recovered}
-            <div className="delta">+{props.data.new_cases}</div>
-          </div>
+          <div>{props.data.recovered}</div>
         </div>
         <div className="areaStats areaDeaths">
           <strong>{t("General.Deaths")}</strong>
           <div>
             {props.data.deaths}
-            <div className="delta">+{props.data.new_cases}</div>
+            <div className="delta">+{props.data.new_deaths}</div>
           </div>
         </div>
       </div>
