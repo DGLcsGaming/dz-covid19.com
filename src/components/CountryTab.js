@@ -6,6 +6,7 @@ import { wilayasContext } from "../contexts/wilayasContext";
 import { currentStatsContext } from "../contexts/currentStatsContext";
 import { dailyStatsContext } from "../contexts/dailyStatsContext";
 import { ReactComponent as Loading } from "../Icons/Loading.svg";
+import { ReactComponent as LinkedIn } from "../Icons/LinkedIn.svg";
 import LanguageDropdown from "./LanguageDropdown";
 import Beta from "./Beta";
 import Ramadan from "./Ramadan";
@@ -124,6 +125,13 @@ const CountryTab = (props) => {
           <Wilyas ref={areasRef} wilayas={wilayas} />
         </div>
       )}
+      <div className="signature">
+        <strong>Made with &#10084;&#65039; by </strong>
+        <a href="https://linkedin.com/in/faycaldgl" target="_blank">
+          <LinkedIn />
+          &nbsp;<strong>Ghoul Fayçal</strong>
+        </a>
+      </div>
     </div>
   );
 };
