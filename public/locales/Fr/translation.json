@@ -5,7 +5,8 @@
     "Recovered": "Rétablis",
     "Deaths": "Décès",
     "Hospitalized": "Sous traitement",
-    "ConnectionLost": "Reconnexion au serveur ..."
+    "ConnectionLost": "Reconnexion au serveur ...",
+    "NA": "N/A"
   },
   "Subscription": {
     "Thanks": "Merci pour votre subscription!",

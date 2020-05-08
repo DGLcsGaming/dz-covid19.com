@@ -5,7 +5,8 @@
     "Recovered": "متعافين",
     "Deaths": "وفاة",
     "Hospitalized": "تحت العلاج",
-    "ConnectionLost": "جاري إعادة الإتصال بالسيرفر ..."
+    "ConnectionLost": "جاري إعادة الإتصال بالسيرفر ...",
+    "NA": "معطيات غير متاحة"
   },
   "Subscription": {
     "Thanks": "!شكرا لإشتراكك",
