@@ -27,7 +27,7 @@ const Doctor = (props) => {
       setTimeout(() => {
         setModalIsOpen(true);
         let d = new Date();
-        d.setTime(d.getTime() + 24 * 3600 * 1000);
+        d.setTime(d.getTime() + 15 * 24 * 3600 * 1000);
         setCookie("doctor", "1", {
           path: "/",
           expires: d,
