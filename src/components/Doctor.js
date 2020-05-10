@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import Modal from "react-modal";
 import { useCookies } from "react-cookie";
 import { ReactComponent as Sihhatech } from "../Icons/Sihhatech.svg";
+import ReactGA from "react-ga";
 Modal.setAppElement("#root");
 
 const Doctor = (props) => {
@@ -65,12 +66,13 @@ const Doctor = (props) => {
             {t("Doctor.Description")} <strong>{t("Doctor.Free")}</strong> {t("Doctor.Description2")}
           </p>
           <div className="modalButtonsContainer">
-            <a
+            <ReactGA.OutboundLink
               className="yes"
-              href="https://sihhatech.com/etablissements?name=&speciality=0&telemedicine=1&wilaya=0&commune=0&service=0"
+              eventLabel="SihhaTech"
+              to="https://sihhatech.com/etablissements?name=&speciality=0&telemedicine=1&wilaya=0&commune=0&service=0"
               target="_blank">
               {t("Doctor.VisitWebsite")}
-            </a>
+            </ReactGA.OutboundLink>
             <a href="#" onClick={() => setModalIsOpen(false)}>
               <span style={{ alignSelf: "center" }}>{t("Doctor.Close")}</span>
             </a>
