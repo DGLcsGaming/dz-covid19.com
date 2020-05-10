@@ -696,6 +696,7 @@ a:not([href]):not([tabindex]):focus {
   display: flex;
   justify-content: space-around;
   margin-top: 1em;
+  align-items: center;
 }
 .modalButtonsContainer .yes {
   display: flex;
@@ -704,11 +705,11 @@ a:not([href]):not([tabindex]):focus {
   background: #38a169;
   border-color: #38a169;
   color: #fff !important;
-  text-shadow: 0 -1px 1px rgba(0, 40, 50, 0.35);
+  text-shadow: 0 0px 5px rgba(0, 40, 50, 0.2);
   border-radius: 4px;
   border: 1px solid #ccc;
-  padding: 10px 14px;
-  font-weight: 700;
+  padding: 7px 10px;
+  font-weight: 500;
   text-decoration: none;
   cursor: pointer;
 }
@@ -1664,6 +1665,7 @@ a:not([href]):not([tabindex]):focus {
   align-items: center;
   padding: 0.2rem 0.8rem;
   cursor: pointer;
+  white-space: nowrap;
 }
 .desktop .donations-container:before {
   animation: countpulse 2s ease infinite;
@@ -1696,6 +1698,7 @@ a:not([href]):not([tabindex]):focus {
   align-items: center;
   padding: 0.2rem 0.8rem;
   cursor: pointer;
+  white-space: nowrap;
 }
 .donations-text {
   font-weight: 600;

@@ -57,6 +57,14 @@
     "CCP_LASTNAME_TITLE": "L. Name",
     "CCP_LASTNAME_VALUE": "GHOUL"
   },
+  "Doctor": {
+    "ConsultNow": "Free Doctor Consult!",
+    "Description": "In cooperation with Sihhatech Foundation, you can now consult a doctor for",
+    "Description2": "and that's by visiting this website to book an appointment :",
+    "VisitWebsite": "Visit Website",
+    "Close": "Close",
+    "Free": "Free"
+  },
   "Faq": [
     {
       "Title": "ما هو فيروس (كورونا) COVID-19؟",

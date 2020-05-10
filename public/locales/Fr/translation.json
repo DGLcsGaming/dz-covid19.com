@@ -47,6 +47,14 @@
     "CCP_LASTNAME_TITLE": "Nom",
     "CCP_LASTNAME_VALUE": "GHOUL"
   },
+  "Doctor": {
+    "ConsultNow": "Consultez un Docteur!",
+    "Description": "En collaboration avec la Fondation Sihhatech, vous pouvez désormais consulter un médecin",
+    "Description2": "et c'est en visitant ce site web pour prendre rendez-vous:",
+    "VisitWebsite": "Visiter le Site",
+    "Close": "Fermer",
+    "Free": "Gratuitement"
+  },
   "Disclaimer": {
     "1": "الموقع هو مجرد مشروع خيري غير ربحي هدفه الوحيد التوعية لمواجهة وباء كورونا",
     "2": "الموقع مجرد أداة لعرض البيانات، ولا يمثّل أي نزعة إعلامية، ويقوم باتباع كافة المعطيات الممثلة في الموقع الرسمي لوزارة الصحة والسكان وإصلاح المستشفيات الجزائرية",

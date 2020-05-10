@@ -11,6 +11,7 @@ import LanguageDropdown from "./LanguageDropdown";
 import Beta from "./Beta";
 import Ramadan from "./Ramadan";
 import Donations from "../components/Donations";
+import Doctor from "../components/Doctor";
 import { useTranslation } from "react-i18next";
 import Modal from "react-modal";
 
@@ -62,6 +63,7 @@ const CountryTab = (props) => {
     <div className="country tab" style={props.style}>
       <div className="pullbar" />
       <Ramadan />
+      <Doctor />
       {/* <Donations /> */}
       {/* <Beta /> */}
       <LanguageDropdown />
