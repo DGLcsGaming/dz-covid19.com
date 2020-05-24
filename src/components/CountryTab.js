@@ -62,7 +62,7 @@ const CountryTab = (props) => {
   return (
     <div className="country tab" style={props.style}>
       <div className="pullbar" />
-      <Ramadan />
+
       <Doctor />
       {/* <Donations /> */}
       {/* <Beta /> */}
