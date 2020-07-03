@@ -23,14 +23,14 @@ function Area(props) {
         <div className="areaStats areaRecovered">
           <strong>{t("General.Recovered")}</strong>
           {/* <div>{props.data.recovered}</div> */}
-          <div>
+          <div style={{ fontSize: "0.7rem" }}>
             <small>({t("General.NA")})</small>
           </div>
         </div>
         {/*  */}
         <div className="areaStats areaDeaths">
           <strong>{t("General.Deaths")}</strong>
-          <div>
+          <div style={{ fontSize: "0.7rem" }}>
             <small>({t("General.NA")})</small>
           </div>
         </div>
