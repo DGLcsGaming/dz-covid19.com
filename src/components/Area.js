@@ -31,8 +31,7 @@ function Area(props) {
         <div className="areaStats areaDeaths">
           <strong>{t("General.Deaths")}</strong>
           <div>
-            {props.data.deaths}
-            <div className="delta">+{props.data.new_deaths}</div>
+            <small>({t("General.NA")})</small>
           </div>
         </div>
       </div>
