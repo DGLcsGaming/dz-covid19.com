@@ -379,7 +379,7 @@ a:not([href]):not([tabindex]):focus {
   font-size: 1.25rem;
 }
 .text-xxl {
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   line-height: 2rem;
 }
 .pt-2 {
