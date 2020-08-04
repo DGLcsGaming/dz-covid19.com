@@ -63,7 +63,7 @@ const CountryTab = (props) => {
     <div className="country tab" style={props.style}>
       <div className="pullbar" />
 
-      <Doctor />
+      {/* <Doctor /> */}
       {/* <Donations /> */}
       {/* <Beta /> */}
       <LanguageDropdown />
