@@ -19,7 +19,7 @@ import Modal from "react-modal";
 import GetNotifiedButton from "./components/GetNotifiedButton";
 import { ReactComponent as Bell } from "./Icons/Bell.svg";
 import { useTranslation } from "react-i18next";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { /* BrowserRouter */ HashRouter, Switch, Route } from "react-router-dom";
 import Disclaimer from "./components/Disclaimer";
 import Faq from "./components/Faq";
 import "./material-expansion-panel.min.css";
@@ -261,7 +261,9 @@ function App() {
   if (!isServerDown) {
     content = (
       <CookiesProvider>
-        <BrowserRouter>
+        <HashRouter>
+          {" "}
+          {/* BrowserRouter */}
           <div className={isArabic ? "App arabic" : "App nonarabic"}>
             <globalContext.Provider value={[globalState, setGlobalState]}>
               <currentStatsContext.Provider value={[currentStats, setCurrentStats]}>
@@ -392,7 +394,12 @@ function App() {
               </currentStatsContext.Provider>
             </globalContext.Provider>
           </div>
-        </BrowserRouter>
+        </HashRouter>{" "}
+        {
+          {
+            /* BrowserRouter */
+          }
+        }
       </CookiesProvider>
     );
   } else if (isServerDown) {
