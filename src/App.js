@@ -137,7 +137,13 @@ function App() {
 
     if (process.env.NODE_ENV === "production") {
       Axios.get("https://algeriacovid19.herokuapp.com/api/which_server", {
-        headers: { "x-access-token": process.env.REACT_APP_API_KEY, "Access-Control-Allow-Origin": "*" },
+        mode: "cors",
+        headers: {
+          "x-access-token": process.env.REACT_APP_API_KEY,
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
+        },
       })
         .then((data) => data.data.data.server)
         .then((server) => {
