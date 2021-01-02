@@ -261,7 +261,7 @@ function App() {
   if (!isServerDown) {
     content = (
       <CookiesProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/covid-19" /*basename is only set for the Github pages to work*/>
           <div className={isArabic ? "App arabic" : "App nonarabic"}>
             <globalContext.Provider value={[globalState, setGlobalState]}>
               <currentStatsContext.Provider value={[currentStats, setCurrentStats]}>
