@@ -20,7 +20,7 @@
     "react-chartjs-2": "^2.9.0",
     "react-cookie": "^4.0.3",
     "react-dom": "^16.13.0",
-    "react-flickity-component": "^3.5.0",
+    "react-flickity-component": "^3.6.0",
     "react-ga": "^2.7.0",
     "react-i18next": "^11.3.4",
     "react-leaflet": "^2.6.3",
@@ -50,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }

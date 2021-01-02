@@ -6,8 +6,8 @@ import { ReactComponent as Sihhatech } from "../Icons/Sihhatech.svg";
 import ReactGA from "react-ga";
 Modal.setAppElement("#root");
 
-const Doctor = (props) => {
-  const [cookies, setCookie] = useCookies(["doctor"]);
+const Notice = (props) => {
+  const [cookies, setCookie] = useCookies(["notice"]);
   const { t, i18n } = useTranslation();
   const [isArabic, setIsArabic] = useState(true);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -24,12 +24,12 @@ const Doctor = (props) => {
     };
   });
   useEffect(() => {
-    if (!cookies.doctor) {
+    if (!cookies.notice) {
       setTimeout(() => {
         setModalIsOpen(true);
         let d = new Date();
         d.setTime(d.getTime() + 15 * 24 * 3600 * 1000);
-        setCookie("doctor", "1", {
+        setCookie("notice", "1", {
           path: "/",
           expires: d,
           sameSite: "lax",
@@ -42,7 +42,7 @@ const Doctor = (props) => {
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
-        contentLabel="Doctor"
+        contentLabel="Notice"
         style={{
           overlay: {
             backgroundColor: "rgba(0, 0, 0, 0.75)",
@@ -63,7 +63,8 @@ const Doctor = (props) => {
             <Sihhatech />
           </div>
           <p style={{}} className="justify">
-            {t("Doctor.Description")} <strong>{t("Doctor.Free")}</strong> {t("Doctor.Description2")}
+            {t("Notice.Description")} <br />
+            {t("Notice.Description2")}
           </p>
           <div className="modalButtonsContainer">
             <ReactGA.OutboundLink
@@ -71,19 +72,22 @@ const Doctor = (props) => {
               eventLabel="SihhaTech"
               to="https://sihhatech.com/etablissements?name=&speciality=0&telemedicine=1&wilaya=0&commune=0&service=0"
               target="_blank">
-              {t("Doctor.VisitWebsite")}
+              <span className="github-icon"></span>
+              {t("Notice.VisitGithub")}
             </ReactGA.OutboundLink>
             <a href="#" onClick={() => setModalIsOpen(false)}>
-              <span style={{ alignSelf: "center" }}>{t("Doctor.Close")}</span>
+              <span style={{ alignSelf: "center" }}>{t("Notice.Close")}</span>
             </a>
           </div>
         </div>
       </Modal>
       <div dir={isArabic ? "rtl" : "ltr"} className="donations-container" onClick={() => setModalIsOpen(true)}>
-        <span className="donations-text">{t("Doctor.ConsultNow")}</span>
+        <span className="donations-text">
+          <span className="github-icon" style={{ margin: "0px 5px 0px 0px" }}></span> {t("Notice.SourceCode")}
+        </span>
       </div>
     </div>
   );
 };
 
-export default Doctor;
+export default Notice;

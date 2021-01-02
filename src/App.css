@@ -720,6 +720,24 @@ a:not([href]):not([tabindex]):focus {
   text-decoration: none;
   cursor: pointer;
 }
+
+.github-icon {
+  background: url(https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/github.svg) no-repeat;
+  float: left;
+  width: 24px;
+  height: 24px;
+  margin: 0px 5px 0px 0px;
+  fill: white;
+}
+.arabic .github-icon {
+  background: url(https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/github.svg) no-repeat;
+  float: left;
+  width: 24px;
+  height: 24px;
+  margin: 0px 0px 0px 5px;
+  fill: white;
+}
+
 .modalButtonsContainer .no {
   font-weight: 500;
   background: transparent;
@@ -1048,9 +1066,9 @@ a:not([href]):not([tabindex]):focus {
 .desktop .ribbon span {
   position: absolute;
   display: block;
-  width: 146px;
+  width: 149px;
   height: 34px;
-  padding: 5px 0;
+  padding: 10px 0px;
   background-color: #3498db;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   color: #fff;
@@ -1058,6 +1076,7 @@ a:not([href]):not([tabindex]):focus {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   text-transform: uppercase;
   text-align: center;
+  font-size: 0.8rem;
 }
 /* top right*/
 .desktop .ribbon-top {
@@ -1621,9 +1640,9 @@ a:not([href]):not([tabindex]):focus {
 .mobile .ribbon span {
   position: absolute;
   display: block;
-  width: 146px;
+  width: 149px;
   height: 34px;
-  padding: 5px 0;
+  padding: 10px 0px;
   background-color: #3498db;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   color: #fff;
@@ -1631,6 +1650,7 @@ a:not([href]):not([tabindex]):focus {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   text-transform: uppercase;
   text-align: center;
+  font-size: 0.8rem;
 }
 
 /* top left*/

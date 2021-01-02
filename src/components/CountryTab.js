@@ -9,9 +9,8 @@ import { ReactComponent as Loading } from "../Icons/Loading.svg";
 import { ReactComponent as LinkedIn } from "../Icons/LinkedIn.svg";
 import LanguageDropdown from "./LanguageDropdown";
 import Beta from "./Beta";
-import Ramadan from "./Ramadan";
-import Donations from "../components/Donations";
-import Doctor from "../components/Doctor";
+import Notice from "./Notice";
+/* import Ramadan from "./Ramadan"; */
 import { useTranslation } from "react-i18next";
 import Modal from "react-modal";
 
@@ -62,10 +61,8 @@ const CountryTab = (props) => {
   return (
     <div className="country tab" style={props.style}>
       <div className="pullbar" />
-
-      {/* <Doctor /> */}
-      {/* <Donations /> */}
-      {/* <Beta /> */}
+      {<Beta />}
+      {<Notice />}
       <LanguageDropdown />
       <div className="pageName text-center">
         <a href="#">

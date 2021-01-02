@@ -135,18 +135,18 @@ function App() {
       }
     });
 
-    if (process.env.NODE_ENV === "production") {
-      Axios.get("https://dz-covid19.com/api/which_server", {
+    if (process.env.NODE_ENV === "production" || true) {
+      Axios.get("https://algeriacovid19.herokuapp.com/api/which_server", {
         headers: { "x-access-token": process.env.REACT_APP_API_KEY },
       })
         .then((data) => data.data.data.server)
         .then((server) => {
           if (server === 1) {
-            socket = openSocket("https://dz-covid19.com", { path: "/ws" });
+            socket = openSocket("https://algeriacovid19.herokuapp.com", { path: "/ws" });
             setCurrentServer(1);
           } else if (server === 2) {
-            socket = openSocket("https://server2.dz-covid19.com", { path: "/ws", transports: ["websocket"] });
-            setCurrentServer(2);
+            /* socket = openSocket("https://server2.dz-covid19.com", { path: "/ws", transports: ["websocket"] });
+            setCurrentServer(2); */
           }
         });
     } else {
@@ -171,6 +171,7 @@ function App() {
     });
     socket.on("currentStats", (data) => {
       console.log("CurrentStats Loaded!", new Date(Date.now()).toISOString());
+      console.log(data);
       setCurrentStats(data);
     });
     socket.on("dailyStats", (data) => {
@@ -193,12 +194,12 @@ function App() {
       if (currentServer !== server) {
         if (server === 1) {
           socket.disconnect();
-          socket = openSocket("https://dz-covid19.com", { path: "/ws" });
+          socket = openSocket("https://algeriacovid19.herokuapp.com/", { path: "/ws" });
           setCurrentServer(server);
         } else if (server === 2) {
-          socket.disconnect();
+          /* socket.disconnect();
           socket = openSocket("https://server2.dz-covid19.com", { path: "/ws", transports: ["websocket"] });
-          setCurrentServer(server);
+          setCurrentServer(server); */
         }
       }
     });

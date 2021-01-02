@@ -38,32 +38,17 @@
     "5": "يمكن تغيير أو حذف أي معلومة في هذا الموقع دون إشعار مسبق"
   },
   "Beta": {
-    "Beta": "BETA"
+    "Beta": "ARCHIVED"
   },
   "Visitors": {
     "visitors": "VISITORS"
   },
-  "Donations": {
-    "donatenow": "Donate Now!",
-    "Description": "As the number of people using this website grows, it gets quite expensive to pay for the hosting. Also as i'm a student, donations are the only way to keep this project alive.",
-    "Thanks": "THANK YOU!",
-    "Close": "Close",
-    "CCP_RIP_TITLE": "RIP",
-    "CCP_RIP_VALUE": "00799999002094707349",
-    "CCP_NUMKEY_TITLE": "CCP / Key",
-    "CCP_NUMKEY_VALUE": "0020947073 / 49",
-    "CCP_NAME_TITLE": "Name",
-    "CCP_NAME_VALUE": "FAISAL",
-    "CCP_LASTNAME_TITLE": "L. Name",
-    "CCP_LASTNAME_VALUE": "GHOUL"
-  },
-  "Doctor": {
-    "ConsultNow": "Free Doctor Consult!",
-    "Description": "In cooperation with Sihhatech Foundation, you can now consult a doctor for",
-    "Description2": "and that's by visiting this website to book an appointment :",
-    "VisitWebsite": "Visit Website",
-    "Close": "Close",
-    "Free": "Free"
+  "Notice": {
+    "SourceCode": "View Source Code",
+    "Description": "This project is now archived. All the statistics that you see on the website are just a DEMO/DUMMY data.",
+    "Description2": "To view the source code of this project on Github please click on the button below :",
+    "VisitGithub": "View Source Code",
+    "Close": "Close"
   },
   "Faq": [
     {

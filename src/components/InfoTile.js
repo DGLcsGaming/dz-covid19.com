@@ -3,7 +3,6 @@ import { currentStatsContext } from "../contexts/currentStatsContext";
 import { dailyStatsContext } from "../contexts/dailyStatsContext";
 import Odometer from "react-odometerjs";
 import { useTranslation } from "react-i18next";
-import AdSense from "react-adsense";
 
 const calcPercentage = (currentStats, dailyStats) => {
   var yesterday;
@@ -46,7 +45,7 @@ function InfoTile() {
             <img className="svg-filter-red" src="./img/high.svg" />
             <div className="change text-center red">
               <span className="difference">
-                +<Odometer value={currentStats.confirmed - yesterday.confirmed} format="d" />
+                +<Odometer value={currentStats.confirmed - (yesterday !== null ? yesterday.confirmed : currentStats.confirmed)} format="d" />
               </span>
               &nbsp; (
               <Odometer value={growthPercentage} format="d" />
@@ -70,7 +69,7 @@ function InfoTile() {
         <div className="w-1/2 mx-2 flex flex-col rounded overflow-hidden statshadow text-center text-green-600" style={{ position: "relative" }}>
           <div className="h-16 pt-2 flex flex-auto items-center justify-center bg-green-100 text-xxl font-bold font-sans">
             <div className="recovered-difference">
-              +<Odometer value={currentStats.recovered - yesterday.recovered} format="d" />
+              +<Odometer value={currentStats.recovered - (yesterday !== null ? yesterday.confirmed : currentStats.recovered)} format="d" />
             </div>
             <span className="mx-2">
               <Odometer value={currentStats.recovered} format="(,ddd)" />
@@ -83,7 +82,7 @@ function InfoTile() {
         <div className="w-1/3 flex flex-col rounded overflow-hidden statshadow text-center text-gray-600" style={{ position: "relative" }}>
           <div className="h-16 pt-2 flex flex-auto items-center justify-center bg-gray-200 text-xl font-bold font-sans">
             <div className="deaths-difference">
-              +<Odometer value={currentStats.deaths - yesterday.deaths} format="d" />
+              +<Odometer value={currentStats.deaths - (yesterday !== null ? yesterday.deaths : currentStats.deaths)} format="d" />
             </div>
             <span className="mx-2">
               <Odometer value={currentStats.deaths} format="(,ddd)" />
@@ -98,7 +97,7 @@ function InfoTile() {
         <div className="w-full flex flex-col rounded overflow-hidden statshadow text-center text-purple-600" style={{ position: "relative" }}>
           <div className="h-10 py-1 flex flex-auto items-center justify-center bg-purple-100 text-xl font-bold font-sans">
             <div className="hospitalized-difference">
-              +<Odometer value={currentStats.hospitalized - yesterday.hospitalized} format="d" />
+              +<Odometer value={currentStats.hospitalized - (yesterday !== null ? yesterday.hospitalized : currentStats.hospitalized)} format="d" />
             </div>
             <span className="mx-2">
               <Odometer value={currentStats.hospitalized} format="(,ddd)" />
@@ -110,7 +109,6 @@ function InfoTile() {
         </div>
       </div>
       <h1 style={{ fontSize: "1px", textAlign: "center", color: "white", lineHeight: "1px" }}>إحصائيات فيروس كورونا في الجزائر</h1>
-      <AdSense.Google client="ca-pub-3044347590723152" slot="7748570575" style={{ display: "block", height: 250, width: 268 }} format="" />
       <p style={{ fontSize: "1px", textAlign: "center", color: "white", lineHeight: "1px" }}>إحصائيات فيروس كورونا في الجزائر</p>
     </div>
   );

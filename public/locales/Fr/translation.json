@@ -33,27 +33,12 @@
   "Visitors": {
     "visitors": "VISITEURS"
   },
-  "Donations": {
-    "donatenow": "Faire un Don!",
-    "Description": "Avec le nombre grandissant d’utilisateurs, le prix d’hébergement devient de plus en plus dure à supporter, surtout pour un étudiant. Afin de nous permettre de pérenniser ce projet, nous comptons sur votre contribution.",
-    "Thanks": "MERCI !",
-    "Close": "Fermer",
-    "CCP_RIP_TITLE": "RIP",
-    "CCP_RIP_VALUE": "00799999002094707349",
-    "CCP_NUMKEY_TITLE": "CCP / Clé",
-    "CCP_NUMKEY_VALUE": "0020947073 / 49",
-    "CCP_NAME_TITLE": "Prénom",
-    "CCP_NAME_VALUE": "FAISAL",
-    "CCP_LASTNAME_TITLE": "Nom",
-    "CCP_LASTNAME_VALUE": "GHOUL"
-  },
-  "Doctor": {
-    "ConsultNow": "Consultez un Docteur!",
-    "Description": "En collaboration avec la Fondation Sihhatech, vous pouvez désormais consulter un médecin",
-    "Description2": "et c'est en visitant ce site web pour prendre rendez-vous:",
-    "VisitWebsite": "Visiter le Site",
-    "Close": "Fermer",
-    "Free": "Gratuitement"
+  "Notice": {
+    "SourceCode": "Afficher le code source",
+    "Description": "Ce projet est maintenant archivé. Toutes les statistiques que vous voyez sur le site Web ne sont que des données DEMO.",
+    "Description2": "Pour afficher le code source de ce projet sur Github, veuillez cliquer sur le bouton ci-dessous:",
+    "VisitGithub": "Afficher le code source",
+    "Close": "Fermer"
   },
   "Disclaimer": {
     "1": "الموقع هو مجرد مشروع خيري غير ربحي هدفه الوحيد التوعية لمواجهة وباء كورونا",
@@ -63,7 +48,7 @@
     "5": "يمكن تغيير أو حذف أي معلومة في هذا الموقع دون إشعار مسبق"
   },
   "Beta": {
-    "Beta": "BETA"
+    "Beta": "ARCHIVÉ"
   },
   "Faq": [
     {
