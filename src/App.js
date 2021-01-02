@@ -137,7 +137,7 @@ function App() {
 
     if (process.env.NODE_ENV === "production") {
       Axios.get("https://algeriacovid19.herokuapp.com/api/which_server", {
-        headers: { "x-access-token": process.env.REACT_APP_API_KEY },
+        headers: { "x-access-token": process.env.REACT_APP_API_KEY, "Access-Control-Allow-Origin": "*" },
       })
         .then((data) => data.data.data.server)
         .then((server) => {
