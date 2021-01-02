@@ -135,7 +135,7 @@ function App() {
       }
     });
 
-    if (process.env.NODE_ENV === "production" || true) {
+    if (process.env.NODE_ENV === "production") {
       Axios.get("https://algeriacovid19.herokuapp.com/api/which_server", {
         headers: { "x-access-token": process.env.REACT_APP_API_KEY },
       })
@@ -171,7 +171,6 @@ function App() {
     });
     socket.on("currentStats", (data) => {
       console.log("CurrentStats Loaded!", new Date(Date.now()).toISOString());
-      console.log(data);
       setCurrentStats(data);
     });
     socket.on("dailyStats", (data) => {
@@ -253,9 +252,6 @@ function App() {
     }
   }, [cookies, loading, alreadySubscribed, isConsentGranted, userSubscription, pushServerSubscriptionId]);
 
-  /*  useEffect(() => {
-    alert("الموقع يتعرض لضغط كبير الآن, سيتم إصلاح المشكل بعد قليل, نعتذر عن ذلك");
-  }, []); */
   var content;
 
   if (!isServerDown) {

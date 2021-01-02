@@ -1,4 +1,4 @@
-const host = process.env.NODE_ENV === "production" || true ? "https://algeriacovid19.herokuapp.com/api/" : "http://localhost:4000/api/";
+const host = process.env.NODE_ENV === "production" ? "https://algeriacovid19.herokuapp.com/api/" : "http://localhost:4000/api/";
 
 function post(path, body) {
   return fetch(`${host}${path}`, {
