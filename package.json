@@ -1,0 +1,60 @@
+{
+  "name": "covid19",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "http://dz-covid19.com",
+  "dependencies": {
+    "@svgr/webpack": "^5.3.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
+    "chart.js": "^2.9.3",
+    "chartjs-plugin-datalabels": "^0.7.0",
+    "flickity": "^2.2.1",
+    "i18next": "^19.3.4",
+    "i18next-browser-languagedetector": "^4.0.2",
+    "i18next-xhr-backend": "^3.2.2",
+    "leaflet": "^1.6.0",
+    "react": "^16.13.0",
+    "react-adsense": "^0.1.0",
+    "react-chartjs-2": "^2.9.0",
+    "react-cookie": "^4.0.3",
+    "react-dom": "^16.13.0",
+    "react-flickity-component": "^3.6.0",
+    "react-ga": "^2.7.0",
+    "react-i18next": "^11.3.4",
+    "react-leaflet": "^2.6.3",
+    "react-modal": "^3.11.2",
+    "react-odometerjs": "^2.1.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "socket.io-client": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
+  }
+}
